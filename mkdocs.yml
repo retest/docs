@@ -1,0 +1,10 @@
+site_name: retest docs
+nav:
+  - Home: index.md
+  - recheck:
+    - 'Google Summer of Code': 'recheck/gsoc.md'
+    - 'How ignore works': 'recheck/how-ignore-works-in-recheck.md'
+    - 'Location of the Golden Master files': 'recheck/location-of-the-golden-master-files.md'
+    - 'Reuse Golden Master Files': 'recheck/reuse-golden-master-files.md'
+  - recheck-web: 'recheck-web/home.md'
+theme: readthedocs
