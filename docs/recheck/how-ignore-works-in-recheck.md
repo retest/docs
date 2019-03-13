@@ -34,7 +34,7 @@ matcher: xpath=HTML[1]/BODY[1]/DIV[3], attribute: outline
 matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
 ```
 
-For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. Ignoring by XPath is also the way to go, if you have elements that appear / disappear.
+For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
 ## Ignore by ID
 
@@ -60,20 +60,20 @@ There is nothing really special when compared to the previously shown mechanisms
 
 ## Ignore attributes globally
 
-You can also ignore attributes globally, by writing
+You can also ignore attributes globally:
 
 ```
 attribute=class
 ```
 
-This will ignore the `class` attribute for _all elements_. We use the Java [`String.matches`](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html#matches(java.lang.String)) method, which means that you can specify attributes as a pattern:
+This will ignore the `class` attribute for _all elements_. Since we use Java's [`String.matches`](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html#matches(java.lang.String)) method, the attribute can also ignore by a given pattern:
 
 ```
 matcher: type:input, attribute: border-.*-color
 matcher: type:input, attribute: padding-.*
 ```
 
-Will ignore all border colors and all paddings respectively.
+E.g., this will ignore all border colors and all paddings respectively.
 
 # Ignore differences using the `recheck.ignore.js` file
 
@@ -84,5 +84,7 @@ shouldIgnoreElement(element) {}
 shouldIgnoreAttributeDifference(element, diff) {}
 ```
 
-As the name suggests, `shouldIgnoreElement` specifies whether an element and its child elements should be ignored completely. And `shouldIgnoreAttributeDifference` specifies whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
+As the name suggests, `shouldIgnoreElement` specifies whether an element and all its children should be ignored completely.
+
+Using `shouldIgnoreAttributeDifference` allows to specify whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
  
