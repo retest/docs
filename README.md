@@ -6,7 +6,7 @@ Please feel free to correct anything outdated or wrong, improve any wording, or 
 
 ## Installation
 
-We use [MkDocs](https://mkdocs.org/) to deploy the documentation. Please refer to the official [installation guide](https://www.mkdocs.org/#installation).
+We use [MkDocs](https://mkdocs.org/) to build and deploy the documentation. Please refer to the official [installation guide](https://www.mkdocs.org/#installation).
 
 ## Commands
 
