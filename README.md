@@ -1,4 +1,4 @@
-# Welcome to the retest Wiki
+# Welcome to the retest documentation
 
 Please feel free to correct anything outdated or wrong, improve any wording or add information you feel is missing.
 For full documentation of MkDocs visit [mkdocs.org](https://mkdocs.org).
