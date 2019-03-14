@@ -4,10 +4,12 @@ install:
   - pip install mkdocs
 
 script:
-  - mkdocs build
+  - mkdocs build --clean
 
 deploy:
-  provider: script
-  script: ci/deploy.sh
+  provider: pages
+  skip_cleanup: true
+  github_token: ${GH_TOKEN}
+  local_dir: site
   on:
     branch: master
