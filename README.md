@@ -22,3 +22,4 @@ We use [MkDocs](https://mkdocs.org/) to deploy the documentation. Please refer t
         recheck     # All recheck related documentation.
         recheck-web # All recheck-web related documentation.
         retest      # All retest related documentation.
+        misc        # Everything else.
