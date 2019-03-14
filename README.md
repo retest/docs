@@ -1,7 +1,5 @@
 # Welcome to the retest documentation
 
-You can find the actual documentation under https://retest.github.io/docs/.
-
 Please feel free to correct anything outdated or wrong, improve any wording, or add information you feel is missing.
 
 ## Installation
