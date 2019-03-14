@@ -1,4 +1,6 @@
 site_name: retest docs
+theme: readthedocs
+
 nav:
   - Home: index.md
   - recheck:
@@ -11,4 +13,3 @@ nav:
     - 'German': 'retest/de/index.md'
   - Misc:
     - 'Google Summer of Code': 'recheck/gsoc.md'
-theme: readthedocs
