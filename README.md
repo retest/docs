@@ -21,3 +21,4 @@ We use [MkDocs](https://mkdocs.org/) to deploy the documentation. Please refer t
         index.md    # The documentation homepage.
         recheck     # All recheck related documentation.
         recheck-web # All recheck-web related documentation.
+        retest      # All retest related documentation.
