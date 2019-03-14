@@ -1,11 +1,12 @@
 # Welcome to the retest documentation
 
-Please feel free to correct anything outdated or wrong, improve any wording or add information you feel is missing.
-For full documentation of MkDocs visit [mkdocs.org](https://mkdocs.org).
+You can find the actual documentation under https://retest.github.io/docs/.
+
+Please feel free to correct anything outdated or wrong, improve any wording, or add information you feel is missing.
 
 ## Installation
 
-See the official [documentation](https://www.mkdocs.org/#installation).
+We use [MkDocs](https://mkdocs.org/) to deploy the documentation. Please refer to the official [installation guide](https://www.mkdocs.org/#installation).
 
 ## Commands
 
