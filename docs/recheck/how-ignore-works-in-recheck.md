@@ -15,7 +15,7 @@ When creating a diff, recheck first matches every element of the Golden Master (
 
 But if there are irrelevant attributes that differ, they can confuse the matching algorithm. E.g. for many web pages, the ID attribute is a great identifier. But with some frameworks, the ID attribute is generated randomly.  When additional, "real" changes come on top, this can sometimes confuse the matching algorithm. So in those cases, you want to ignore the ID attribute during matching. However, these attributes are usually ignored globally. So for those cases, we have a simple [system property](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html) that can be set: `de.retest.recheck.ignore.attributes` contains a list of _globally_ ignored attributes.
 
-# Types of ignore
+# Ignore differences by using the `recheck.ignore` file
 
 We currently support three different mechanisms to ignore elements, attributes or differences. It's also possible to ignore a specific attribute for an element. If a parent element is being ignored, all child elements will be ignored as well.
 
@@ -34,7 +34,7 @@ matcher: xpath=HTML[1]/BODY[1]/DIV[3], attribute: outline
 matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
 ```
 
-For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements.
+For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
 ## Ignore by ID
 
@@ -57,3 +57,34 @@ matcher: retestid=a-d7728
 ```
 
 There is nothing really special when compared to the previously shown mechanisms. All learnings still apply here.
+
+## Ignore attributes globally
+
+You can also ignore attributes globally:
+
+```
+attribute=class
+```
+
+This will ignore the `class` attribute for _all elements_. Since we use Java's [`String.matches`](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html#matches(java.lang.String)) method, the attribute can also ignore by a given pattern:
+
+```
+matcher: type:input, attribute: border-.*-color
+matcher: type:input, attribute: padding-.*
+```
+
+E.g., this will ignore all border colors and all paddings respectively.
+
+# Ignore differences using the `recheck.ignore.js` file
+
+We also added a mechanism to specify "ignore rules" in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)). This allows users to specify ignore rules very flexibly, by implementing either of the following methods: 
+
+```
+shouldIgnoreElement(element) {}
+shouldIgnoreAttributeDifference(element, diff) {}
+```
+
+As the name suggests, `shouldIgnoreElement` specifies whether an element and all its children should be ignored completely.
+
+Using `shouldIgnoreAttributeDifference` allows to specify whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
+ 
