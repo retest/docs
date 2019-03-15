@@ -1,8 +1,9 @@
 site_name: retest docs
+theme: readthedocs
+
 nav:
   - Home: index.md
   - recheck:
-    - 'Google Summer of Code': 'recheck/gsoc.md'
     - 'How ignore works': 'recheck/how-ignore-works-in-recheck.md'
     - 'Location of the Golden Master files': 'recheck/location-of-the-golden-master-files.md'
     - 'Reuse Golden Master Files': 'recheck/reuse-golden-master-files.md'
@@ -10,4 +11,5 @@ nav:
   - retest:
     - 'English': 'retest/en/index.md'
     - 'German': 'retest/de/index.md'
-theme: readthedocs
+  - Misc:
+    - 'Google Summer of Code': 'recheck/gsoc.md'
