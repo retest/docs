@@ -12,4 +12,4 @@ nav:
     - 'English': 'retest/en/index.md'
     - 'German': 'retest/de/index.md'
   - Misc:
-    - 'Google Summer of Code': 'recheck/gsoc.md'
+    - 'Google Summer of Code': 'misc/gsoc.md'

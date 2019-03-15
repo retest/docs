@@ -16,5 +16,5 @@ retest verwendet mehrere Begriffe, die einer näheren Erläuterung bedürfen:
 * Eine Datei mit der Endung `.suite` enthält eine Folge von Tests, welche auf der Maske "[Suite zusammenstellen](../recapture/suite-zusammenstellen)" baukastenartig zu einer Suite zusammengestellt wurden.
 * Eine Datei mit der Endung `.ignore` enthält eine Sammlung an UI-Elementen und Attributen. Sie kann beim Affentesten zum Black- und Whitelisting verwendet werden, und beim Prüfen der Testergebnisse zum [dauerhaften Ignorieren von Elementen und/oder Attributen](../review/ui-elemente-ignorieren.md).
 
-Wo sich die jeweiligen Dateien befinden kann in der [Konfigurationsdatei](../konfiguration/konfigurationdatei.md) festgelegt werden.
+Wo sich die jeweiligen Dateien befinden kann in der [Konfigurationsdatei](../konfiguration/konfigurationsdatei.md) festgelegt werden.
 

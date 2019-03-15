@@ -7,8 +7,6 @@ Dazu gehören nicht ausschließlich *User* Interfaces sondern prinzipiell belieb
 
 Hier der Aufbau von retest im Überblick (noch sind nicht alle gezeigten Technologien und Plattformen integriert):
 
-![Aufbau retest](architecture.png)
-
 retest interagiert mit der [SUT](../testprozess/was-ist-die-sut.md), so wie andere Capture&Replay-Tools auch.
 Zusätzlich benötigt retest jedoch noch weitere Informationen. Dazu gehören:
 
@@ -19,5 +17,5 @@ Zusätzlich benötigt retest jedoch noch weitere Informationen. Dazu gehören:
 *   ob die SUT beendet wurde
 *   Informationen über Code-Abdeckung und bestimmte Code-Analyse-Ergebnisse.
 
-Möglich wird die Modularität und Erweiterbarkeit durch den [`TestContext`](testcontext.md).
+Möglich wird die Modularität und Erweiterbarkeit durch den `TestContext`.
 
