@@ -96,6 +96,6 @@ so klicken Sie einfach auf den Menüpunkt "Ignorierte Elemente".
 ![retest Ansicht 'Ignorierte Elemente' mit den gerade hinzugefügten Elementen](2-min-diff-testing-demo-tutorial-11.png)
 
 Als nächstes können Sie komplexere [Tests](../recapture/test-zusammenstellen.md) und [Suites](../recapture/suite-zusammenstellen.md) aufzeichnen,
-Ihre Aufzeichnung [interaktiv debuggen](../recapture/actionsfolge-bearbeiten.md),
+Ihre Aufzeichnung [interaktiv debuggen](../recapture/aktionsfolge-bearbeiten.md),
 oder unsere [2 Minuten Surili-Tour mit der retest Demo](2-min-surili-demo-tutorial.md) machen.
 
