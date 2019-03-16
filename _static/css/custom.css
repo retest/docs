@@ -1,0 +1,24 @@
+/* 
+ * background-color: #ffffff; (white);
+ * retest-green: #c1d82f;
+ * retest-red: #d01e6d;
+ * retest-darnkblue: #2e3542;
+ */
+.wy-nav-content-wrap {
+	background-color: #ffffff;
+}
+.wy-side-nav-search {
+	background-color: #c1d82f;
+}
+.wy-nav-side {
+	background-color: #ffffff;
+}
+.wy-menu-vertical a {
+	color: #2e3542;
+}
+.wy-menu-vertical p.caption {
+	color: #2e3542;
+}
+a {
+	color: #d01e6d;
+}
