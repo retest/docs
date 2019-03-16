@@ -1,1 +1,5 @@
 site/
+
+# ignore Eclipse files
+.project
+.pydevproject
