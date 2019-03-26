@@ -1,3 +1,5 @@
+# Location of the golden master files
+
 When calling `Recheck#capTest()`, recheck either creates a diff using the existing Golden Master or—if it is the first time a test is being executed—it creates the Golden Master itself and fails the test. 
 
 Note that it is important to fail the test if no Golden Master can be found. As mentioned before, this always happens the first time a test gets executed, but it can also happen for a variety of other reasons. For instance, when someone forgets to add the Golden Master to the version control system or if a test or a folder is renamed. If this is the case, then you definitely want the test to fail.
