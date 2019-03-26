@@ -1,5 +1,4 @@
 site_name: retest docs
-theme: readthedocs
 
 nav:
   - Home: index.md
