@@ -1,3 +1,5 @@
+# Reuse golden master files
+
 Consider the following [recheck-web](https://github.com/retest/recheck-web) test:
 
 ```java
