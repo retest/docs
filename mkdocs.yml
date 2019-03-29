@@ -1,4 +1,7 @@
 site_name: retest docs
+        
+extra_css:
+    - 'css/custom.css'
 
 nav:
   - Home: index.md
