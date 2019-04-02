@@ -7,7 +7,7 @@ nav:
     - 'Location of the Golden Master files': 'recheck/location-of-the-golden-master-files.md'
     - 'Reuse Golden Master files': 'recheck/reuse-golden-master-files.md'
   - recheck-web:
-    - 'recheck-web/home.md'
+    - 'Contributor information': 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'
     - 'Deutsch': 'retest/de/index.md'
