@@ -2,7 +2,7 @@
 
 Please feel free to correct anything outdated or wrong, improve any wording, or add information you feel is missing.
 
-What you see here are the raw .md-files. For the rendered documentation, please go to [https://retest.github.io/docs/](https://retest.github.io/docs/).
+For the rendered documentation, please go to [https://retest.github.io/docs/](https://retest.github.io/docs/).
 
 ## Installation
 
