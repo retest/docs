@@ -9,6 +9,6 @@ nav:
   - recheck-web: 'recheck-web/home.md'
   - retest:
     - 'English': 'retest/en/index.md'
-    - 'German': 'retest/de/index.md'
+    - 'Deutsch': 'retest/de/index.md'
   - Misc:
     - 'Google Summer of Code': 'misc/gsoc.md'
