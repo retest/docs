@@ -24,8 +24,8 @@ We currently support three different mechanisms to ignore elements, attributes o
 When recheck runs for the first time, an empty `recheck.ignore` file is created in the project folder. This file can be edited in three different ways:
 
 * By hand via your favorite editor
-* With the `recheck-cli`https://github.com/retest/recheck-cli
-* With our GUI `review` https://retest.de/review/
+* With the [recheck.cli](https://github.com/retest/recheck.cli)
+* With our GUI [review](https://retest.de/review/)
 
 ### Ignore by XPath (default)
 
