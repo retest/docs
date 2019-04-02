@@ -1,4 +1,4 @@
-# Reuse golden master files
+# Reuse Golden Master files
 
 Consider the following [recheck-web](https://github.com/retest/recheck-web) test:
 

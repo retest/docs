@@ -1,13 +1,8 @@
-Welcome to the recheck-web dev wiki!
+# Contributor information
 
-# How to build and deploy the project locally 
+This page contains information for contributing developers.
 
-To trigger a deployment via Travis CI, you have to skip JAR signing locally:
-```
-mvn release:prepare -Darguments="-Dgpg.skip=true"
-```
-
-# How to create/update the readme video/GIF
+## How to create/update the readme video/GIF
 
  * Create a video e.g. using Eclipse and QuickTime
  * Edit the video (shorten) using iMovie
