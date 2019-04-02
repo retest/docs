@@ -1,4 +1,4 @@
-# Location of the golden master files
+# Location of the Golden Master files
 
 When calling `Recheck#capTest()`, recheck either creates a diff using the existing Golden Master or—if it is the first time a test is being executed—it creates the Golden Master itself and fails the test. 
 
