@@ -5,7 +5,7 @@ theme:
    custom_dir: 'custom_theme/'
         
 extra_css:
-    - 'custom.css'
+    - 'css/custom.css'
 
 nav:
   - Home: index.md
