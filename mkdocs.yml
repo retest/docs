@@ -14,6 +14,7 @@ nav:
     - 'recheck/location-of-the-golden-master-files.md'
     - 'recheck/reuse-golden-master-files.md'
   - recheck-web:
+    - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'
