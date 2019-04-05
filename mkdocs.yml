@@ -10,11 +10,12 @@ extra_css:
 nav:
   - Home: index.md
   - recheck:
-    - 'How ignore works': 'recheck/how-ignore-works-in-recheck.md'
-    - 'Location of the Golden Master files': 'recheck/location-of-the-golden-master-files.md'
-    - 'Reuse Golden Master files': 'recheck/reuse-golden-master-files.md'
+    - 'recheck/how-ignore-works-in-recheck.md'
+    - 'recheck/location-of-the-golden-master-files.md'
+    - 'recheck/reuse-golden-master-files.md'
   - recheck-web:
-    - 'Contributor information': 'recheck-web/contributor-information.md'
+    - 'recheck-web/properties.md'
+    - 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'
     - 'Deutsch': 'retest/de/index.md'
