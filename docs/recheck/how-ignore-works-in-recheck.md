@@ -38,13 +38,14 @@ matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
 
 For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
-### Ignore by ID
+### Ignore by ID or tag type
 
-It is also possible to ignore an HTML element by its `id`:
+It is also possible to ignore an HTML element by its `id` attribute or its `tag`:
 
 ```
 matcher: id=title, attribute: font
 matcher: id=banner
+matcher: type=a
 ```
 
 Please note that it is also possible to ignore a specific attribute of an element as shown in the first example where the `font` attribute of all `title` element is ignored. As with the first mechanism, one can also completely ignore an element with all it's children, which is shown in the second example.
