@@ -69,14 +69,15 @@ You can also ignore attributes globally:
 attribute=class
 ```
 
-This will ignore the `class` attribute for _all elements_. Since we use Java's [`String.matches`](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html#matches(java.lang.String)) method, the attribute can also ignore by a given pattern:
+This will ignore the `class` attribute for _all elements_. You can also use [Java's regex mechanism](https://docs.oracle.com/javase/10/docs/api/java/util/regex/Pattern.html) and ignore attributes by a given pattern:
 
 ```
-matcher: type:input, attribute: border-.*-color
-matcher: type:input, attribute: padding-.*
+matcher: type:input, attribute-regex: border-.*-color
+attribute-regex= .*
 ```
 
-E.g., this will ignore all border colors and all paddings respectively.
+E.g., this will ignore all border colors and _all attributes of all elements_ respectively. 
+The latter can be sensible if you want to use the "unbreakable" mechanism of recheck, but without actually checking for diffs...
 
 ## Ignore differences using the `recheck.ignore.js` file
 
