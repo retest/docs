@@ -38,13 +38,14 @@ matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
 
 For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
-### Ignore by ID
+### Ignore by ID or tag type
 
-It is also possible to ignore an HTML element by its `id`:
+It is also possible to ignore an HTML element by its `id` attribute or its `tag`:
 
 ```
 matcher: id=title, attribute: font
 matcher: id=banner
+matcher: type=a
 ```
 
 Please note that it is also possible to ignore a specific attribute of an element as shown in the first example where the `font` attribute of all `title` element is ignored. As with the first mechanism, one can also completely ignore an element with all it's children, which is shown in the second example.
@@ -68,14 +69,15 @@ You can also ignore attributes globally:
 attribute=class
 ```
 
-This will ignore the `class` attribute for _all elements_. Since we use Java's [`String.matches`](https://docs.oracle.com/javase/10/docs/api/java/lang/String.html#matches(java.lang.String)) method, the attribute can also ignore by a given pattern:
+This will ignore the `class` attribute for _all elements_. You can also use [Java's regex mechanism](https://docs.oracle.com/javase/10/docs/api/java/util/regex/Pattern.html) and ignore attributes by a given pattern:
 
 ```
-matcher: type:input, attribute: border-.*-color
-matcher: type:input, attribute: padding-.*
+matcher: type:input, attribute-regex: border-.*-color
+attribute-regex= .*
 ```
 
-E.g., this will ignore all border colors and all paddings respectively.
+E.g., this will ignore all border colors and _all attributes of all elements_ respectively. 
+The latter can be sensible if you want to use the "unbreakable" mechanism of recheck, but without actually checking for diffs...
 
 ## Ignore differences using the `recheck.ignore.js` file
 
