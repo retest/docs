@@ -88,6 +88,6 @@ matches(element) {}
 matches(element, diff) {}
 ```
 
-As the name suggests, `matches` specifies whether an element and all its children should be ignored completely.
+This is a special instance of the filter mechanism. If an element matches or an difference matches, it is ignored.
 
 Using `matches` allows to specify whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
