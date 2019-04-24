@@ -84,10 +84,10 @@ The latter can be sensible if you want to use the "unbreakable" mechanism of rec
 We also added a mechanism to specify "ignore rules" in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)). This allows users to specify ignore rules very flexibly, by implementing either of the following methods: 
 
 ```
-shouldIgnoreElement(element) {}
-shouldIgnoreAttributeDifference(element, diff) {}
+matches(element) {}
+matches(element, diff) {}
 ```
 
-As the name suggests, `shouldIgnoreElement` specifies whether an element and all its children should be ignored completely.
+This is a special instance of the filter mechanism. If an element matches or an difference matches, it is ignored.
 
-Using `shouldIgnoreAttributeDifference` allows to specify whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
+Using `matches` allows to specify whether a given difference should be ignored. This gives the flexibility to e.g. ignore all pixel differences smaller than 5px, to ignore the domain in URLs or to ignore switching between equivalent font-families, like "Times New Roman" and "Times Roman". Implementations of these examples can be found in [recheck-web](https://github.com/retest/recheck-web/blob/master/.retest/recheck.ignore.js).
