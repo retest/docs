@@ -13,6 +13,8 @@ nav:
     - 'recheck/how-ignore-works-in-recheck.md'
     - 'recheck/location-of-the-golden-master-files.md'
     - 'recheck/reuse-golden-master-files.md'
+  - recheck.cli:
+    - 'recheck.cli/setup.md'
   - recheck-web:
     - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
