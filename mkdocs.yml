@@ -17,6 +17,18 @@ nav:
     - 'recheck.cli/setup.md'
   - recheck-web:
     - 'recheck-web/properties.md'
+    - setup:
+      - 'recheck-web/setup/maven.md'
+    - tutorial:
+      - 'recheck-web/tutorial/explicit-checks.md'
+      - 'recheck-web/tutorial/mvn-execute-locally.md'
+      - 'recheck-web/tutorial/rule-based-ignore.md'
+      - 'recheck-web/tutorial/setup-recheck.ignore.md'
+      - 'recheck-web/tutorial/travis-execute-ci.md'
+      - 'recheck-web/tutorial/using-git-and-github.md'
+    - 'recheck-web/element-identification-problem.md'
+    - 'recheck-web/postpone-test-breakage.md'
+    - 'recheck-web/unbreakable-selenium.md'
     - 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'
