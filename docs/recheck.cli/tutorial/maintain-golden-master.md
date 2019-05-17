@@ -1,9 +1,9 @@
 Maintaining the Golden Master
 =============================
 
-After you correctly [installed and setup the recheck.CLI](../setup.md), you can now use it to apply changes and maintain the Golden Master.
+After you correctly [installed and setup the recheck.cli](../setup.md), you can use it to apply changes and maintain the Golden Master.
 
-To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in real-time. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../../recheck-web/tutorial/explicit-checks.md), we can replace the method name google with scratchpad and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
+To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in realtime. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../../recheck-web/tutorial/explicit-checks.md), we can replace the method name "google" with "scratchpad" and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
 
 ```
   @Test
@@ -16,7 +16,7 @@ To easily generate changes to check for, open a browser and go to [Scratchpad.io
   }
 ```
 
-Now you can run your test calling `mvn test` (assuming you correctly [setup maven](../../recheck-web/setup/maven.md)). As expected, it will fail the first time since recheck cannot find a Golden Master for the test scratchpad. But it will create one under `src/test/resources/...`. Now running this test the second time will also fail, as the site contains a volatile URL. We will later see how you can treat that in a more sophisticated way, but for now we want to use our newly installed recheck CLI. In your CMD, go to the root folder of the project. Then type `recheck` to see all available commands. It will output something like:
+You can run your test calling `mvn test` (assuming you correctly [set up maven](../../recheck-web/setup/maven.md)). As expected, it will fail the first time since recheck cannot find a Golden Master for the test scratchpad. But it will create one under `src/test/resources/...`. Running this test the second time will also fail, as the site contains a volatile URL. We will later see how you can treat that in a more sophisticated way, but for now we want to use our newly installed recheck.cli. In your CMD, go to the root folder of the project. Then type `recheck` to see all available commands. It will output something like:
 
 ```
 C:\Users\retest\Desktop\recheck-web-tutorial>recheck
@@ -39,7 +39,7 @@ Now we want to automatically ignore all irrelevant changes. To do that, simply t
 matcher: xpath=HTML[1]/BODY[1]/DIV[1]/P[3]/IFRAME[1], attribute: src
 ```
 
-This makes recheck ignore just one attribute of one element, a Twitter-API related IFrame. Now rerunning your test should show a successful build and a passing test. Now let’s use your regular browser to go to the URL you open in your test (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)) and edit the displayed content. For instance, let’s replace `<h1>Welcome to <span>scratchpad.io</span></h1><br>` on the left-hand side of the website with `<h1>Welcome to <span>recheck</span></h1><br>`. Doing so and re-running the test should result in the following output:
+This makes recheck ignore just one attribute of one element, a Twitter API-related IFrame. Re-running your test should show a successful build and a passing test. Next, let’s use your regular browser to go to the URL you open in your test (e.g. http://scratchpad.io/recheck-45678) and edit the displayed content. For instance, replace `<h1>Welcome to <span>scratchpad.io</span></h1><br>` on the left-hand side of the website with `<h1>Welcome to <span>recheck</span></h1><br>`. Doing so and re-running the test should result in the following output:
 
 ```
 The following differences have been found in 'com.mycompany.MyFirstTest'(with 1 check(s)):
@@ -58,9 +58,9 @@ open resulted in:
         at de.retest.recheck.RecheckImpl.capTest(RecheckImpl.java:137)
 ```
 
-Now we can see that Scratchpad is generating and adapting a style attribute. Interesting enough, since all relevant style information is rendered and thus represented by individual CSS attributes, we can just add style to the ignored attributes. Rerunning the test again now gives us the expected differences in text and, as a result of that change, also in left and right.
+Now we can see that Scratchpad is generating and adapting a style attribute. Interesting enough, since all relevant style information is rendered and thus represented by individual CSS attributes, we can just add `style` to the ignored attributes. Re-running the test again gives us the expected differences in text and, as a result of that change, also in left and right.
 
-Now let’s assume this is an intended change, and we now want to update our Golden Master. For that, we can now open a CMD in the project folder and run a command similar to this:
+Suppose this is an intended change and we want to update our Golden Master. For that, we can open a CMD in the project folder and run a command similar to this:
 
 ```
 recheck commit --all \target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
@@ -72,9 +72,9 @@ The result of that call should be something like:
 Updated SUT state file C:\Users\retest\Desktop\recheck-web-tutorial\src\test\resources\retest\recheck\com.mycompany.MyFirstTest\scratchpad.open.recheck
 ```
 
-If there were more than one Golden Master, all of them would now be updated. If you had your Golden Master files in a version control system, they would now show as changed, and you would need to also commit the changes within e.g. Git. Now we can rerun the test (e.g. `mvn test`) and see whether our update worked—now the test should check whether the site contains “welcome to recheck” in order to pass.
+If there were more than one Golden Master, all of them would be updated. If you had your Golden Master files in a version control system, they would show as changed, and you would need to also commit the changes within e.g. Git. We can rerun the test (e.g. `mvn test`) and see whether our update worked—now the test should check whether the site contains “welcome to recheck” in order to pass.
 
-To further show the functionality of the recheck CLI, let’s adapt the content of the Scratchpad again. Open your browser, and change the welcome message to recheck-web. Again, re-running the test should again show the difference and produce a test report under `target/test-classes/retest/recheck/`. You can use recheck CLI to display the contents of that file by running:
+To further show the functionality of the recheck.cli, let’s adapt the content of the Scratchpad again. Open your browser and change the welcome message to recheck-web. Again, re-running the test should again show the difference and produce a test report under `target/test-classes/retest/recheck/`. You can use recheck.cli to display the contents of that file by running:
 
 ```
 recheck diff target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
@@ -100,5 +100,4 @@ open resulted in:
                 right: expected="184.672px", actual="148.297px"
 ```
 
-As you can see, this command reproduces the failure message of the failing test. However, if you now update your `recheck.ignore` file, this command shows you whether recheck picked up the desired ignores without the need to actually rerun your test.
-
+As you can see, this command reproduces the failure message of the failing test. However, if you now update your `recheck.ignore` file, this command shows you whether recheck picked up the desired ignores without the need to actually re-run your test.

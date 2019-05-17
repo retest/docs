@@ -1,26 +1,26 @@
-Postponing the breakage of a test
+Postponing the Breakage of a Test
 =================================
 
-[Element identification is well-known problem](element-identification-problem.md) for test automation engineers. Recheck addresses this problem in an interesting and unique way. The Golden Master based Difference Testing approach brings some unique benefits with it: It basically saves a complete copy of the last working state. Now after a breaking change, that copy can be used as a reference and for comparison. Now, e.g. if the label was used for identification, and the label changed, we can simply have a look in the old version (the Golden Master) and see which element has the given label. Then, using other identifying attributes like its xpath, id, name, class and others, we can then find the corresponding element with a different label in the current state. It is even better: not only do we have redundant information that we can easily keep up to date, thanks to the recheck.CLI. We also have a much more complete picture, i.e. all other elements that were on the website in the previous state. This allows for an easy one-on-one assignment of all elements, allowing for really robust element identification.
+[Element identification is a well-known problem](element-identification-problem.md) for test automation engineers. recheck addresses this problem in an interesting and unique way. The Golden Master-based Difference Testing approach brings various benefits with it: it basically saves a complete copy of the last working state. Now after a breaking change, that copy can be used as a reference and for comparison. Now, e.g. if the label was used for identification, and the label changed, we can simply have a look in the old version (the Golden Master) and see which element has the given label. Then, using other identifying attributes like its XPath, ID, name, class and others, we can find the corresponding element with a different label in the current state. It is even better: not only do we have redundant information that we can easily keep up to date, thanks to the recheck.cli We also have a much more complete picture, i.e. all other elements that were on the website in the previous state. This allows for an easy 1-on-1 assignment of all elements, enabling a very robust element identification.
 
 ![1-to-1 assignment of elements](1-to-1-assignment.png)
 
 To use this functionality, we can simply change an [explicit checking test](tutorial/explicit-checks.md) in the following way:
 
 ```
-	private RecheckDriver driver;
-	private RecheckWebImpl re;
+private RecheckDriver driver;
+private RecheckWebImpl re;
 
-	@Before
-	public void setUp() {
-		re = new RecheckWebImpl();
-		driver = new RecheckDriver( new ChromeDriver());
-	}
+@Before
+public void setUp() {
+	re = new RecheckWebImpl();
+	driver = new RecheckDriver( new ChromeDriver() );
+}
 ```
 
-Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. That way, maximal compatibility two other third party tools and test frameworks is ensured. Now we can create a test that shows that functionality.
+Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. This way, maximal compatibility two other third party tools and test frameworks is ensured. Next, we can create a test that shows the functionality.
 
-For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Let us create matching test for it. It could look like so:
+For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Let‘s create a matching test for it. It could look like so:
 
 ```
 public class MyUnbreakableTest {
@@ -29,7 +29,7 @@ public class MyUnbreakableTest {
 
 	@Before
 	public void setup() {
-		driver = new RecheckDriver( new ChromeDriver());
+		driver = new RecheckDriver( new ChromeDriver() );
 	}
 
 	@Test
@@ -46,15 +46,15 @@ public class MyUnbreakableTest {
 	}
 
 	@After
-	public void tearDown() throws InterruptedException {
+	public void tearDown() {
 		driver.quit();
 	}
 }
 ```
 
-Now we execute this test twice (using e.g. `mvn test`). The first execution will fail as there is no Golden Master to compare against, but will create the Golden Master while doing so. The second time we execute this test, it should pass.
+Now we execute this test twice (using e.g. `mvn test`). The first execution will fail as there is no Golden Master to compare against, but recheck will create the Golden Master while doing so. The second time we execute this test, it should pass.
 
-Now we want to edit the HTML code of the page and change the used identifiers of the elements, that the test interacts with. So, we edit the `formPage.html` file and change the lines 15-19 from
+We then want to edit the HTML code of the page and change the used identifiers of the elements the test interacts with. So, we edit the `formPage.html` file and change the lines 15–19 from
 
 ```
 <form method="get" action="resultPage.html" name="login">
@@ -74,11 +74,11 @@ to something like
 </form>
 ```
 
-Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web site—what is usually referred to as “breaking the test”. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment the recheck-specific `capTest()` and `cap()` method calls (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
+Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web site—what is usually referred to as “breaking the test”. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment out the recheck-specific `capTest()` and `cap()` method calls (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
 
 ![NoSuchElementException](NoSuchElementException.png)
 
-Now let’s redo this as our original test using the `RecheckDriver`, and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
+Now let’s redo this with our original test using the `RecheckDriver` and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
 
 However, if you have a closer look to the log output that is printed to the console during execution, you can see that it will now contain a message similar to the following:
 
