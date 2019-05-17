@@ -1,4 +1,4 @@
-# Contributor information
+# Contributor Information
 
 This page contains information for contributing developers.
 
