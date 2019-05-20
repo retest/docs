@@ -18,13 +18,13 @@ nav:
   - recheck-web:
     - 'recheck-web/properties.md'
     - Setup:
-      - 'Setting up a project using Maven': 'recheck-web/setup/maven.md'
+      - 'Setting up a Project Using Maven': 'recheck-web/setup/maven.md'
     - Tutorial:
       - 'Using Explicit Checks': 'recheck-web/tutorial/explicit-checks.md'
       - 'Execute the Test with Maven': recheck-web/tutorial/mvn-execute-locally.md'
       - 'recheck-web/tutorial/setup-recheck.ignore.md'
       - 'Using Git and GitHub': 'recheck-web/tutorial/using-git-and-github.md'
-      - 'Executing the Test with CI/CD': 'recheck-web/tutorial/travis-execute-ci.md'
+      - 'Execute the Test on a CI Server': 'recheck-web/tutorial/travis-execute-ci.md'
       - 'Rule-Based Ignore': 'recheck-web/tutorial/rule-based-ignore.md'
     - 'The GUI Element Identification Problem': 'recheck-web/element-identification-problem.md'
     - 'Postponing Test Breakage': 'recheck-web/postpone-test-breakage.md'
