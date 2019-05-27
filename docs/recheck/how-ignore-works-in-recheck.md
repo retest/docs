@@ -79,6 +79,16 @@ attribute-regex= .*
 E.g., this will ignore all border colors and _all attributes of all elements_ respectively. 
 The latter can be sensible if you want to use the "unbreakable" mechanism of recheck, but without actually checking for diffs...
 
+### Ignore pixel differences
+
+Minor visual differences (e.g. between different browser types or browser versions) can make traditional, pixel-based approaches fail, which means more manual maintenance effort. In recheck, one can easily ignore pixel differences that are unimportant from a user's point of view:
+
+```
+pixel-diff=5
+```
+
+This would ignore every pixel difference (position- or size change) up to 5 pixels. You can either specify an integer or a float.
+
 ## Ignore differences using the `recheck.ignore.js` file
 
 We also added a mechanism to specify "ignore rules" in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)). This allows users to specify ignore rules very flexibly, by implementing either of the following methods: 
