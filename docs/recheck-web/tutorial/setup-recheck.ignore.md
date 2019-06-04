@@ -8,7 +8,7 @@ recheck works in a very comparable manner. You can simply ignore all of those vo
 ```
 attribute=ping
 attribute=jsdata
-attribute=data-.*
+attribute-regex=data-.*
 attribute=class
 attribute=outline
 attribute=transform
