@@ -1,4 +1,4 @@
-# Welcome to the retest documentation
+# <a href="https://retest.dev"><img src="https://assets.retest.org/retest/ci/logos/retest-wordmark-screen.svg" width="300"/></a> docs
 
 Please feel free to correct anything outdated or wrong, improve any wording, or add information you feel is missing.
 
