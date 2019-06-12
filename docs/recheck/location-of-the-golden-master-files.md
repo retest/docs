@@ -60,4 +60,4 @@ class MyRecheckWebTest {
 
 In case there are differences, this would result in a test report `MyRecheckWebTest.report` (a test report with a single `SuiteReplayResult`) that contains a `TestReplayResult` for `someTest()` and two `ActionReplayResult`s for both checks ("1st-page" and "2nd-page").
 
-So for every test class, you get a separate test report that is represented as a tree of test methods and their corresponding checks. Additionally, we provide an aggregated `test.report` that includes *all* test classes.
+So for every test class, you get a separate test report that is represented as a tree of test methods and their corresponding checks. Additionally, we provide an aggregated `tests.report` that includes *all* test classes.
