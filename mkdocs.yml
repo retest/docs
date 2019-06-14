@@ -19,7 +19,6 @@ nav:
     - Tutorial:
       - 'recheck.cli/tutorial/maintain-golden-master.md'
   - recheck-web:
-    - 'recheck-web/properties.md'
     - Setup:
       - 'Setting up a Project Using Maven': 'recheck-web/setup/maven.md'
     - Tutorial:
@@ -32,6 +31,7 @@ nav:
     - 'The GUI Element Identification Problem': 'recheck-web/element-identification-problem.md'
     - 'Postponing Test Breakage': 'recheck-web/postpone-test-breakage.md'
     - 'Unbreakable Selenium': 'recheck-web/unbreakable-selenium.md'
+    - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'
