@@ -16,6 +16,8 @@ nav:
   - recheck.cli:
     - Setup:
       - 'recheck.cli/setup/setup.md'
+    - Tutorial:
+      - 'recheck.cli/tutorial/maintain-golden-master.md'
   - recheck-web:
     - 'recheck-web/properties.md'
     - Setup:
