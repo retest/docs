@@ -1,5 +1,5 @@
-Postponing the Breakage of a Test
-=================================
+Postponing Test Breakage
+========================
 
 [Element identification is a well-known problem](element-identification-problem.md) for test automation engineers. recheck addresses this problem in an interesting and unique way. The Golden Master-based Difference Testing approach brings various benefits with it: it basically saves a complete copy of the last working state. Now after a breaking change, that copy can be used as a reference and for comparison. Now, e.g. if the label was used for identification, and the label changed, we can simply have a look in the old version (the Golden Master) and see which element has the given label. Then, using other identifying attributes like its XPath, ID, name, class and others, we can find the corresponding element with a different label in the current state. It is even better: not only do we have redundant information that we can easily keep up to date, thanks to the recheck.cli We also have a much more complete picture, i.e. all other elements that were on the website in the previous state. This allows for an easy 1-on-1 assignment of all elements, enabling a very robust element identification.
 

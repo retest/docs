@@ -1,5 +1,5 @@
-Executing your Test Case Locally
-================================
+Execute the Test with Maven
+===========================
 
 When you [set up Maven correctly](../setup/maven.md) and [created a test case](explicit-checks.md), you should be able to execute this test with `mvn test`. You should see the following error message the first time you run this test:
 

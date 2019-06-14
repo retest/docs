@@ -1,5 +1,5 @@
-Creating a Test Case with Explicit Checks
-=========================================
+Using Explicit Checks
+=====================
 
 With recheck, you have multiple options of how to use it. You can use a `RecheckDriver`, which would make recheck completely transparent to use. For a more obvious and spelled-out usage as pure checking library, you can call the `check` methods explicitly.
 
