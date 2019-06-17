@@ -1,7 +1,7 @@
 Maintaining the Golden Master
 =============================
 
-After you correctly [installed and setup the recheck.cli](../setup.md), you can use it to apply changes and maintain the Golden Master.
+After you correctly [installed and setup the recheck.cli](../setup/setup.md), you can use it to apply changes and maintain the Golden Master.
 
 To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in realtime. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../../recheck-web/tutorial/explicit-checks.md), we can replace the method name "google" with "scratchpad" and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
 

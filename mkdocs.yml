@@ -14,21 +14,24 @@ nav:
     - 'recheck/location-of-the-golden-master-files.md'
     - 'recheck/reuse-golden-master-files.md'
   - recheck.cli:
-    - 'recheck.cli/setup.md'
-  - recheck-web:
-    - 'recheck-web/properties.md'
     - Setup:
-      - 'Setting up a Project Using Maven': 'recheck-web/setup/maven.md'
+      - 'recheck.cli/setup/setup.md'
     - Tutorial:
-      - 'Using Explicit Checks': 'recheck-web/tutorial/explicit-checks.md'
-      - 'Execute the Test with Maven': 'recheck-web/tutorial/mvn-execute-locally.md'
+      - 'recheck.cli/tutorial/maintain-golden-master.md'
+  - recheck-web:
+    - Setup:
+      - 'recheck-web/setup/maven.md'
+    - Tutorial:
+      - 'recheck-web/tutorial/explicit-checks.md'
+      - 'recheck-web/tutorial/mvn-execute-locally.md'
       - 'recheck-web/tutorial/setup-recheck.ignore.md'
-      - 'Using Git and GitHub': 'recheck-web/tutorial/using-git-and-github.md'
-      - 'Execute the Test on a CI Server': 'recheck-web/tutorial/travis-execute-ci.md'
-      - 'Rule-Based Ignore': 'recheck-web/tutorial/rule-based-ignore.md'
-    - 'The GUI Element Identification Problem': 'recheck-web/element-identification-problem.md'
-    - 'Postponing Test Breakage': 'recheck-web/postpone-test-breakage.md'
-    - 'Unbreakable Selenium': 'recheck-web/unbreakable-selenium.md'
+      - 'recheck-web/tutorial/using-git-and-github.md'
+      - 'recheck-web/tutorial/travis-execute-ci.md'
+      - 'recheck-web/tutorial/rule-based-ignore.md'
+    - 'recheck-web/element-identification-problem.md'
+    - 'recheck-web/postpone-test-breakage.md'
+    - 'recheck-web/unbreakable-selenium.md'
+    - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
   - retest:
     - 'English': 'retest/en/index.md'

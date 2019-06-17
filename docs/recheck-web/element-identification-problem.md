@@ -1,5 +1,5 @@
 The GUI Element Identification Problem
-==================================
+======================================
 
 Element identification is a well-known problem for test automation engineers. Both when simulating user interaction (e.g. when clicking a certain button) and when verifying a certain SUT property (e.g. the text value in an input field), it is necessary to reliably identify different elements on the GUI. This is usually done by an unambiguously identifying piece of information, such as the XPath, the label, and internal ID or the x/y coordinates. 
 
