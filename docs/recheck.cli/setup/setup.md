@@ -36,6 +36,8 @@ You can obtain an auto-completion script for Bash and ZSH via the `completion` c
 $ echo "source <(recheck completion)" >> ~/.bash_profile
 ```
 
+Please note that this requires Bash version 4+ (macOS currently comes with version 3).
+
 ## Windows
 
 Unzip the downloaded archive to e.g. `C:\Program Files\recheck.cli-1.0.0`. To include the CLI into your path, you can follow [this tutorial](https://java.com/en/download/help/path.xml). On Windows 10, for instance, it works like this:
