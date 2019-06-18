@@ -5,20 +5,19 @@ After you correctly [installed and setup the recheck.cli](../setup/setup.md), yo
 
 To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in realtime. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../../recheck-web/tutorial/explicit-checks.md), we can replace the method name "google" with "scratchpad" and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
 
-```
-  @Test
-  public void scratchpad() throws Exception {
-    re.startTest();
-    driver.get("http://scratchpad.io/recheck-45678");
-    re.check(driver, "open");
-
-    re.capTest();
-  }
+```java
+@Test
+public void scratchpad() throws Exception {
+	re.startTest();
+	driver.get( "http://scratchpad.io/recheck-45678" );
+	re.check( driver, "open" );
+	re.capTest();
+}
 ```
 
 You can run your test calling `mvn test` (assuming you correctly [set up maven](../../recheck-web/setup/maven.md)). As expected, it will fail the first time since recheck cannot find a Golden Master for the test scratchpad. But it will create one under `src/test/resources/...`. Running this test the second time will also fail, as the site contains a volatile URL. We will later see how you can treat that in a more sophisticated way, but for now we want to use our newly installed recheck.cli. In your CMD, go to the root folder of the project. Then type `recheck` to see all available commands. It will output something like:
 
-```
+```text
 C:\Users\retest\Desktop\recheck-web-tutorial>recheck
 Usage: recheck [--help] [--version] [COMMAND]
 Command-line interface for recheck.
@@ -35,13 +34,13 @@ Commands:
 
 Now we want to automatically ignore all irrelevant changes. To do that, simply type something like (using your name and setup) `recheck ignore --all target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report` (more on reports below). This will automatically add the following line to your `recheck.ignore` file:
 
-```
+```text
 matcher: xpath=HTML[1]/BODY[1]/DIV[1]/P[3]/IFRAME[1], attribute: src
 ```
 
 This makes recheck ignore just one attribute of one element, a Twitter API-related IFrame. Re-running your test should show a successful build and a passing test. Next, let’s use your regular browser to go to the URL you open in your test (e.g. http://scratchpad.io/recheck-45678) and edit the displayed content. For instance, replace `<h1>Welcome to <span>scratchpad.io</span></h1><br>` on the left-hand side of the website with `<h1>Welcome to <span>recheck</span></h1><br>`. Doing so and re-running the test should result in the following output:
 
-```
+```text
 The following differences have been found in 'com.mycompany.MyFirstTest'(with 1 check(s)):
 Test 'scratchpad' has 7 differences in 1 states:
 open resulted in:
@@ -62,13 +61,13 @@ Now we can see that Scratchpad is generating and adapting a style attribute. Int
 
 Suppose this is an intended change and we want to update our Golden Master. For that, we can open a CMD in the project folder and run a command similar to this:
 
-```
+```text
 recheck commit --all \target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
 ```
 
 The result of that call should be something like:
 
-```
+```text
 Updated SUT state file C:\Users\retest\Desktop\recheck-web-tutorial\src\test\resources\retest\recheck\com.mycompany.MyFirstTest\scratchpad.open.recheck
 ```
 
@@ -76,13 +75,13 @@ If there were more than one Golden Master, all of them would be updated. If you 
 
 To further show the functionality of the recheck.cli, let’s adapt the content of the Scratchpad again. Open your browser and change the welcome message to recheck-web. Again, re-running the test should again show the difference and produce a test report under `target/test-classes/retest/recheck/`. You can use recheck.cli to display the contents of that file by running:
 
-```
+```text
 recheck diff target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
 ```
 
 Doing so should result in an output similar to the following:
 
-```
+```text
 Checking test report in path 'C:\Users\retest\Desktop\recheck-web-tutorial\target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report'.
 Reading JS ignore rules file from C:\Users\retest\Desktop\recheck-web-tutorial\.retest\recheck.ignore.js.
 Specified JS ignore file has no 'shouldIgnoreAttributeDifference' function.

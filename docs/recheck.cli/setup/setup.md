@@ -5,7 +5,7 @@ You can download the most recent version from the [GitHub releases page](https:/
 
 In any case, you can verify whether this worked correctly by typing `recheck` into a newly started shell. The output should show a help message like this:
 
-```
+```text
 $ recheck
 Usage: recheck [--help] [--version] [COMMAND]
 Command-line interface for recheck.
@@ -24,18 +24,19 @@ Commands:
 
 Unzip the downloaded archive to e.g. `/opt/recheck.cli-1.0.0`. Then add the following snippet to your `.bash_profile` and/or `.bashrc`:
 
-```
+```text
 export PATH="${PATH}:/path/to/recheck.cli/bin/"
 ```
 
 ### Enabling Shell Auto-Completion
 
-You can obtain an auto-completion script for Bash and ZSH via the `completion` command.
-Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
+You can obtain an auto-completion script for Bash and ZSH via the `completion` command. Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
 
-```
+```text
 $ echo "source <(recheck completion)" >> ~/.bash_profile
 ```
+
+Please note that this requires Bash version 4+ (macOS currently comes with version 3).
 
 ## Windows
 
