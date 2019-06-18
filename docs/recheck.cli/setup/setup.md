@@ -30,8 +30,7 @@ export PATH="${PATH}:/path/to/recheck.cli/bin/"
 
 ### Enabling Shell Auto-Completion
 
-You can obtain an auto-completion script for Bash and ZSH via the `completion` command.
-Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
+You can obtain an auto-completion script for Bash and ZSH via the `completion` command. Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
 
 ```
 $ echo "source <(recheck completion)" >> ~/.bash_profile
