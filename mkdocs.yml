@@ -13,11 +13,6 @@ nav:
     - 'recheck/how-ignore-works.md'
     - 'recheck/location-of-the-golden-master-files-and-test-reports.md'
     - 'recheck/reuse-golden-master-files.md'
-  - recheck.cli:
-    - Setup:
-      - 'recheck.cli/setup/setup.md'
-    - Tutorial:
-      - 'recheck.cli/tutorial/maintain-golden-master.md'
   - recheck-web:
     - Setup:
       - 'recheck-web/setup/maven.md'
@@ -33,6 +28,11 @@ nav:
     - 'recheck-web/unbreakable-selenium.md'
     - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
+  - recheck.cli:
+    - Setup:
+      - 'recheck.cli/setup/setup.md'
+    - Tutorial:
+      - 'recheck.cli/tutorial/maintain-golden-master.md'
   - retest:
     - 'English': 'retest/en/index.md'
     - 'Deutsch': 'retest/de/index.md'
