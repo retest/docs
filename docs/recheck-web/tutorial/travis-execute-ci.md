@@ -1,5 +1,4 @@
-Execute the Test on a CI Server
-===============================
+# Execute the Test on a CI Server
 
 The simplest way to execute our existing test case in a CI/CD environment is a combination of GitHub and Travis. Follow [this description](using-git-and-github.md], in order to manage your project with Git and push it to GitHub.
 

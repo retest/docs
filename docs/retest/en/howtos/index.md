@@ -1,6 +1,4 @@
-
-Jumpstart
-=========
+# Jumpstart
 
 For a quick jump-start into how to use retest:
 

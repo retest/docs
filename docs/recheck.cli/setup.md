@@ -1,5 +1,4 @@
-Setting up the CLI
-==================
+# Setting up the CLI
 
 You can download the most recent version from the [GitHub releases page](https://github.com/retest/recheck.cli/releases/). Afterwards, you have to include the CLI into your path to use it from your shell, which heavily depends on your operating system and version thereof.
 

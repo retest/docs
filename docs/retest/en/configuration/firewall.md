@@ -1,6 +1,4 @@
-
-Connection of retest to your application (SUT)
-==============================================
+# Connection of retest to your application (SUT)
 
 For retest to be able to record and replay actions in your application, it first must connect to it.
 That connection is always over network, even if everything happens on the same machine.

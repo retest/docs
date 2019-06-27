@@ -1,6 +1,4 @@
-
-Test zusammenstellen
-====================
+# Test zusammenstellen
 
 Sie können einen Test aus einer oder mehreren [aufgezeichneten Aktionsfolgen](aktionsfolge-aufzeichnen.md) zusammenstellen. Ein Test stellt einen abgeschlossenen und isolierten Anwendungsfall dar. Zum Beispiel hat der Test 'Benutzerverwaltung' folgende Aktionsfolgen:
 

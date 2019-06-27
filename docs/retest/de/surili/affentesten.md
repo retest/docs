@@ -1,6 +1,4 @@
-
-Affentesten
-===========
+# Affentesten
 
 Das Affentesten (Englisch "Monkey Testing") einer [SUT](../testprozess/was-ist-die-sut.md) kann man über den Menü-Punkt "Affentesten" starten.
 Beim Affentesten wird unser digitaler Affe genannt [Surili](/index.md) Ihre SUT mit zufälligen Eingaben traktieren.

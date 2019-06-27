@@ -1,6 +1,4 @@
-
-Surili
-======
+# Surili
 
 Surili ist die englische Bezeichnung der Affenart, die auf der Insel Java lebt. 
 Auf Deutsch heißt diese meerkatzenverwandte Affenart [Mützenlanguren](https://de.wikipedia.org/wiki/M%C3%BCtzenlanguren).

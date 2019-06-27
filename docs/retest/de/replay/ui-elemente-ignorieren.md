@@ -1,6 +1,4 @@
-
-UI-Elemente ignorieren
-======================
+# UI-Elemente ignorieren
 
 retest erlaubt es auch UI-Elemente dauerthaft zu ignorieren.
 

@@ -1,6 +1,4 @@
-
-Umwandeln einer vollständigen Aktionsfolge
-==========================================
+# Umwandeln einer vollständigen Aktionsfolge
 
 Damit Sie eine Aktionsfolge als komplette Suite ausführen können müssen Sie sie zuerst umwandeln. 
 Dazu haben Sie [mehrere Möglichkeiten](../howtos/wie-man-einen-test-aufzeichnet.md). 

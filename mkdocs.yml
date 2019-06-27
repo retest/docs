@@ -10,14 +10,9 @@ extra_css:
 nav:
   - Home: index.md
   - recheck:
-    - 'recheck/how-ignore-works-in-recheck.md'
+    - 'recheck/how-ignore-works.md'
     - 'recheck/location-of-the-golden-master-files-and-test-reports.md'
     - 'recheck/reuse-golden-master-files.md'
-  - recheck.cli:
-    - Setup:
-      - 'recheck.cli/setup/setup.md'
-    - Tutorial:
-      - 'recheck.cli/tutorial/maintain-golden-master.md'
   - recheck-web:
     - Setup:
       - 'recheck-web/setup/maven.md'
@@ -28,11 +23,15 @@ nav:
       - 'recheck-web/tutorial/using-git-and-github.md'
       - 'recheck-web/tutorial/travis-execute-ci.md'
       - 'recheck-web/tutorial/rule-based-ignore.md'
+    - 'recheck-web/ways-of-using-recheck-web.md'
     - 'recheck-web/element-identification-problem.md'
     - 'recheck-web/postpone-test-breakage.md'
     - 'recheck-web/unbreakable-selenium.md'
     - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
+  - recheck.cli:
+    - 'recheck.cli/setup.md'
+    - 'recheck.cli/maintain-golden-master.md'
   - retest:
     - 'English': 'retest/en/index.md'
     - 'Deutsch': 'retest/de/index.md'

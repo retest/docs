@@ -1,6 +1,4 @@
-
-Den Affen trainieren
-====================
+# Den Affen trainieren
 
 ![Den Affen trainieren](affentesten-trainieren-1.png)
 

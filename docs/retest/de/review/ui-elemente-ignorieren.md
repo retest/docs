@@ -1,6 +1,4 @@
-
-UI-Elemente dauerhaft ignorieren
-================================
+# UI-Elemente dauerhaft ignorieren
 
 Man hat auch die Möglichkeit komplette UI-Elemente oder einzelne Attribute von UI-Elementen dauerhaft zu ignorieren.
 

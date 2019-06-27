@@ -1,6 +1,4 @@
-
-The 2-minutes Surili tutorial with our demo application
-=======================================================
+# The 2-minutes Surili tutorial with our demo application
 
 With retest, you do not even have to record tests yourself! 
 Just use our digital monkey -- Surili -- to create the tests.

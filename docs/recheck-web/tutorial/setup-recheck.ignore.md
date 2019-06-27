@@ -1,5 +1,4 @@
-Setup the recheck.ignore
-========================
+# Setup the recheck.ignore
 
 recheck shows you all differences of all attributes. And it does so by comparing the attributes semantically, rather than comparing screenshots. This approach is similar to version control systems like [Git](https://git-scm.com). Without configuration, Git also shows you all differences, including log files, binaries and many other temporary files, which you typically don’t want to version control. Luckily, Git allows to easily ignore those differences using `.gitignore`.
 
@@ -18,4 +17,4 @@ Note that Google is constantly changing its site, so you might need to add some 
 
 Depending on what you specify in the ignore file, different testing scenarios can be realized. The general mechanism of recheck allows you to perform functional testing, cross-browser and cross-device testing, as well as visual regression testing. For these testing purposes, be careful with what you ignore. For pure functional testing, many CSS attributes can easily be ignored.
 
-The next step would be to utilize the generated report file and apply actual differences to [maintain the Golden Master](../../recheck.cli/tutorial/maintain-golden-master.md).
+The next step would be to utilize the generated report file and apply actual differences to [maintain the Golden Master](../../recheck.cli/maintain-golden-master.md).

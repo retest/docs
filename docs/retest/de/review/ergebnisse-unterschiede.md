@@ -1,6 +1,4 @@
-
-Unterschiede
-============
+# Unterschiede
 
 Werden beim Vergleich der Attribute der Elemente Unterschiede festgestellt, so werden diese Unterschiede in der
 Detailansicht angezeigt.

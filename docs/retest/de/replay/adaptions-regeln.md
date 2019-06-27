@@ -1,6 +1,4 @@
-
-Adaptions Regeln
-================
+# Adaptionsregeln
 
 Hier können Sie Regeln bearbeiten, um Tests während der Wiedergabe zu ändern. Wir nennen das "passives Update".
 Dies bietet eine viel größere Flexibilität, um eine große Menge aufgezeichneter oder generierter Tests anzupassen, bei gleichzeitig viel weniger erforderlichem Aufwand.

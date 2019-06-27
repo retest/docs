@@ -1,6 +1,4 @@
-
-Verbindung von retest zur Anwendung (SUT)
-=========================================
+# Verbindung von retest zur Anwendung (SUT)
 
 Damit retest von Ihrer Anwendung Aktionen aufzeichnen und abspielen kann, muss sich retest verbinden.
 Diese Verbindung geschieht über das Netzwerk - auch wenn alles auf dem gleichen Computer passiert. 

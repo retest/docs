@@ -1,6 +1,4 @@
-
-Der Testprozess mit einem CI-Server
-===================================
+# Der Testprozess mit einem CI-Server
 
 [Versionsverwaltungssysteme](https://de.wikipedia.org/wiki/Versionsverwaltung) (eng. Version Control System - VCS) und 
 [CI-Server](https://de.wikipedia.org/wiki/Kontinuierliche_Integration) gehören heute zum Standardrepertoire an Tools die man bei der Softwareentwicklung einsetzen sollte.

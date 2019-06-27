@@ -1,6 +1,4 @@
-
-Ausschließen von Elementen
-==========================
+# Ausschließen von Elementen
 
 Das Ausschließen von Elementen für den Affen, auch Blacklisting genannt, dient dazu dem Affen bestimmte potentiell kritische UI-Elemente komplett zu verbieten.
 Sinnvollerweise zählen dazu bspw. ein "Drucken"-Knopf, ein "Email senden"-Knopf oder ein "Atomraketen starten"-Knopf.  

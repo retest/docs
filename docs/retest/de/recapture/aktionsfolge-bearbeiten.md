@@ -1,6 +1,4 @@
-
-Aktionsfolge bearbeiten
-=======================
+# Aktionsfolge bearbeiten
 
 Man kann eine Aktionsfolge auch nachträglich noch anschauen oder bearbeiten.
 Dazu klicken Sie einfach auf den Menü-Punkt "Aktionsfolge bearbeiten" (1).
