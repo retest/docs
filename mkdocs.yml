@@ -29,10 +29,8 @@ nav:
     - 'recheck-web/properties.md'
     - 'recheck-web/contributor-information.md'
   - recheck.cli:
-    - Setup:
-      - 'recheck.cli/setup/setup.md'
-    - Tutorial:
-      - 'recheck.cli/tutorial/maintain-golden-master.md'
+    - 'recheck.cli/setup/setup.md'
+    - 'recheck.cli/tutorial/maintain-golden-master.md'
   - retest:
     - 'English': 'retest/en/index.md'
     - 'Deutsch': 'retest/de/index.md'
