@@ -1,8 +1,8 @@
 # Maintaining the Golden Master
 
-After you correctly [installed and setup the recheck.cli](../setup/setup.md), you can use it to apply changes and maintain the Golden Master.
+After you correctly [installed and setup the recheck.cli](./setup.md), you can use it to apply changes and maintain the Golden Master.
 
-To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in realtime. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../../recheck-web/tutorial/explicit-checks.md), we can replace the method name "google" with "scratchpad" and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
+To easily generate changes to check for, open a browser and go to [Scratchpad.io](http://scratchpad.io), a site that lets you edit HTML and CSS in realtime. Opening the page will forward you to a unique URL (e.g. [http://scratchpad.io/recheck-45678](http://scratchpad.io/recheck-45678)). Now based on a [previous test](../recheck-web/tutorial/explicit-checks.md), we can replace the method name "google" with "scratchpad" and adjust the URL to load your newly created unique URL. The method body should then look similar to this:
 
 ```java
 @Test
@@ -14,7 +14,7 @@ public void scratchpad() throws Exception {
 }
 ```
 
-You can run your test calling `mvn test` (assuming you correctly [set up maven](../../recheck-web/setup/maven.md)). As expected, it will fail the first time since recheck cannot find a Golden Master for the test scratchpad. But it will create one under `src/test/resources/...`. Running this test the second time will also fail, as the site contains a volatile URL. We will later see how you can treat that in a more sophisticated way, but for now we want to use our newly installed recheck.cli. In your CMD, go to the root folder of the project. Then type `recheck` to see all available commands. It will output something like:
+You can run your test calling `mvn test` (assuming you correctly [set up maven](../recheck-web/setup/maven.md)). As expected, it will fail the first time since recheck cannot find a Golden Master for the test scratchpad. But it will create one under `src/test/resources/...`. Running this test the second time will also fail, as the site contains a volatile URL. We will later see how you can treat that in a more sophisticated way, but for now we want to use our newly installed recheck.cli. In your CMD, go to the root folder of the project. Then type `recheck` to see all available commands. It will output something like:
 
 ```text
 C:\Users\retest\Desktop\recheck-web-tutorial>recheck
