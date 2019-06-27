@@ -10,7 +10,7 @@ extra_css:
 nav:
   - Home: index.md
   - recheck:
-    - 'recheck/how-ignore-works-in-recheck.md'
+    - 'recheck/how-ignore-works.md'
     - 'recheck/location-of-the-golden-master-files-and-test-reports.md'
     - 'recheck/reuse-golden-master-files.md'
   - recheck.cli:
