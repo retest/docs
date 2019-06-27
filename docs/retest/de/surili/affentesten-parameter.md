@@ -1,6 +1,4 @@
-
-Den Affen konfigurieren
-=======================
+# Den Affen konfigurieren
 
 ![Den Affen konfigurieren](affentesten-3.png)
 

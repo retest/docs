@@ -1,5 +1,4 @@
-Die retest-Dokumentation
-========================
+# Die retest-Dokumentation
 
 * [auf Deutsch](de/)
 * [in English](en/)

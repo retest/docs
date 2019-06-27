@@ -1,6 +1,4 @@
-
-Aufzeichnen einer vollständigen Aktionsfolge
-============================================
+# Aufzeichnen einer vollständigen Aktionsfolge
 
 Man kann eine vollständige, in sich abgeschlossene Aktionsfolge aufzeichnen. 
 Dazu klickt man im Menü auf "Aktionsfolge aufzeichnen" und dann auf den Knopf "Starte Aufzeichnung".

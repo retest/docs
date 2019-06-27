@@ -1,6 +1,4 @@
-
-Ergebnisse reviewen
-===================
+# Ergebnisse reviewen
 
 Nachdem Sie eine Suite [abgespielt haben](../replay/suite-ausfuehren.md), öffnet sich automatisch das Fenster zum Reviewen der Ergebnisse.
 

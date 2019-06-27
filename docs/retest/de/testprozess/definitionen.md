@@ -1,6 +1,4 @@
-
-Definitionen
-============
+# Definitionen
 
 retest verwendet mehrere Begriffe, die einer näheren Erläuterung bedürfen:
 

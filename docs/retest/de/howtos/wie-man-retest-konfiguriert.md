@@ -1,6 +1,4 @@
-
-Wie man retest konfiguriert
-===========================
+# Wie man retest konfiguriert
 
 Damit retest Ihre SUT starten kann, müssen diverse Werte in die [`retest.properties`-Datei](../konfiguration/konfigurationsdatei.md) eingetragen werden:
 

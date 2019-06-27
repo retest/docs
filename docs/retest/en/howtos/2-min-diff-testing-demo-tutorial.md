@@ -1,6 +1,4 @@
-
-The 2-minute Difference Testing tutorial with our demo application
-==================================================================
+# The 2-minute Difference Testing tutorial with our demo application
 
 If you have downloaded the retest demo, then you have a zip file.
 After unzipping you will find three folders:

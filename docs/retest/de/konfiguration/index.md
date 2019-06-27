@@ -1,6 +1,4 @@
-
-Installation und Konfiguration
-==============================
+# Installation und Konfiguration
 
 1. [Welche Ordner gibt es und was enthalten sie](verzeichnisse.md)
 1. [Wichtige Konfigurationsparameter](konfigurationsdatei.md)

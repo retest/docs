@@ -1,5 +1,4 @@
-Rule-Based Ignore
-=================
+# Rule-Based Ignore
 
 [Here](setup-recheck.ignore.md) we introduced you to two simple ignore mechanisms, one that ignores differences based on identifying attributes like `xpath`, `tag`, `id` or `retestId`, and another that globally ignores irrelevant attributes like `jsdata` and `data-.*`.
 

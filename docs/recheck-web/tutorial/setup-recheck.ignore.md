@@ -1,5 +1,4 @@
-Setup the recheck.ignore
-========================
+# Setup the recheck.ignore
 
 recheck shows you all differences of all attributes. And it does so by comparing the attributes semantically, rather than comparing screenshots. This approach is similar to version control systems like [Git](https://git-scm.com). Without configuration, Git also shows you all differences, including log files, binaries and many other temporary files, which you typically don’t want to version control. Luckily, Git allows to easily ignore those differences using `.gitignore`.
 

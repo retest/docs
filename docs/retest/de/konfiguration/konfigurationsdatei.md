@@ -1,6 +1,4 @@
-
-Die retest Konfigurationsdatei
-==============================
+# Die retest Konfigurationsdatei
 
 Diese Datei enthält die Konfiguration von retest für ein Projekt.
 Das Format ist das normale Java [`.properties`-Dateiformat](https://de.wikipedia.org/wiki/Java-Properties-Datei).

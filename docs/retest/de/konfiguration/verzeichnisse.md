@@ -1,6 +1,4 @@
-
-Dateien und Verzeichnisse in retest
-===================================
+# Dateien und Verzeichnisse in retest
 
 **Achtung:** Dies ist ein noch unvollständiger Entwurf!
 

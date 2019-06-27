@@ -1,6 +1,4 @@
-
-Frequently Asked Questions
-==========================
+# Frequently Asked Questions
 
 ### Java Not Recognized
 

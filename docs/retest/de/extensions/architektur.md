@@ -1,6 +1,4 @@
-
-Der Aufbau von retest
-=====================
+# Der Aufbau von retest
 
 retest hat einen sehr modularen Aufbau, sodass es prinzipiell für beliebige Plattformen, Technologien und Schnittstellen/Interfaces erweitert werden kann.
 Dazu gehören nicht ausschließlich *User* Interfaces sondern prinzipiell beliebige Interfaces.

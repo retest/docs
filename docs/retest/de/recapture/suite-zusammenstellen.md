@@ -1,6 +1,4 @@
-
-Suite zusammenstellen
-=====================
+# Suite zusammenstellen
 
 Mehrere Tests können zu einer Suite zusammengestellt und so logisch gruppiert werden.
 

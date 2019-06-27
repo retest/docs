@@ -1,6 +1,4 @@
-
-Verschiedene Schritt für Schritt-Anleitungen
-============================================
+# Verschiedene Schritt für Schritt-Anleitungen
 
 Hier finden Sie verschiedene einfache Schritt-für-Schritt-Anleitungen mit einfachen oder typischen Aufgaben in retest:
 

@@ -1,6 +1,4 @@
-
-Dokumentation von retest
-========================
+# Dokumentation von retest
 
 Schnelleinstieg
 ---------------

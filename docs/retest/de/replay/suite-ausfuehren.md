@@ -1,6 +1,4 @@
-
-Suite ausführen
-===============
+# Suite ausführen
 
 Um eine Suite auszuführen klicken Sie im Menü auf den Menü-Punkt "Suite ausführen". 
 Danach wählen Sie die bereits umgewandelte Suite aus. 

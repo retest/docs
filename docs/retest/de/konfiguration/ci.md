@@ -1,6 +1,4 @@
-
-Integration in einen CI-Server
-==============================
+# Integration in einen CI-Server
 
 **Achtung:** Dies ist ein noch unvollständiger Entwurf!
 

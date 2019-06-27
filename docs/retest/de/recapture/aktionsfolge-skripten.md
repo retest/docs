@@ -1,6 +1,4 @@
-
-Aktionsfolge skripten
-=====================
+# Aktionsfolge skripten
 
 ___
 ![Warning](../../icons/warning.png) Achtung: Folgendes Feature ist nur im Power-User-Mode verfügbar!

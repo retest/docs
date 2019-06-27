@@ -1,6 +1,4 @@
-
-Adaption Rules
-==============
+# Adaption Rules
 
 Here you can edit rules to change tests as they are replayed.
 	We call this "passive update".

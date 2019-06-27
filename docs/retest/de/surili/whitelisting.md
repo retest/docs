@@ -1,6 +1,4 @@
-
-Auf Elemente begrenzen
-======================
+# Auf Elemente begrenzen
 
 Das Whitelisting dient dazu, den Affen auf bestimmte Masken oder Module zu fokusieren.
 Dies ist z.B. sinnvoll, falls man sich nicht sicher ist, ob man alle kritischen UI-Elemente mittels Blacklisting "verboten" hat.

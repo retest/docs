@@ -1,6 +1,4 @@
-
-Die stabile Testumgebung
-========================
+# Die stabile Testumgebung
 
 Ein wichtiger Punkt in Bezug auf die Testfälle ist deren Unabhängigkeit voneinander.
 Unabhängigkeit bedeutet, dass wenn Tests bspw. in der Reihenfolge `A`, `B`, `C` ablaufen,

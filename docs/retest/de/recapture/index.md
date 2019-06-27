@@ -1,6 +1,4 @@
-
-Das ReCapture Modul
-===================
+# Das ReCapture Modul
 
  1. [Aufzeichnen einer Aktionsfolge](aktionsfolge-aufzeichnen.md)
  1. [Bearbeiten einer Aktionsfolge](aktionsfolge-bearbeiten.md) bzw. [Skripten einer Aktionsfolge](aktionsfolge-skripten.md)

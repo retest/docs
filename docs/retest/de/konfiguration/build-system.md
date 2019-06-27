@@ -1,6 +1,4 @@
-
-Integration in ein Build-System
-===============================
+# Integration in ein Build-System
 
 Wird retest bspw. in ein Build-System integriert, so sollte die Ausführung nicht über die GUI erfolgen. Generell ist es sinnvoll, retest dauerhaft in Ihr Build-System zu integrieren. Hierfür stellt retest eine eigene Kommandozeile (engl. Command Line Interface, CLI) zur Verfügung. Dadurch ist die Integration in gängige Build-Systeme problemlos möglich. Falls Sie hierbei Unterstützung benötigen, so sprechen Sie uns gerne an. Haben Sie eine Integration durchgeführt, so lassen Sie es uns gerne wissen, damit wir dies hier dokumentieren können.
 

@@ -1,5 +1,4 @@
-Using Git and GitHub
-====================
+# Using Git and GitHub
 
 Let us use Git as version control system. In combination with GitHub as central repository, we can also manage versions of test cases on different machines, thus also deploying our project to the server. So, using a test case, e.g. from the [tutorial](explicit-checks.md), we simply open a CMD in the corresponding folder and do a `git init`. This initializes the Git repository. You can call `git status` to see which files were added or changed in that directory.
 

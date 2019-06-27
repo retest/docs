@@ -1,6 +1,4 @@
-
-Suite umwandeln
-===============
+# Suite umwandeln
 
 Nachdem Sie einen oder mehrere [Tests zusammengestellt haben](test-zusammenstellen.md), können Sie diese zu einer Suite zusammenfassen.
 

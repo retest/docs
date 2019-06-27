@@ -1,5 +1,4 @@
-Maintaining the Golden Master
-=============================
+# Maintaining the Golden Master
 
 After you correctly [installed and setup the recheck.cli](../setup/setup.md), you can use it to apply changes and maintain the Golden Master.
 

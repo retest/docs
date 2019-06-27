@@ -1,6 +1,4 @@
-
-Häufig gestellte Fragen
-=======================
+# Häufig gestellte Fragen
 
 ### Java nicht erkannt
 
