@@ -13,6 +13,7 @@ nav:
     - 'recheck/how-ignore-works.md'
     - 'recheck/location-of-the-golden-master-files-and-test-reports.md'
     - 'recheck/reuse-golden-master-files.md'
+    - 'recheck/properties.md'
   - recheck-web:
     - Setup:
       - 'recheck-web/setup/maven.md'
