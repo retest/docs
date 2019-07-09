@@ -1,6 +1,6 @@
 # Properties
 
-This is a draft of currently available properties for configuring recheck-web. If you want to
+This is a draft of currently available properties for configuring recheck. If you want to
 contribute, please stick to a line width of 100 characters.
 
 ```properties
@@ -13,11 +13,10 @@ contribute, please stick to a line width of 100 characters.
 key=${DEFAULT_VALUE}
 
 ####################################################################################################
-# SCREENSHOTS                                                                                      #
+# PROJECT                                                                                          #
 ####################################################################################################
 
-# If true, recheck-web will only take a screenshot of the current viewport. Otherwise, recheck-web
-# will scroll to the page end using an internal timeout.
-# true | false
-de.retest.recheck.web.viewportOnlyScreenshot=false
+# If set, recheck will use this path as the project root (containing e.g. the .retest folder).
+# Any valid absolute path.
+de.retest.recheck.project.root=null
 ```
