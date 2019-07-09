@@ -9,8 +9,8 @@ contribute, please stick to a line width of 100 characters.
 ####################################################################################################
 
 # Description.
-# possibleValueA | possibleValueB
-key=defaultValue
+# Possible values.
+key=${DEFAULT_VALUE}
 
 ####################################################################################################
 # SCREENSHOTS                                                                                      #
