@@ -19,7 +19,7 @@ Commands:
   help        Displays help information about the specified command.
 ```
 
-## Linux and Mac
+## Linux
 
 Unzip the downloaded archive to e.g. `/opt/recheck.cli-1.0.0`. Then add the following snippet to your `.bash_profile` and/or `.bashrc`:
 
@@ -27,15 +27,16 @@ Unzip the downloaded archive to e.g. `/opt/recheck.cli-1.0.0`. Then add the foll
 export PATH="${PATH}:/path/to/recheck.cli/bin/"
 ```
 
-### Enabling Shell Auto-Completion
+## Mac
 
-You can obtain an auto-completion script for Bash and ZSH via the `completion` command. Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
+If you use [Homebrew](https://brew.sh/), you can simply use our [tap](https://github.com/retest/homebrew-tap/) and install the CLI from there:
 
 ```text
-$ echo "source <(recheck completion)" >> ~/.bash_profile
+$ brew tap retest/tap
+$ brew install recheck.cli
 ```
 
-Please note that this requires Bash version 4+ (macOS currently comes with version 3).
+Alternatively, you can also install it manually as described in the [Linux](#linux) section.
 
 ## Windows
 
@@ -47,3 +48,13 @@ Unzip the downloaded archive to e.g. `C:\Program Files\recheck.cli-1.0.0`. To in
 4. Add the path to the `recheck/bin` folder. If you installed it like above, that would be `C:\Program Files\recheck.cli-1.0.0\bin\`.
 
 ![Setting up the environment variables in Windows 10](env_variables.png)
+
+## Enabling Shell Auto-Completion
+
+You can obtain an auto-completion script for Bash and ZSH via the `completion` command. Simply add the resulting output to your `.bash_profile` and/or `.bashrc`, for example:
+
+```text
+$ echo "source <(recheck completion)" >> ~/.bash_profile
+```
+
+Please note that this requires Bash version 4+ (macOS currently comes with version 3).
