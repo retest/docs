@@ -19,8 +19,8 @@ When it comes to test reports, recheck uses the very same `FileNamerStrategy` to
 
 | recheck class | Test entity |
 |---|---|
-| `SuiteReplayResult`| Test class |
-| `TestReplayResult`| Test method |
+| `SuiteReplayResult` | Test class |
+| `TestReplayResult` | Test method |
 | `ActionReplayResult` | Check |
 
 Suppose the following [recheck-web](https://github.com/retest/recheck-web) test:
