@@ -45,6 +45,8 @@ extra:
 
 nav:
   - Home: index.md
+  - review:
+    - 'review/proxy.md'
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
