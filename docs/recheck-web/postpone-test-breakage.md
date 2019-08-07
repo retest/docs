@@ -17,7 +17,7 @@ public void setUp() {
 }
 ```
 
-Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. This way, maximal compatibility two other third party tools and test frameworks is ensured. Next, we can create a test that shows the functionality.
+Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. This way, maximal compatibility to other third party tools and test frameworks is ensured. Next, we can create a test that shows the functionality.
 
 For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Let‘s create a matching test for it. It could look like so:
 
