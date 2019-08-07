@@ -19,7 +19,7 @@ public void setUp() {
 
 Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. This way, maximal compatibility to other third party tools and test frameworks is ensured. Next, we can create a test that shows the functionality.
 
-For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Let‘s create a matching test for it. It could look like so:
+For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Save it into your test resources folder (`src/test/resources`) Let‘s create a matching test for it. It could look like so:
 
 ```
 public class MyUnbreakableTest {
@@ -77,7 +77,7 @@ Because these identifiers are used in the test, this would tip of a typical Sele
 
 ![NoSuchElementException](NoSuchElementException.png)
 
-Now let’s redo this with our original test using the `RecheckDriver` and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
+Now let’s redo this with our original test using the `RecheckDriver` and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute-regex=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
 
 However, if you have a closer look to the log output that is printed to the console during execution, you can see that it will now contain a message similar to the following:
 
