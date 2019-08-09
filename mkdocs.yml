@@ -23,6 +23,7 @@ nav:
       - 'recheck-web/tutorial/setup-recheck.ignore.md'
       - 'recheck-web/tutorial/using-git-and-github.md'
       - 'recheck-web/tutorial/travis-execute-ci.md'
+      - 'recheck-web/tutorial/upload-test-reports-to-rehub.md'
       - 'recheck-web/tutorial/rule-based-ignore.md'
     - 'recheck-web/ways-of-using-recheck-web.md'
     - 'recheck-web/element-identification-problem.md'
