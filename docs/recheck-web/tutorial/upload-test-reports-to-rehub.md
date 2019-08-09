@@ -1,25 +1,25 @@
 # Upload Test Reports to rehub
 
-## Local Settings
+## Setup Local Build
 
-Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). For this our existing test case have to be adjusted only slightly. It is possible to upload test reports when we execute the test locally or in a CI/CD enviroment. For the configuration of the CI/CD enviroment follow [***this description***](travis-execute-ci.md), in order to execute your test with Travis.
+Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). For this our existing test case has to be adjusted only slightly. It is possible to upload test reports when we execute the test locally or in a CI/CD environment. For the configuration of the CI/CD environment follow [***this description***](travis-execute-ci.md), in order to execute your test with Travis.
 
-To upload the reports you will need a [***retest account***](https://sso.prod.cloud.retest.org/auth/realms/customer/protocol/openid-connect/auth?response_type=code&client_id=garkbit&redirect_uri=http%3A%2F%2Fgarkbit.prod.cloud.retest.org%2Fsso%2Flogin&state=512ba44f-b51e-460b-80af-fc0964f1909e&login=true&scope=openid) to gain access to your repository service. After registration you will receive a 14-day trial.
+To upload reports you will need an [***retest account***](https://sso.prod.cloud.retest.org/auth/realms/customer/account) to gain access to rehub. After the initial registration you will receive a 14-day trial.
 
-Now we need to modify the `setUp()` method in our existing test case to enable the upload to rehub, we have two ways to do this:
+The first step is to modify the `setUp()` method in our existing test case to enable the upload to rehub. There are two ways to achieve this:
 
-- by setting up the `REHUB_REPORT_UPLOAD_ENABLED` system property
+- Set the `REHUB_REPORT_UPLOAD_ENABLED` system property
 
 ```java
 @Before
 void setUp() {
     driver = new ChromeDriver();
     re = new RecheckImpl();
-    System.setProperty( Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
+    System.setProperty( de.retest.recheck.Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
 }
 ```
 
-- or by modify the `RecheckImpl` constructor
+- Modify the `RecheckImpl` constructor
 
 ```java
 @Before
@@ -29,24 +29,26 @@ void setUp() {
 }
 ```
 
-If we execute the test locally and the configuration was successful, our browser will pop up and we will be prompted to login, then we can find our test reports on the ***rehub garkbit***.
+If we execute the test locally and the configuration was successful, your browser will pop up and you will be prompted to login. Afterwards you can find your test reports on [***rehub***](https://garkbit.prod.cloud.retest.org/dashboard).
 
-## Setup for Travis CI
+## Setup Travis CI
 
-After we have modified our existing test case, we should also configure our CI/CD environment. We need the `RECHECK_API_KEY` that is generated when the modified test is executed. We can read it from the log.
+After the existing test case has been modified, we may also configure our CI/CD environment. First, set the `RECHECK_API_KEY` environment variable as shown in the [documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings).
 
-Start by configuring Travis CI with `RECHECK_API_KEY`. It can be set via your [***Travis CI environment variables in settings for a repository***](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings). In your Travis repository go to Settings > Environment Variables.
+We need the `RECHECK_API_KEY` that is generated when the modified test is executed. We can read it from the log.
 
 ![Travis-CI environment variable](travis-ci-environment-variables.png)
 
-The `RECHECK_API_KEY` is valid for individual and for all branches. 
-
->Keep your RECHECK_API_KEY token secret  <br/> 
->Anyone with access to your token can add test reports to your ***rehub garkbit***. <br/>
->For Travis-CI, make sure the `Display value in build log` toggle is off.
+ >Keep your RECHECK_API_KEY token secret  <br/> 
+ >Anyone with access to your token can add test reports to ***rehub***. <br/>
+ >For Travis-CI, make sure the `Display value in build log` toggle is off.
 
 When we have completed all settings and executed the test in our CI/CD environment, we should receive the message `Sucessfully uploaded report to rehub` in the Travis CI Job Log. Now that the test has been executed in the CI/CD environment and the test report has been uploaded to rehub, we can maintain the report in different ways.
 
-## Maintain a Report from rehub
+## Access your reports
 
-We open our browser and visit the [***rehub garkbit***](https://garkbit.prod.cloud.retest.org/dashboard) website, we select a report and download it. Now we can maintain the report with [***review***](https://retest.de/review/) or the open-source tool [***recheck.cli***](https://github.com/retest/recheck.cli/). With the Review application it is also possible to load a report directly from the ***rehub garkbit*** and maintain it in ***review***.
+All your reports can be accessed online. Open [***rehub***](https://garkbit.prod.cloud.retest.org/dashboard), enter your account details and view/download your reports.
+
+Reports can be opened with either [***review***](https://retest.de/review/) or the open-source [***CLI***](https://github.com/retest/recheck.cli/).
+
+With review it is also possible to load reports directly from ***rehub***.
