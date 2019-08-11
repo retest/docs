@@ -73,7 +73,7 @@ to something like
 </form>
 ```
 
-Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web site—what is usually referred to as “breaking the test”. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment out the recheck-specific `capTest()` and `cap()` method calls (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
+Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web site—what is usually referred to as “breaking the test”. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment out the recheck-specific `capTest()` method call (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
 
 ![NoSuchElementException](NoSuchElementException.png)
 
