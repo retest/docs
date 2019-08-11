@@ -85,8 +85,8 @@ However, if you have a closer look to the log output that is printed to the cons
 *************** recheck warning ***************
 The HTML name attribute used for element identification changed from 'login' to 'newLoginName'.
 retest identified the element based on the persisted Golden Master.
-If you apply these changes to the Golden Master , your test com.mycompany.MyUnbreakableTest will break.
-Use the `By.name("newLoginName")` or `By.retestId("form")` to update your test MyUnbreakableTest.java:30.
+If you apply these changes to the Golden Master , your test retest.first.steps.FirstOrderTest will break.
+Use `By.name("newLoginName")` or `By.retestId("form-26008")` to update your test FirstOrderTest.java:30.
 ```
 
 This means that the `RecheckDriver` catched the `NoSuchElementException`. It then loaded the persisted Golden Master and found the element within there on the basis of the old version. Then it created the 1-on-1 assignment as shown above and was able to correctly associate the new with the old element. Then it just used the new element in the test and continued. However, if you now apply that change to the Golden Master, recheck will then not be able to identify the element based on the outdated identification criteria anymore. So, you have to update your test when you apply the change—or else it will break then.
