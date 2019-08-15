@@ -1,41 +1,56 @@
 site_name: retest docs
 
 theme:
-   name: "mkdocs"
-   custom_dir: 'custom_theme/'
-        
-extra_css:
-    - 'css/custom.css'
+  name: material
+  favicon: "assets/images/favicon.ico"
+  palette:
+    primary: "lime"
+    accent: "red"
+
+repo_name: "retest/docs"
+repo_url: "https://github.com/retest/docs"
+extra:
+  social:
+    - type: "github"
+      link: "https://github.com/retest"
+    - type: "twitter"
+      link: "https://twitter.com/retest_en"
+    - type: "linkedin"
+      link: "https://www.linkedin.com/company/retest-gmbh"
+    - type: "facebook"
+      link: "https://www.facebook.com/retest.de"
+    - type: "xing"
+      link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
   - Home: index.md
   - recheck:
-    - 'recheck/how-ignore-works.md'
-    - 'recheck/location-of-the-golden-master-files-and-test-reports.md'
-    - 'recheck/reuse-golden-master-files.md'
-    - 'recheck/properties.md'
+      - "recheck/how-ignore-works.md"
+      - "recheck/location-of-the-golden-master-files-and-test-reports.md"
+      - "recheck/reuse-golden-master-files.md"
+      - "recheck/properties.md"
   - recheck-web:
-    - Setup:
-      - 'recheck-web/setup/maven.md'
-    - Tutorial:
-      - 'recheck-web/tutorial/explicit-checks.md'
-      - 'recheck-web/tutorial/mvn-execute-locally.md'
-      - 'recheck-web/tutorial/setup-recheck.ignore.md'
-      - 'recheck-web/tutorial/using-git-and-github.md'
-      - 'recheck-web/tutorial/travis-execute-ci.md'
-      - 'recheck-web/tutorial/upload-test-reports-to-rehub.md'
-      - 'recheck-web/tutorial/rule-based-ignore.md'
-    - 'recheck-web/ways-of-using-recheck-web.md'
-    - 'recheck-web/element-identification-problem.md'
-    - 'recheck-web/postpone-test-breakage.md'
-    - 'recheck-web/unbreakable-selenium.md'
-    - 'recheck-web/properties.md'
-    - 'recheck-web/contributor-information.md'
+      - Setup:
+          - "recheck-web/setup/maven.md"
+      - Tutorial:
+          - "recheck-web/tutorial/explicit-checks.md"
+          - "recheck-web/tutorial/mvn-execute-locally.md"
+          - "recheck-web/tutorial/setup-recheck.ignore.md"
+          - "recheck-web/tutorial/using-git-and-github.md"
+          - "recheck-web/tutorial/travis-execute-ci.md"
+          - "recheck-web/tutorial/upload-test-reports-to-rehub.md"
+          - "recheck-web/tutorial/rule-based-ignore.md"
+      - "recheck-web/ways-of-using-recheck-web.md"
+      - "recheck-web/element-identification-problem.md"
+      - "recheck-web/postpone-test-breakage.md"
+      - "recheck-web/unbreakable-selenium.md"
+      - "recheck-web/properties.md"
+      - "recheck-web/contributor-information.md"
   - recheck.cli:
-    - 'recheck.cli/setup.md'
-    - 'recheck.cli/maintain-golden-master.md'
+      - "recheck.cli/setup.md"
+      - "recheck.cli/maintain-golden-master.md"
   - retest:
-    - 'English': 'retest/en/index.md'
-    - 'Deutsch': 'retest/de/index.md'
+      - "English": "retest/en/index.md"
+      - "Deutsch": "retest/de/index.md"
   - Misc:
-    - 'Google Summer of Code': 'misc/gsoc.md'
+      - "Google Summer of Code": "misc/gsoc.md"
