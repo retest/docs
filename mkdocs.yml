@@ -2,9 +2,25 @@ site_name: retest docs
 
 theme:
   name: material
+  favicon: "img/favicon.ico"
+  palette:
+    primary: "lime"
+    accent: "red"
         
-extra_css:
-    - 'css/custom.css'
+repo_name: "retest/docs"
+repo_url: "https://github.com/retest/docs"
+extra:
+  social:
+    - type: "github"
+      link: "https://github.com/retest"
+    - type: "twitter"
+      link: "https://twitter.com/retest_en"
+    - type: "linkedin"
+      link: "https://www.linkedin.com/company/retest-gmbh"
+    - type: "facebook"
+      link: "https://www.facebook.com/retest.de"
+    - type: "xing"
+      link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
   - Home: index.md
