@@ -2,7 +2,7 @@ site_name: retest docs
 
 theme:
   name: material
-  favicon: "img/favicon.ico"
+  favicon: "assets/images/favicon.ico"
   palette:
     primary: "lime"
     accent: "red"
