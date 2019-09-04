@@ -1,6 +1,6 @@
 # Execute the Test on a CI Server
 
-The simplest way to execute our existing test case in a CI/CD environment is a combination of GitHub and Travis. Follow [this description](using-git-and-github.md), in order to manage your project with Git and push it to GitHub.
+The simplest way to execute our existing test case in a CI/CD environment is a combination of GitHub and Travis. Follow the [previous description](using-git-and-github.md), in order to manage your project with Git and push it to GitHub.
 
 Now we create an account with Travis at [travis-ci.com](https://travis-ci.com/). Travis is a CI/CD service provider that is free to use for open source projects. Once we log in using our existing GitHub account, we can see our GitHub repository. In order to have Travis execute our test case, we just need to add a `.travis.yml` text file (note the leading dot) with the following content:
 
@@ -40,7 +40,7 @@ before_script:
 script: mvn clean verify
 ```
 
-This file contains a simple configuration in YAML format, which tells Travis that we have a Java project that we want to build on a Ubuntu (Trusty) system. It also says that we want Chrome and Firefox with ChromeDriver and GeckoDriver installed and in our path. Once we add this file with `git add .travis.yml` and upload it to GitHub with `git push`, we should see our Travis build fire up.
+This file contains a simple configuration in YAML format, which tells Travis that we have a Java project that we want to build on a Ubuntu (Trusty) system. It also says that we want Chrome and Firefox with ChromeDriver and GeckoDriver installed and in our path. Once we add this file with `git add .travis.yml`, commit with `git commit -m "add .travis.yml"` and upload it to GitHub with `git push`, we should see our Travis build fire up.
 
 Now we need to remove the following lines from our tests:
 

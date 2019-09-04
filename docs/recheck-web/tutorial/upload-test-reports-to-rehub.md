@@ -4,6 +4,8 @@
 
 Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). For this our existing test case has to be adjusted only slightly. It is possible to upload test reports when we execute the test locally or in a CI/CD environment. For the latter, you can follow [this description](travis-execute-ci.md) in order to execute your test with Travis CI.
 
+Remember to add the driver invoke for local executes and delete it to test with Travis CI. If you don't want to change this every time you execute your test locally, you can simply add the driver.exe to your [path](https://java.com/en/download/help/path.xml)
+
 To upload reports you will need a [retest account](https://sso.prod.cloud.retest.org/auth/realms/customer/account) to gain access to ***rehub***. After the initial registration, you will receive a 14-day trial.
 
 The first step is to modify the `setUp()` method in our existing test case to enable the upload to ***rehub***. There are two ways to achieve this:
