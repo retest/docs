@@ -46,4 +46,4 @@ The output should contain no error and show a Java version of 8 or above. Now yo
 
 With this, you can now turn to your favorite IDE (e.g. `mvn eclipse:eclipse`) and create your first test class. Before a Selenium test can be executed correctly, you first need to download a driver/browser executable according to your liking and operating system, e.g. [Chrome](http://chromedriver.storage.googleapis.com/index.html).
 
-Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome Version installed on your system. Now we should be all set up to create [your first test](../postpone-test-breakage.md).
+Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome Version installed on your system. Now we should be all set up to create [your first test](../tutorial/explicit-checks.md).
