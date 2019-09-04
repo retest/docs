@@ -9,7 +9,9 @@ package com.mycompany;
 
 import org.junit.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
 import de.retest.recheck.*;
+import de.retest.recheck.persistence.*;
 
 public class MyFirstTest {
 
@@ -20,7 +22,10 @@ public class MyFirstTest {
   public void setUp() {
     re = new RecheckImpl();
     System.setProperty("webdriver.chrome.driver", "C:\\pathto\\chromedriver.exe");
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    options.addArguments("--window-size=1280,720");
+    driver = new ChromeDriver(options);
   }
 
   @Test

@@ -15,9 +15,12 @@ The first step is to modify the `setUp()` method in our existing test case to en
 ```java
 @Before
 void setUp() {
-    driver = new ChromeDriver();
-    re = new RecheckImpl();
     System.setProperty( de.retest.recheck.Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
+    re = new RecheckImpl();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    options.addArguments("--window-size=1280,720");
+    driver = new ChromeDriver(options);
 }
 ```
 
@@ -26,8 +29,11 @@ void setUp() {
 ```java
 @Before
 void setUp() {
-    driver = new ChromeDriver();
     re = new RecheckImpl( RecheckOptions.builder().reportUploadEnabled( true ).build() );
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    options.addArguments("--window-size=1280,720");
+    driver = new ChromeDriver(options);
 }
 ```
 
