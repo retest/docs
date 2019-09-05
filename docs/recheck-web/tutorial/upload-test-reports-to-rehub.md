@@ -34,6 +34,18 @@ void setUp() {
 
 If we execute the test locally and the configuration was successful, your browser will pop up and you will be prompted to login. Afterwards, you can find your test reports on [***rehub*** dashboard](https://garkbit.prod.cloud.retest.org/dashboard).
 
+### Enable rehub Globally
+
+If you have multiple tests and don't want to adapt all of them to upload to rehub, it is easier to set the system property via the mechanism that triggers your tests. Suppose you use Maven and the Surefire or Failsafe plugin for test execution, you can adapt the plugin configuration as follows to enable rehub globally:
+
+```xml
+<configuration>
+    <systemPropertyVariables>
+        <de.retest.recheck.rehub.reportUploadEnabled>true</de.retest.recheck.rehub.reportUploadEnabled>
+    </systemPropertyVariables>
+</configuration>
+```
+
 ## Setup Travis CI
 
 After the existing test case has been modified, we may also configure our CI/CD environment. First, set the `RECHECK_API_KEY` environment variable as shown in the [Travis CI documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings).
