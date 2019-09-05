@@ -44,5 +44,7 @@ As of the Travis configuration, the ChromeDriver is now on the path and thus its
  
 As you can see in the screenshot, the build fails because the test is now executed on a different operating system and a different device, revealing cross-device differences. Likewise, you can execute the test with a different browser, which would reveal cross-browser differences.
 
+If you are using Google in your native language, that is not english, expect many differences, as Travis will compare to an english Google Homepage. Those differences can be accepted or ignored later on. If you want to, you can [set your Google language to english](https://support.google.com/accounts/answer/32047?co=GENIE.Platform%3DDesktop&hl=en).
+
 You can create [rules to ignore these differences in a more sophisticated way](rule-based-ignore.md).
 
