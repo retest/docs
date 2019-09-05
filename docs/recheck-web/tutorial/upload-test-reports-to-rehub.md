@@ -10,17 +10,25 @@ To upload reports you will need a [retest account](https://sso.prod.cloud.retest
 
 The first step is to modify the `setUp()` method in our existing test case to enable the upload to ***rehub***. There are two ways to achieve this:
 
-- Set the `REHUB_REPORT_UPLOAD_ENABLED` system property
-
-- Modify the `RecheckImpl` constructor
+- Set the `REHUB_REPORT_UPLOAD_ENABLED` system property (you have to do this _before_ `RecheckImpl` is created)
 
 ```java
 @Before
 void setUp() {
-    re = new RecheckImpl( RecheckOptions.builder().reportUploadEnabled( true ).build() );
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless", "--window-size=1280,720");
-    driver = new ChromeDriver(options);
+    System.setProperty( Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
+    re = new RecheckImpl();
+    // ...
+}
+```
+
+- Set the rehub flag via `RecheckOptions`
+
+```java
+@Before
+void setUp() {
+    RecheckOptions options = RecheckOptions.builder().reportUploadEnabled( true ).build();
+    re = new RecheckImpl( options );
+    // ...
 }
 ```
 
