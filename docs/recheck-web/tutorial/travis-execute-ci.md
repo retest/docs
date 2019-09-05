@@ -30,7 +30,7 @@ before_script:
 script: mvn clean verify
 ```
 
-This file contains a simple configuration in YAML format, which tells Travis that we have a Java project that we want to build on a Ubuntu (Trusty) system. It also says that we want Chrome with ChromeDriver installed and in our path. Once we add this file with `git add .travis.yml`, commit with `git commit -m "add .travis.yml"` and upload it to GitHub with `git push`, we should see our Travis build fire up.
+This file contains a simple configuration in YAML format, which tells Travis that we have a Java project that we want to build on a Ubuntu (Trusty) system. It also says that we want Chrome with ChromeDriver installed and in our path. Once we stage this file with `git add .travis.yml`, commit it via `git commit -m "Add .travis.yml"` and upload it to GitHub with `git push`, we should see our Travis build fire up.
 
 Now we need to remove the following line from our tests:
 
