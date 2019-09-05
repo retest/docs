@@ -40,7 +40,7 @@ We need the `RECHECK_API_KEY` that is generated when the modified test is execut
 
 When we have completed all settings and executed the test in our CI/CD environment, we should receive the message `Successfully uploaded report to rehub` in the Travis CI build log. Now that the test has been executed in the CI/CD environment and the test report has been uploaded to rehub, we can maintain the report in different ways.
 
-## Access your reports
+## Access Your Reports
 
 All your reports can be accessed online. Open [***rehub***](https://garkbit.prod.cloud.retest.org/dashboard), enter your account details, and view/download your reports.
 
