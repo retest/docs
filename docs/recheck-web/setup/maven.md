@@ -9,7 +9,7 @@ mvn --version
 
 The output should contain no error and show a Java version of 8 or above. Now you can create a new folder (e.g. `recheck-web-tutorial`) and a simple `pom.xml` file with the following content:
 
-```
+```xml
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
