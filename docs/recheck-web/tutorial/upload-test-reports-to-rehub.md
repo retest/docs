@@ -50,7 +50,7 @@ If you have multiple tests and don't want to adapt all of them to upload to rehu
 
 After the existing test case has been modified, we may also configure our CI/CD environment. First, set the `RECHECK_API_KEY` environment variable as shown in the [Travis CI documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings).
 
-We need the `RECHECK_API_KEY` that is generated when the modified test is executed, which you should find in the log. Alternatively, you can invoke `Rehub#getRecheckApiKey()` locally to read your personal token.
+We need the `RECHECK_API_KEY` that is generated when the modified test is executed, which you should find in the log. Alternatively, you can invoke `Rehub#getRecheckApiKey()` locally and the print the returned string to see your personal token.
 
 ![Travis CI environment variable](travis-ci-environment-variables.png)
 
