@@ -4,7 +4,7 @@ The simplest way to execute our existing test case in a CI/CD environment is a c
 
 Now we create an account with Travis at [travis-ci.com](https://travis-ci.com/). Travis is a CI/CD service provider that is free to use for open source projects. Once we log in using our existing GitHub account, we can see our GitHub repository. In order to have Travis execute our test case, we just need to add a `.travis.yml` text file (note the leading dot) with the following content:
 
-```
+```yaml
 language: java
 dist: trusty
 

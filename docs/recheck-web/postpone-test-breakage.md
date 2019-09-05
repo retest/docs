@@ -6,7 +6,7 @@
 
 To use this functionality, we can simply change an [explicit checking test](tutorial/explicit-checks.md) in the following way:
 
-```
+```java
 private RecheckDriver driver;
 private RecheckWebImpl re;
 
@@ -19,9 +19,9 @@ public void setUp() {
 
 Now instead of using the regular generic `RecheckImpl`, we use an adapted `RecheckWebImpl` and wrap the regular Selenium driver into a special `RecheckDriver`, that also is an instance of `RemoteWebDriver`. This way, maximal compatibility to other third party tools and test frameworks is ensured. Next, we can create a test that shows the functionality.
 
-For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Save it into your test resources folder (`src/test/resources`) Let‘s create a matching test for it. It could look like so:
+For that we can use an example page from the Selenium project itself. We can download the [`formPage.html`](https://github.com/SeleniumHQ/selenium/blob/master/common/src/web/formPage.html) from the [Selenium GitHub](https://github.com/SeleniumHQ/selenium) repository. Save it into your test resources folder (`src/test/resources`) Letâ€˜s create a matching test for it. It could look like so:
 
-```
+```java
 public class MyUnbreakableTest {
 
 	RecheckDriver driver;
@@ -53,9 +53,9 @@ public class MyUnbreakableTest {
 
 Now we execute this test twice (using e.g. `mvn test`). The first execution will fail as there is no Golden Master to compare against, but recheck will create the Golden Master while doing so. The second time we execute this test, it should pass.
 
-We then want to edit the HTML code of the page and change the used identifiers of the elements the test interacts with. So, we edit the `formPage.html` file and change the lines 15–19 from
+We then want to edit the HTML code of the page and change the used identifiers of the elements the test interacts with. So, we edit the `formPage.html` file and change the lines 15â€“19 from
 
-```
+```html
 <form method="get" action="resultPage.html" name="login">
     <input type="email" id="email"/>
     <input type="number" id="age"/>
@@ -65,7 +65,7 @@ We then want to edit the HTML code of the page and change the used identifiers o
 
 to something like 
 
-```
+```html
 <form method="get" action="resultPage.html" name="newLoginName">
     <input type="email" id="userEmail"/>
     <input type="number" id="numberOfLifeYears"/>
@@ -73,11 +73,11 @@ to something like
 </form>
 ```
 
-Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web site—what is usually referred to as “breaking the test”. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment out the recheck-specific `capTest()` method call (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
+Because these identifiers are used in the test, this would tip of a typical Selenium test and make it fail without an actual problem in the web siteâ€”what is usually referred to as â€œbreaking the testâ€�. To showcase and verify this problem, we can simply change the used driver to the default `ChromeDriver` and comment out the recheck-specific `capTest()` method call (using `//`). Executing this test with a quick `mvn test -Dtest=MyUnbreakableTest` results in the dreaded `NoSuchElementException`.
 
 ![NoSuchElementException](NoSuchElementException.png)
 
-Now let’s redo this with our original test using the `RecheckDriver` and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute-regex=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
+Now letâ€™s redo this with our original test using the `RecheckDriver` and execute it. It will still fail, but this time due to differences in the checks (as you would expect) and not due to elements not being found anymore. You can verify this by simply ignoring all differences. To do so, edit the `.retest/recheck.ignore` file and add `attribute-regex=.*`. This will ignore all attribute changes, including changes to `id` and `name`. If you re-execute your test, it will now pass.
 
 However, if you have a closer look to the log output that is printed to the console during execution, you can see that it will now contain a message similar to the following:
 
@@ -89,4 +89,4 @@ If you apply these changes to the Golden Master , your test retest.first.steps.F
 Use `By.name("newLoginName")` or `By.retestId("form-26008")` to update your test FirstOrderTest.java:30.
 ```
 
-This means that the `RecheckDriver` catched the `NoSuchElementException`. It then loaded the persisted Golden Master and found the element within there on the basis of the old version. Then it created the 1-on-1 assignment as shown above and was able to correctly associate the new with the old element. Then it just used the new element in the test and continued. However, if you now apply that change to the Golden Master, recheck will then not be able to identify the element based on the outdated identification criteria anymore. So, you have to update your test when you apply the change—or else it will break then.
+This means that the `RecheckDriver` catched the `NoSuchElementException`. It then loaded the persisted Golden Master and found the element within there on the basis of the old version. Then it created the 1-on-1 assignment as shown above and was able to correctly associate the new with the old element. Then it just used the new element in the test and continued. However, if you now apply that change to the Golden Master, recheck will then not be able to identify the element based on the outdated identification criteria anymore. So, you have to update your test when you apply the changeâ€”or else it will break then.

@@ -12,18 +12,6 @@ The first step is to modify the `setUp()` method in our existing test case to en
 
 - Set the `REHUB_REPORT_UPLOAD_ENABLED` system property
 
-```java
-@Before
-void setUp() {
-    System.setProperty( de.retest.recheck.Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
-    re = new RecheckImpl();
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless");
-    options.addArguments("--window-size=1280,720");
-    driver = new ChromeDriver(options);
-}
-```
-
 - Modify the `RecheckImpl` constructor
 
 ```java
@@ -31,8 +19,7 @@ void setUp() {
 void setUp() {
     re = new RecheckImpl( RecheckOptions.builder().reportUploadEnabled( true ).build() );
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless");
-    options.addArguments("--window-size=1280,720");
+    options.addArguments("--headless", "--window-size=1280,720");
     driver = new ChromeDriver(options);
 }
 ```

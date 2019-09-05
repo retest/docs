@@ -4,7 +4,7 @@ With recheck, you have multiple options of how to use it. You can use a `Recheck
 
 A very basic test with Selenium and explicit calls to `check` could look like this:
 
-```
+```java
 package com.mycompany;
 
 import org.junit.*;
@@ -23,8 +23,7 @@ public class MyFirstTest {
     re = new RecheckImpl();
     System.setProperty("webdriver.chrome.driver", "C:\\pathto\\chromedriver.exe");
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless");
-    options.addArguments("--window-size=1280,720");
+    options.addArguments("--headless", "--window-size=1280,720");
     driver = new ChromeDriver(options);
   }
 
