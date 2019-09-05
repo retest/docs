@@ -1,6 +1,6 @@
 # Upload Test Reports to rehub
 
-## Setup Local Build
+## Set Up Local Build
 
 Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). For this our existing test case has to be adjusted only slightly. It is possible to upload test reports when we execute the test locally or in a CI/CD environment. For the latter, you can follow [this description](travis-execute-ci.md) in order to execute your test with Travis CI.
 
