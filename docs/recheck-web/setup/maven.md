@@ -9,7 +9,7 @@ mvn --version
 
 The output should contain no error and show a Java version of 8 or above. Now you can create a new folder (e.g. `recheck-web-tutorial`) and a simple `pom.xml` file with the following content:
 
-```
+```xml
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
@@ -31,7 +31,7 @@ The output should contain no error and show a Java version of 8 or above. Now yo
 		<dependency>
 			<groupId>de.retest</groupId>
 			<artifactId>recheck-web</artifactId>
-			<version>1.0.1</version>
+			<version>1.5.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -46,4 +46,4 @@ The output should contain no error and show a Java version of 8 or above. Now yo
 
 With this, you can now turn to your favorite IDE (e.g. `mvn eclipse:eclipse`) and create your first test class. Before a Selenium test can be executed correctly, you first need to download a driver/browser executable according to your liking and operating system, e.g. [Chrome](http://chromedriver.storage.googleapis.com/index.html).
 
-Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need a matching version of Chrome installed on your system. Now we should be all set up to create [your first test](../postpone-test-breakage.md).
+Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome version installed on your system. Now we should be all set up to create [your first test](../tutorial/explicit-checks.md).

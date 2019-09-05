@@ -4,28 +4,23 @@
 
 Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). For this our existing test case has to be adjusted only slightly. It is possible to upload test reports when we execute the test locally or in a CI/CD environment. For the latter, you can follow [this description](travis-execute-ci.md) in order to execute your test with Travis CI.
 
+Remember to set the property for the ChromeDriver executable when you want to execute the test locally (and remove it when you push). If you don't want to change this every time you execute your test locally, you can simply add the `chromedriver.exe` to your [path](https://java.com/en/download/help/path.xml).
+
 To upload reports you will need a [retest account](https://sso.prod.cloud.retest.org/auth/realms/customer/account) to gain access to ***rehub***. After the initial registration, you will receive a 14-day trial.
 
 The first step is to modify the `setUp()` method in our existing test case to enable the upload to ***rehub***. There are two ways to achieve this:
 
 - Set the `REHUB_REPORT_UPLOAD_ENABLED` system property
 
-```java
-@Before
-void setUp() {
-    driver = new ChromeDriver();
-    re = new RecheckImpl();
-    System.setProperty( de.retest.recheck.Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
-}
-```
-
 - Modify the `RecheckImpl` constructor
 
 ```java
 @Before
 void setUp() {
-    driver = new ChromeDriver();
     re = new RecheckImpl( RecheckOptions.builder().reportUploadEnabled( true ).build() );
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless", "--window-size=1280,720");
+    driver = new ChromeDriver(options);
 }
 ```
 

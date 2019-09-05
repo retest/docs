@@ -55,5 +55,5 @@ function matches(element, diff) {
 
 Of course, the three can easily be combined into a single script—a task which we will leave as an exercise for the reader.
 
-After adjusting our `recheck.ignore.js` file as seen above and committing and pushing the changes to GitHub, our Travis build will pass.
+After adjusting our `recheck.ignore.js` file as seen above and committing and pushing the changes to GitHub, our Travis build may has no or at least less differences. In order to make the build pass, there might be some more adjustments to do. The easiest way to get there is with [review](https://retest.de/review/) or [recheck.cli](https://github.com/retest/recheck.cli/).
 
