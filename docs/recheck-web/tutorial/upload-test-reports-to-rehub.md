@@ -26,7 +26,7 @@ void setUp() {
 ```java
 @Before
 void setUp() {
-    RecheckOptions options = RecheckOptions.builder().reportUploadEnabled( true ).build();
+    RecheckOptions options = RecheckOptions.builder().enableReportUpload().build();
     re = new RecheckImpl( options );
     // ...
 }
