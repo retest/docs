@@ -21,7 +21,7 @@ Commands:
 
 ## Linux
 
-Unzip the downloaded archive to e.g. `/opt/recheck.cli-1.0.0`. Then add the following snippet to your `.bash_profile` and/or `.bashrc`:
+Unzip the downloaded archive to e.g. `/opt/recheck.cli-1.5.0`. Then add the following snippet to your `.bash_profile` and/or `.bashrc`:
 
 ```text
 export PATH="${PATH}:/path/to/recheck.cli/bin/"
@@ -40,12 +40,12 @@ Alternatively, you can also install it manually as described in the [Linux](#lin
 
 ## Windows
 
-Unzip the downloaded archive to e.g. `C:\Program Files\recheck.cli-1.0.0`. To include the CLI into your path, you can follow [this tutorial](https://java.com/en/download/help/path.xml). On Windows 10, for instance, it works like this:
+Unzip the downloaded archive to e.g. `C:\Program Files\recheck.cli-1.5.0`. To include the CLI into your path, you can follow [this tutorial](https://java.com/en/download/help/path.xml). On Windows 10, for instance, it works like this:
 
 1. Open settings.
 2. Enter "env" and select "Edit the system environment variables."
 3. Click on the tab "Advanced" -> "Environment Variables" -> "Path" -> "Edit" -> "New".
-4. Add the path to the `recheck/bin` folder. If you installed it like above, that would be `C:\Program Files\recheck.cli-1.0.0\bin\`.
+4. Add the path to the `recheck/bin` folder. If you installed it like above, that would be `C:\Program Files\recheck.cli-1.5.0\bin\`.
 
 ![Setting up the environment variables in Windows 10](env_variables.png)
 
