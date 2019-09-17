@@ -4,24 +4,25 @@ When calling `Recheck#capTest()`, recheck either creates a diff in form of a tes
 
 Note that it is important to fail the test if no Golden Master can be found. As mentioned before, this always happens the first time a test gets executed, but it can also happen for a variety of other reasons. For instance, when someone forgets to add the Golden Master to the version control system or if a test or a folder is renamed. If this is the case, then you definitely want the test to fail.
 
-If you want to configure where recheck puts the Golden Master files, you can do so via a piece of code. The reason for this is that we usually don't want a fixed name, but a name per test or per suite. To determine where to put the Golden Master, `RecheckImpl` uses the given [`FileNamerStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/FileNamerStrategy.java), which in turn yields a `FileNamer`. The default `FileNamerStrategy` is the [`MavenConformFileNamerStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/MavenConformFileNamerStrategy.java). It creates Golden Masters under `src/test/resources/retest/recheck/` and test reports inside `target/test-classes/retest/recheck/`.
+All Golden Masters are created under `src/test/resources/retest/recheck/` and test reports inside `target/test-classes/retest/recheck/` by default. To determine where to put the Golden Master, `RecheckImpl` uses the given [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) with the  [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java) as default. To name the tests and suites, the default for [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) is [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java).
 
-Alternatively, you can use the [`GradleConformFileNamerStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/GradleConformFileNamerStrategy.java) (or implement your own `FileNamerStrategy`) and pass is to `RecheckImpl` via `RecheckOptions`:
+## Changing the path and NamingStrategy
+
+If you want to configure where recheck puts the Golden Master files, you can do so via a piece of code. The reason for this is that we usually don't want a fixed name, but a name per test or per suite. 
+
+You can use the [`ClassAndMethodBasedShortNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedShortNamingStrategy.java) (or implement your own `NamingStrategy`) and pass is to `RecheckImpl` via `RecheckOptions`. Same goes for the `ProjectLayout` (for example the [`GradleProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/GradleProjectLayout.java)):
 
 ```java
 RecheckOptions options = RecheckOptions.builder()
-		.fileNamerStrategy( new GradleConformFileNamerStrategy() )
+		.namingStrategy( new JunitbasedShortNamingStrategy() )
+		.projectLayout( new GradleProjectLayout() )
 		.build();
 Recheck re = new RecheckImpl( options );
 ```
 
-When it comes to test reports, recheck uses the very same `FileNamerStrategy` to create reports for each test suite, which usually denotes a test class. For this we use the following mapping:
+An other option for a `ProjectLayout` is [`SeparatePathsProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/SeparatePathsProjectLayout.java) and [`ExplicitMutableNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ExplicitMutableNamingStrategy.java) for a `NamingStrategy`.
 
-| recheck class | Test entity |
-|---|---|
-| `SuiteReplayResult` | Test class |
-| `TestReplayResult` | Test method |
-| `ActionReplayResult` | Check |
+Alternatively you can set the name without implementing the entire class, just by adding the argument to `re.startTest("testName");`
 
 Suppose the following [recheck-web](https://github.com/retest/recheck-web) test:
 
@@ -39,6 +40,8 @@ class MyRecheckWebTest {
 
 	@Test
 	void someTest() throws Exception {
+		re.startTest();
+	
 		driver.get( "https://example.com/" );
 
 		re.check( driver, "1st-page" );
@@ -58,6 +61,6 @@ class MyRecheckWebTest {
 }
 ```
 
-In case there are differences, this would result in a test report `MyRecheckWebTest.report` (a test report with a single `SuiteReplayResult`) that contains a `TestReplayResult` for `someTest()` and two `ActionReplayResult`s for both checks ("1st-page" and "2nd-page").
+In case there are differences, this would result in a test report `MyRecheckWebTest.report` (a test report with a single suite) that contains a test for `someTest()` and two checks ("1st-page" and "2nd-page").
 
 So for every test class, you get a separate test report that is represented as a tree of test methods and their corresponding checks. Additionally, we provide an aggregated `tests.report` that includes *all* test classes.
