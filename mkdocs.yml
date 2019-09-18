@@ -29,6 +29,7 @@ extra:
 nav:
   - Home: index.md
   - recheck:
+      - Introduction: "recheck/introduction/index.md"
       - "recheck/how-ignore-works.md"
       - "recheck/location-of-the-golden-master-files-and-test-reports.md"
       - "recheck/reuse-golden-master-files.md"
