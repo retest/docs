@@ -7,6 +7,10 @@ theme:
     primary: "lime"
     accent: "red"
 
+markdown_extensions:
+  - admonition
+  - codehilite
+
 repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
 extra:
