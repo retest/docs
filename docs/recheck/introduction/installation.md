@@ -1,11 +1,11 @@
 # Installation
 
 !!! abstract 
-	You only should only need to define the dependency if you plan to extend recheck yourself. You may use an already implemented extension.
+	You only should only need to define the dependency if you plan to extend ***recheck*** yourself. You may use an already implemented extension.
 
 ## Extensions
 
-Recheck is usually used with extensions that provide the capability for converting the objects of a specific technology into the domain model of recheck.
+***recheck*** is usually used with extensions that provide the capability for converting the objects of a specific technology into the domain model of ***recheck***.
 
 Available extensions:
 
@@ -13,7 +13,7 @@ Available extensions:
 * *More to come*
 
 !!! tip
-	If you are developing an extension for recheck, we would be happy if you [contact us](https://retest.de/contact-us/) or add your extension with a short description here.
+	If you are developing an extension for ***recheck***, we would be happy if you [contact us](https://retest.de/contact-us/) or add your extension with a short description here.
 
 ## Extending recheck
 
