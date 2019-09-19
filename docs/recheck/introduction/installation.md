@@ -32,12 +32,12 @@ For the current version, please refer to the release-page.
 <dependency>
 	<groupId>de.retest</groupId>
 	<artifactId>recheck</artifactId>
-	<version>${recheck-version}</version>
+	<version>${LATEST_VERSION_FROM_ABOVE_LINK}</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-compile 'de.retest:recheck:${recheck-version}'
+compile 'de.retest:recheck:${LATEST_VERSION_FROM_ABOVE_LINK}'
 ```
