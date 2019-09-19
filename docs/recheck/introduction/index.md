@@ -13,7 +13,7 @@ Difference Testing is basically described with four steps:
 1. Define a Golden Master based upon an evaluated version of the SUT.
 2. Convert and save the SUT as a Golden Master by initially executing the test.
 3. Compare to a newer version of the SUT by re-executing the test.
-4. If a failure happens: Verify the encountered differences (by a human).
+4. If difference occur: Let a human decide if these differences should be accepted (update the Golden Master), ignored (update an ignore file similar to `.gitignore`), or rejected (hooray, you've found a bug!).
 
 ### Advantages
 
