@@ -1,7 +1,7 @@
 # Installation
 
 !!! abstract 
-	You only should only need to define the dependency if you plan to extend ***recheck*** yourself. You may use an already implemented extension.
+	You should only need to define the dependency if you plan to extend ***recheck*** yourself. You may use an already implemented extension.
 
 ## Extensions
 
@@ -17,9 +17,9 @@ Available extensions:
 
 ## Extending recheck
 
-You can add ***recheck*** as an external dependency to your project. It is available in [maven](https://mvnrepository.com/artifact/de.retest/recheck) or via the [release-page](https://github.com/retest/recheck/releases) which allows you to include it into your favorite build tool.
+You can add ***recheck*** as an external dependency to your project. It is available in [Maven central](https://mvnrepository.com/artifact/de.retest/recheck) or via the [release-page](https://github.com/retest/recheck/releases), which allows you to include it into your favorite build tool.
 
-For the current version, please refer to the [release-page](https://github.com/retest/recheck/releases).
+For the current version, please refer to the release-page.
 
 ### Maven
 
