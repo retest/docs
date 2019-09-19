@@ -6,7 +6,7 @@ It therefore defines a domain model specific to ***recheck*** so that it can do 
 
 ## Difference Testing
 
-The idea of *Difference Testing* is derived from the idea of *Golden Master Testing* or *Characterization Testing*. Based on these practices, it describes the complete state of the *System under Test (SUT)*, where the complete state is determined by the particular technology used. By observing said state, it essentially differs from the classical approach to software testing by removing the need for assertions and eliminating the use of specifications. That's because *observing* does not mean *verification*; Difference Testing accepts every output it encounters, saves it and compares upon re-execution.
+The idea of *Difference Testing* is derived from the idea of *Golden Master Testing* (a.k.a. [Characterization Testing](https://en.wikipedia.org/wiki/Characterization_test)). Based on these practices, it describes the complete state of the object under test, where the complete state is determined by the extension of a particular technology used. By observing said state, it essentially differs from the classical approach to software testing by removing the need for assertions and eliminating the use of specifications. That's because *observing* does not mean *verification*; Difference Testing accepts every output it encounters, saves it and compares upon re-execution.
 
 Difference Testing is basically described with four steps:
 
