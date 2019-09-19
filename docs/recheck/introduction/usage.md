@@ -53,3 +53,77 @@ An advanced use case would check different platforms, operating systems, languag
 
 !!! tip
 	You may use the [filtering](../how-ignore-works.md) mechanism to ignore differences that you expect to manipulate the definition of *"same"*. That would mean for language to ignore the text as it has changed expectedly.
+
+## Integration with test framework
+
+### JUnit 4
+
+The following example uses JUnit 4 as test frame work.
+```java
+public class ExampleRecheckTest {
+
+	private static Recheck re;
+
+	@BeforeClass
+	public static void setUpOnce() {
+		// Create your instance once
+		re = new RecheckImpl();
+	}
+
+	@AfterClass
+	public static void tearDownOnce() {
+		// Save the report
+		re.cap();
+	}
+
+	@Test
+	public void check_simple_string() {
+		re.startTest();
+
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
+
+		// Will fail if there are differences to the golden master
+		re.capTest();
+	}
+}
+```
+
+### JUnit 5
+
+The following example uses JUnit 5 as test framework.
+```java
+public class ExampleRecheckTest {
+
+	static Recheck re;
+
+	@BeforeAll
+	static void setUpOnce() {
+		// Create your instance once
+		re = new RecheckImpl();
+	}
+
+	@AfterAll
+	static void tearDownOnce() {
+		// Save the report
+		re.cap();
+	}
+
+	@Test
+	void check_simple_string() {
+		re.startTest();
+
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
+
+		// Will fail if there are differences to the golden master
+		re.capTest();
+	}
+}
+```
