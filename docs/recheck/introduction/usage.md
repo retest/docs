@@ -4,7 +4,7 @@ The basic entrance point is [`Recheck`](https://github.com/retest/recheck/blob/m
 
 ## Methods
 
-The essential methods are called `check`. They accept the object, convert it to a Golden Master and save it, identified by the name passed.
+The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and save it, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
 
 !!! failure
 	If there is no extension present that can handle the passed object, an exception is thrown. As described in [installation](installation.md), you need to have an extension available that is able to do the conversion.
