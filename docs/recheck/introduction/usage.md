@@ -65,16 +65,16 @@ The following example uses JUnit 4 as test framework.
 ```java
 public class ExampleRecheckTest {
 
-	private static Recheck re;
+	private Recheck re;
 
-	@BeforeClass
-	public static void setUpOnce() {
-		// Create your instance once
+	@Before
+	public void setUp() {
+		// Create your instance
 		re = new RecheckImpl();
 	}
 
-	@AfterClass
-	public static void tearDownOnce() {
+	@After
+	public void tearDown() {
 		// Save the report
 		re.cap();
 	}
@@ -102,16 +102,16 @@ The following example uses JUnit 5 as test framework.
 ```java
 class ExampleRecheckTest {
 
-	static Recheck re;
+	Recheck re;
 
-	@BeforeAll
-	static void setUpOnce() {
-		// Create your instance once
+	@BeforeEach
+	void setUp() {
+		// Create your instance
 		re = new RecheckImpl();
 	}
 
-	@AfterAll
-	static void tearDownOnce() {
+	@AfterEach
+	void tearDown() {
 		// Save the report
 		re.cap();
 	}
