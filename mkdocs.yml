@@ -12,6 +12,7 @@ theme:
 markdown_extensions:
   - admonition
   - codehilite
+  - footnotes
 
 plugins:
   - search
@@ -44,6 +45,7 @@ nav:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
       - "recheck/introduction/usage.md"
+      - "recheck/usage/configuration.md"
       - "recheck/how-ignore-works.md"
       - "recheck/location-of-the-golden-master-files-and-test-reports.md"
       - "recheck/recheck-options.md"
