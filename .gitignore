@@ -1,5 +1,8 @@
 site/
 
+# Ignore VSCode files
+.vscode/
+
 # ignore Eclipse files
 .project
 .pydevproject
