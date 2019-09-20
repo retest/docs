@@ -6,6 +6,8 @@ theme:
   palette:
     primary: "lime"
     accent: "red"
+  feature:
+    tabs: true
 
 markdown_extensions:
   - admonition
