@@ -13,6 +13,8 @@ markdown_extensions:
   - admonition
   - codehilite
   - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
 
 plugins:
   - search
@@ -49,6 +51,7 @@ nav:
       - "recheck/introduction/installation.md"
       - "recheck/introduction/usage.md"
       - "recheck/usage/configuration.md"
+      - "recheck/usage/filter.md"
       - "recheck/how-ignore-works.md"
   - recheck-web:
       - Setup:
