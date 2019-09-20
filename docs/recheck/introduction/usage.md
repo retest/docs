@@ -60,7 +60,8 @@ An advanced use case would check different platforms, operating systems, languag
 
 ### JUnit 4
 
-The following example uses JUnit 4 as test frame work.
+The following example uses JUnit 4 as test framework.
+
 ```java
 public class ExampleRecheckTest {
 
@@ -97,8 +98,9 @@ public class ExampleRecheckTest {
 ### JUnit 5
 
 The following example uses JUnit 5 as test framework.
+
 ```java
-public class ExampleRecheckTest {
+class ExampleRecheckTest {
 
 	static Recheck re;
 
