@@ -11,6 +11,12 @@ markdown_extensions:
   - admonition
   - codehilite
 
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        "recheck/how-ignore-works-in-recheck.md": "recheck/how-ignore-works.md"
+
 repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
 extra:
