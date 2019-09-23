@@ -6,6 +6,8 @@ theme:
   palette:
     primary: "lime"
     accent: "red"
+  feature:
+    tabs: true
 
 markdown_extensions:
   - admonition
@@ -34,7 +36,10 @@ extra:
       link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
-  - Home: index.md
+  - Home:
+      - Welcome: index.md
+      - Misc:
+          - "Google Summer of Code": "misc/gsoc.md"
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
@@ -66,5 +71,3 @@ nav:
   - retest:
       - "English": "retest/en/index.md"
       - "Deutsch": "retest/de/index.md"
-  - Misc:
-      - "Google Summer of Code": "misc/gsoc.md"
