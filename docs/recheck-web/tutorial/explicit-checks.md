@@ -45,10 +45,10 @@ public class MyFirstTest {
 }
 ```
 
-The `@Before` annotated method creates both the `Recheck` instance to use, as well as the `ChromeDriver`. Notice that not all drivers work, only the ones [Selenium supports](https://docs.seleniumhq.org/about/platforms.jsp#browsers). The `@Test` annotated method first tells recheck to start the test (calling `startTest`), then load the Google start page into Chrome. Then it will recheck the current version of the page against a previous, expected version (called _Golden Master_) by invoking `check` and giving it a semantic and unique identifier.
+The `@Before` annotated method creates both the `Recheck` instance to use, as well as the `ChromeDriver`. The `@Test` annotated method first tells recheck to start the test (calling `startTest`), then load the Google start page into Chrome. Then it will recheck the current version of the page against a previous, expected version (called _Golden Master_) by invoking `check` and giving it a semantic and unique identifier.
 
 !!! tip
-	If you want to test only one specific ***WebElement***, you can call `check` for example like this: `re.check(driver.findElement( By.id( "hplogo" ) ), "open");`
+	If you only want to test specific GUI elements, you can also pass a single `WebElement` to the `check` method instead of the `WebDriver` to test the entire page.
 
 During a typical, more elaborate test, you would call `check` multiple times, each time with a unique identifier. Since differences are not that uncommon, we do not want our test to fail immediately. So the calls to the `check` method will gather all differences, but not immediately make the test fail. To make the test fail in case of differences, the `capTest` method is called at the end of the test. Should you forget to do so, then a message in the log will tell you. After the test finishes, the `@After` method shuts down Chrome by calling quit on the driver and makes recheck create a summary report file of all encountered changes by calling `cap`.
 

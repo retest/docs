@@ -4,7 +4,7 @@ When calling `Recheck#capTest()`, recheck either creates a diff in form of a tes
 
 Note that it is important to fail the test if no Golden Master can be found. As mentioned before, this always happens the first time a test gets executed, but it can also happen for a variety of other reasons. For instance, when someone forgets to add the Golden Master to the version control system or if a test or a folder is renamed. If this is the case, then you definitely want the test to fail.
 
-All Golden Masters are created under `src/test/resources/retest/recheck/` and test reports inside `target/test-classes/retest/recheck/` by default. To determine where to put the Golden Master, `RecheckImpl` uses the given [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) with the  [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java) as default. To name the tests and suites, the default for [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) is [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java).
+All Golden Masters are created under `src/test/resources/retest/recheck/` and test reports inside `target/test-classes/retest/recheck/` by default. To determine where to put the Golden Master, `RecheckImpl` uses the given [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) with the [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java) as default. To name the tests and suites, the default for [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) is [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java).
 
 ## Changing the path and NamingStrategy
 
@@ -14,15 +14,15 @@ You can use the [`ClassAndMethodBasedShortNamingStrategy`](https://github.com/re
 
 ```java
 RecheckOptions options = RecheckOptions.builder()
-		.namingStrategy( new JunitbasedShortNamingStrategy() )
+		.namingStrategy( new ClassAndMethodBasedShortNamingStrategy() )
 		.projectLayout( new GradleProjectLayout() )
 		.build();
 Recheck re = new RecheckImpl( options );
 ```
 
-An other option for a `ProjectLayout` is [`SeparatePathsProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/SeparatePathsProjectLayout.java) and [`ExplicitMutableNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ExplicitMutableNamingStrategy.java) for a `NamingStrategy`.
+Another option for a `ProjectLayout` is [`SeparatePathsProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/SeparatePathsProjectLayout.java) and [`ExplicitMutableNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ExplicitMutableNamingStrategy.java) for a `NamingStrategy`.
 
-Alternatively you can set the name without implementing the entire class, just by adding the argument to `re.startTest("testName");`
+Alternatively, if you only want to rename the method part for your test report, you can do so by adding the argument to `re.startTest( "testName" );`
 
 Suppose the following [recheck-web](https://github.com/retest/recheck-web) test:
 
