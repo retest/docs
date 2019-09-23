@@ -64,4 +64,26 @@ RecheckOptions.builder()
         .build();
 ```
 
+## Properties
+
+Some properties can be set via [system properties](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#setProperty-java.lang.String-java.lang.String-).
+
+```properties
+####################################################################################################
+# FORMAT                                                                                           #
+####################################################################################################
+
+# Description.
+# Possible values.
+key=${DEFAULT_VALUE}
+
+####################################################################################################
+# PROJECT                                                                                          #
+####################################################################################################
+
+# If set, recheck will use this path as the project root (containing e.g. the .retest folder).
+# Any valid absolute path.
+de.retest.recheck.project.root=null
+```
+
 [^1]: Note that JUnit and TestNG is supported by default through `ClassAndMethodBasedNamingStrategy`.
