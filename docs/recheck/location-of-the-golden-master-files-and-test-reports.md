@@ -1,4 +1,4 @@
-# Location of the Golden Master files and test reports
+# Location of the Golden Master Files and Test Reports
 
 When calling `Recheck#capTest()`, recheck either creates a diff in form of a test report (see below) using the existing Golden Master or—if it is the first time a test is being executed—it creates the Golden Master itself and fails the test. 
 
@@ -6,7 +6,7 @@ Note that it is important to fail the test if no Golden Master can be found. As 
 
 All Golden Masters are created under `src/test/resources/retest/recheck/` and test reports inside `target/test-classes/retest/recheck/` by default. To determine where to put the Golden Master, `RecheckImpl` uses the given [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) with the [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java) as default. To name the tests and suites, the default for [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) is [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/release/v1.5.0/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java).
 
-## Changing the path and NamingStrategy
+## Changing the Path and NamingStrategy
 
 If you want to configure where recheck puts the Golden Master files, you can do so via a piece of code. The reason for this is that we usually don't want a fixed name, but a name per test or per suite. 
 

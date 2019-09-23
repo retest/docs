@@ -5,9 +5,9 @@ This our wiki page for Google Summer of Code (GSoC) applicants. Please feel free
 * [Jeremias Rößler](https://github.com/roesslerj)
 * [Martin Vietz](https://github.com/martin-v)
 
-# Ideas list
+# Ideas List
 
-## Multiple language SDKs
+## Multiple Language SDKs
 
 _Proposal tag:_ `sdks`
 
@@ -15,7 +15,7 @@ Currently, recheck and recheck-web only offer a Java SDK. We want to provide mul
 
 Besides the concept itself, we would like to have another language prototypicaly being implemented to see how things work out. Here, we thought about Python or JavaScript with support a corresponding testing framework.
 
-## Improved serialization
+## Improved Serialization
 
 _Proposal tag:_ `serialization`
 
@@ -29,7 +29,7 @@ _Proposal tag:_ `mobile`
 
 With recheck-web we already implemented recheck for a specific GUI technology, that is, web GUIs. We would like to see a prototypical implementation for mobile (preferably Android) to see how well our approach works here.
 
-## Selenium IDE integration
+## Selenium IDE Integration
 
 _Proposal tag:_ `side`
 
@@ -37,13 +37,13 @@ The new [Selenium IDE](https://github.com/SeleniumHQ/selenium-ide) is here and a
 
 We would like to create a plugin for a) integrating recheck-web checks as well as b) using recheck-based (e.g. retest ID) locators.
 
-## Your own idea
+## Your Own Idea
 
 _Proposal tag:_ `own`
 
 Nothing you like? We are open for your own ideas, be it something based on [existing issues](https://github.com/retest/recheck/issues) or something entirely new.
 
-# Application instructions
+# Application Instructions
 
 With the GSoC, we want to give you the opportunity to dig deep into the recheck universe and become part of our great team.
 
@@ -57,7 +57,7 @@ In order to prepare for your internship, please note the following things.
 
 Besides deadlines for your proposal and your evaluation, bear in mind that GSoC is about making a lasting contribution to an open source project. That is, you are supposed to code for almost 3 months (May 27 – August 26). Make sure you are able and willing to do this.
 
-## Write a good proposal
+## Write a Good Proposal
 
 Your proposal gives us the chance to get to know you. The more we know about you, the better we can assess if we can have a great time together this summer. Make sure that you at least provide the following information:
 

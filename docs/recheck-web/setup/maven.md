@@ -1,4 +1,4 @@
-# Setting up a Project Using Maven
+# Setting Up a Project Using Maven
 
 This tutorial assumes you have [Java](https://www.java.com/) and [Maven](https://maven.apache.org/) readily installed on your system. You can verify that by opening a terminal / CMD and running
 
