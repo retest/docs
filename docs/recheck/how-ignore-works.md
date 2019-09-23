@@ -1,6 +1,6 @@
 # How ignore works
 
-## Ignore during diffing
+## Ignore During Diffing
 
 In principal, we create a diff for everything that differs and put that into the result file. Then it is up to the UI (GUI or CLI) to hide ignored differences. This is pretty much inline with how Git works – the diff is there, it just doesn't show up when ignored.
 
@@ -11,13 +11,13 @@ The advantages of this approach are as follows:
 - "Hidden" changes (technical changes that are usually invisible to the user) are treated as any other change and are presented as such. This allows to use such technical differences also in the matching algorithm.
 - It makes the diffing algorithm easier to implement.
 
-## Ignore during matching
+## Ignore During Matching
 
 When creating a diff, recheck first matches every element of the Golden Master (expected) to every element of the current state (actual). Then the diff is created for those "matched" elements. This way, it doesn't matter if the order or placement changes.
 
 But if there are irrelevant attributes that differ, they can confuse the matching algorithm. E.g. for many web pages, the ID attribute is a great identifier. But with some frameworks, the ID attribute is generated randomly.  When additional, "real" changes come on top, this can sometimes confuse the matching algorithm. So in those cases, you want to ignore the ID attribute during matching. However, these attributes are usually ignored globally. So for those cases, we have a simple [system property](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html) that can be set: `de.retest.recheck.ignore.attributes` contains a list of _globally_ ignored attributes.
 
-## Ignore differences by using the `recheck.ignore` file
+## Ignore Differences by Using the `recheck.ignore` File
 
 We currently support three different mechanisms to ignore elements, attributes or differences. It's also possible to ignore a specific attribute for an element. If a parent element is being ignored, all child elements will be ignored as well.
 
@@ -38,7 +38,7 @@ matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
 
 For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
-### Ignore by ID or tag type
+### Ignore by ID or Tag Type
 
 It is also possible to ignore an HTML element by its `id` attribute or its `tag`:
 

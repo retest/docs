@@ -22,11 +22,11 @@ Within the test phase you can execute multiple checks. The created Golden Master
 !!! warning
 	You should make sure to call the methods in their respective order. While `Recheck` will try its best to keep the lifecycle intact, it may still produce unexpected results or even errors.
 
-### Modifying the lifecycle
+### Modifying the Lifecycle
 
 A phase of the lifecycle is identified by a name that is either identified using the [`NamingStrategy`](https://github.com/retest/recheck/tree/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) or you can overwrite it by passing a `String` into the respective starting methods. If nothing is specified, `Recheck` will try to automatically identify a name. If this fails, a custom name must be specified.
 
-### Reuse Golden Master files
+### Reuse Golden Master Files
 
 This naming mechanism basically allows you to *share* Golden Masters. This can be used to test different setups for your object. A common use case would check if an operation was undone successfully (see example below).
 
@@ -56,7 +56,7 @@ An advanced use case would check different platforms, operating systems, languag
 !!! tip
 	You may use the [filtering](../how-ignore-works.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
 
-## Integration with test framework
+## Integration with Test Framework
 
 ### JUnit 4
 
