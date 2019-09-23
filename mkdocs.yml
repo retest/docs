@@ -16,6 +16,7 @@ plugins:
   - redirects:
       redirect_maps:
         "recheck/how-ignore-works-in-recheck.md": "recheck/how-ignore-works.md"
+        "recheck/reuse-golden-master-files.md": "recheck/introduction/usage.md"
 
 repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
@@ -37,9 +38,9 @@ nav:
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
+      - "recheck/introduction/usage.md"
       - "recheck/how-ignore-works.md"
       - "recheck/location-of-the-golden-master-files-and-test-reports.md"
-      - "recheck/reuse-golden-master-files.md"
       - "recheck/properties.md"
   - recheck-web:
       - Setup:
