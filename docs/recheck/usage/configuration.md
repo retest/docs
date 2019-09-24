@@ -64,6 +64,16 @@ RecheckOptions.builder()
         .build();
 ```
 
+### Using Filters
+
+If you want to use your own created filter, you may specify the full name (e.g. `"MyCustomIgnore.filter"`) of the file which can be located as described in the [filter](filter.md) documentation. 
+
+Per default, we load the [`recheck.ignore`](filter.md) files. Note that there are several methods to add/update filters:
+
+1. `RecheckOptionsBuilder#addIgnore( String )`: Will append a filter.
+2. `RecheckOptionsBuilder#setIgnore( String )`: Will overwrite the filter.
+3. `RecheckOptions#ignoreNothing()`: Will remove all filters.
+
 ## Properties
 
 Some properties can be set via [system properties](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#setProperty-java.lang.String-java.lang.String-).
