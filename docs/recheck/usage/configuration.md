@@ -64,6 +64,15 @@ RecheckOptions.builder()
         .build();
 ```
 
+### Locating Files
+
+Per default, we assume a Maven project with JUnit. The files are located under the following folders:
+
+1. Golden Masters: `src/test/resources/retest/recheck/`
+2. Reports: `target/test-classes/retest/recheck/`
+
+You may change the location of files using a custom [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) or define the name using a custom [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) as described in the [lifecycle](../introduction/usage.md).
+
 ### Using Filters
 
 If you want to use your own created filter, you may specify the full name (e.g. `"MyCustomIgnore.filter"`) of the file which can be located as described in the [filter](filter.md) documentation. 
