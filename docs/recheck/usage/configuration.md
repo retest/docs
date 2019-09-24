@@ -73,6 +73,10 @@ Per default, we assume a Maven project with JUnit. The files are located under t
 
 You may change the location of files using a custom [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) or define the name using a custom [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) as described in the [lifecycle](../introduction/usage.md).
 
+#### Upload Reports to rehub
+
+When executing your tests on a CI, you may not be able to access the created files. Thus we offer a way to [upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md) your reports to ***rehub*** so that you can update your Golden Masters.
+
 ### Using Filters
 
 If you want to use your own created filter, you may specify the full name (e.g. `"MyCustomIgnore.filter"`) of the file which can be located as described in the [filter](filter.md) documentation. 
