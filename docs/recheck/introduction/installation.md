@@ -9,13 +9,13 @@
 
 Available extensions:
 
-* [***recheck-web***](https://github.com/retest/recheck-web): *Testing websites and web applications based on [Selenium](https://www.seleniumhq.org/)*.
+* [***recheck-web***](https://github.com/retest/recheck-web): Testing websites and web applications based on [Selenium](https://www.seleniumhq.org/).
 * *More to come*
 
-Alpha extensions (Proof of concept):
+Alpha extensions (proof of concept):
 
-* [***recheck-logs***](https://github.com/retest/recheck-logs): *Verify text-based logs*.
-* [***recheck-xml***](https://github.com/retest/recheck-xml): *Verify `xml` files*.
+* [***recheck-logs***](https://github.com/retest/recheck-logs): Verify text-based logs.
+* [***recheck-xml***](https://github.com/retest/recheck-xml): Verify `xml` files.
 
 !!! tip
 	If you are developing an extension for ***recheck***, we would be happy if you [contact us](https://retest.de/contact-us/) or add your extension with a short description here.
