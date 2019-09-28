@@ -1,6 +1,6 @@
 # Installation
 
-!!! abstract 
+!!! info 
 	You should only need to define the dependency if you plan to extend ***recheck*** yourself. You may use an already implemented extension.
 
 ## Extensions
@@ -9,16 +9,19 @@
 
 Available extensions:
 
-* [***recheck-web***](https://github.com/retest/recheck-web): *Testing websites and web applications based on [Selenium](https://www.seleniumhq.org/)*.
+* [***recheck-web***](https://github.com/retest/recheck-web): Testing websites and web applications based on [Selenium](https://www.seleniumhq.org/).
 * *More to come*
 
-Alpha extensions (Proof of concept):
+Alpha extensions (proof of concept):
 
-* [***recheck-logs***](https://github.com/retest/recheck-logs): *Verify text-based logs*.
-* [***recheck-xml***](https://github.com/retest/recheck-xml): *Verify `xml` files*.
+* [***recheck-logs***](https://github.com/retest/recheck-logs): Verify text-based logs.
+* [***recheck-xml***](https://github.com/retest/recheck-xml): Verify `xml` files.
 
 !!! tip
 	If you are developing an extension for ***recheck***, we would be happy if you [contact us](https://retest.de/contact-us/) or add your extension with a short description here.
+
+!!! tip
+	Extensions, but also frontends such as the recheck.cli or review, are supposed to be compatible across [minor versions](https://semver.org/). That is, you can view reports from, e.g., recheck-web 1.5.1 with recheck.cli 1.5.0 as they both share the minor version 5, which means they use recheck 1.5.x under the hood.
 
 ## Extending recheck
 

@@ -31,18 +31,18 @@ When recheck runs for the first time, an empty `recheck.ignore` file is created 
 
 During extraction of the golden master, we generate an [XPath](https://en.wikipedia.org/wiki/XPath) for each element in the website. A typical ignore with this methods looks like this:
 
-```
-matcher: xpath=HTML[1]/BODY[1]/DIV[3], attribute: outline
-matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
+```text
+matcher: xpath=html[1]/body[1]/div[3], attribute: outline
+matcher: xpath=html[1]/body[1]/div[1]/div[1]/div[1]
 ```
 
-For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
+For the first line, the `div` element found under `html[1]/body[1]/div[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `html[1]/body[1]/div[1]/div[1]/div[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
 ### Ignore by ID or Tag Type
 
 It is also possible to ignore an HTML element by its `id` attribute or its `tag`:
 
-```
+```text
 matcher: id=title, attribute: font
 matcher: id=banner
 matcher: type=a
@@ -54,7 +54,7 @@ Please note that it is also possible to ignore a specific attribute of an elemen
 
 Also during creation of the golden master, we generate a stable id for all elements. We call this the `retestID` and it can also be used for ignoring:
 
-```
+```text
 matcher: retestid=div-b4f23, attribute: outline
 matcher: retestid=a-d7728
 ```
@@ -65,13 +65,13 @@ There is nothing really special when compared to the previously shown mechanisms
 
 You can also ignore attributes globally:
 
-```
+```text
 attribute=class
 ```
 
 This will ignore the `class` attribute for _all elements_. You can also use [Java's regex mechanism](https://docs.oracle.com/javase/10/docs/api/java/util/regex/Pattern.html) and ignore attributes by a given pattern:
 
-```
+```text
 matcher: type:input, attribute-regex: border-.*-color
 attribute-regex= .*
 ```
@@ -83,7 +83,7 @@ The latter can be sensible if you want to use the "unbreakable" mechanism of rec
 
 Minor visual differences (e.g. between different browser types or browser versions) can make traditional, pixel-based approaches fail, which means more manual maintenance effort. In recheck, one can easily ignore pixel differences that are unimportant from a user's point of view:
 
-```
+```text
 pixel-diff=5
 ```
 
@@ -93,7 +93,7 @@ This would ignore every pixel difference (position- or size change) up to 5 pixe
 
 We also added a mechanism to specify "ignore rules" in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)). This allows users to specify ignore rules very flexibly, by implementing either of the following methods: 
 
-```
+```js
 matches(element) {}
 matches(element, diff) {}
 ```
