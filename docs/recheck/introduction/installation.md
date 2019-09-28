@@ -1,6 +1,6 @@
 # Installation
 
-!!! abstract 
+!!! info 
 	You should only need to define the dependency if you plan to extend ***recheck*** yourself. You may use an already implemented extension.
 
 ## Extensions
