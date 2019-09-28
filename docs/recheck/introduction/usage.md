@@ -56,14 +56,14 @@ An advanced use case would check different platforms, operating systems, languag
 !!! tip
 	You may use the [filtering](../how-ignore-works.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
 
-## Integration with Test Framework
+## Integration in Test Frameworks and Plain Java
 
-### JUnit 4
+### JUnit 4 (Vintage)
 
 The following example uses JUnit 4 as test framework.
 
 ```java
-public class ExampleRecheckTest {
+public class JUnit4ExampleRecheckTest {
 
 	private Recheck re;
 
@@ -95,12 +95,12 @@ public class ExampleRecheckTest {
 }
 ```
 
-### JUnit 5
+### JUnit 5 (Jupiter)
 
 The following example uses JUnit 5 as test framework.
 
 ```java
-class ExampleRecheckTest {
+class JUnit5ExampleRecheckTest {
 
 	Recheck re;
 
@@ -128,6 +128,69 @@ class ExampleRecheckTest {
 
 		// Will fail if there are differences to the golden master
 		re.capTest();
+	}
+}
+```
+
+### TestNG
+
+```java
+class TestNGExampleRecheckTest {
+
+	Recheck re;
+
+	@BeforeMethod
+	void setUp() {
+		// Create your instance
+		re = new RecheckImpl();
+	}
+
+	@AfterMethod
+	void tearDown() {
+		// Save the report
+		re.cap();
+	}
+
+	@Test
+	void check_simple_string() {
+		re.startTest();
+
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
+
+		// Will fail if there are differences to the golden master
+		re.capTest();
+	}
+}
+```
+
+### Plain Java
+
+```java
+class PlainJavaExampleRecheckTest {
+
+	public static void main( String[] args ) {
+		// Create your instance
+		var re = new RecheckImpl();
+
+		try {
+			re.startTest();
+
+			// Create your object to check. An appropriate adapter must be present
+			final var object = ...;
+
+			// Create a golden master or check against, does not throw
+			re.check( object, "check-name" );
+
+			// Will fail if there are differences to the golden master
+			re.capTest();
+		} finally {
+			// Save the report
+			re.cap();
+		}
 	}
 }
 ```
