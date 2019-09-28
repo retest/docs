@@ -32,11 +32,11 @@ When recheck runs for the first time, an empty `recheck.ignore` file is created 
 During extraction of the golden master, we generate an [XPath](https://en.wikipedia.org/wiki/XPath) for each element in the website. A typical ignore with this methods looks like this:
 
 ```text
-matcher: xpath=HTML[1]/BODY[1]/DIV[3], attribute: outline
-matcher: xpath=HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]
+matcher: xpath=html[1]/body[1]/div[3], attribute: outline
+matcher: xpath=html[1]/body[1]/div[1]/div[1]/div[1]
 ```
 
-For the first line, the `div` element found under `HTML[1]/BODY[1]/DIV[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `HTML[1]/BODY[1]/DIV[1]/DIV[1]/DIV[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
+For the first line, the `div` element found under `html[1]/body[1]/div[3]` the `outline` attribute is being ignored. The second line ignores the `div` element in `html[1]/body[1]/div[1]/div[1]/div[1]` and all child elements. If you want to ignore elements that appear and disappear, using XPath is also the recommended approach.
 
 ### Ignore by ID or Tag Type
 
