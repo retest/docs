@@ -32,9 +32,10 @@ RecheckOptions options = RecheckOptions.builder()
 The options can be easily passed to the [`RecheckImpl`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckImpl.java).
 
 ```java
-Recheck re = new RecheckImpl( RecheckOptions.builder()
+Recheckoptions opts = RecheckOptions.builder()
     // Do your configuration here
-    .build() );
+    .build();
+Recheck re = new RecheckImpl( opts );
 ```
 
 !!! note
