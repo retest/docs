@@ -10,7 +10,7 @@ The advantages of this approach are as follows:
 
 ### What Are Filters?
 
-Filters can be used to reduce the noise mentioned above within a report. The can accept two different arguments:
+Filters can be used to reduce the noise mentioned above within a report. They can accept two different arguments:
 
 1. **Element**: Filter based on the criteria of the element. This can be used to specify an element of interest or ignore an always changing element.
 2. **Difference**: Filter based on the difference, with the element giving additional context information.
@@ -31,7 +31,7 @@ By default, filters are used as text files, so that they are reusable within dif
 3. Provided filters from ***recheck***. We [ship](https://github.com/retest/recheck/tree/master/src/main/resources/filter) some filters.
 
 !!! tip
-    You may overwrite filters by using the same name. They are searched top-down. That means, that filters project filters overwrite user filters, which in turn overwrite the provided filters.
+    You may overwrite filters by using the same name. They are searched top-down. That is, project filters overwrite user filters, which in turn overwrite the provided filters.
 
 ### Ignore Filters
 
@@ -42,6 +42,7 @@ Ignores are a special kind of filters which (by default) are loaded automaticall
 3. **WIP**: For each step (i.e test). *Must be created manually*.
 
 Using the default setup, that would be:
+
 ```
 ${PROJECT_ROOT}
 +-- .retest/
@@ -56,7 +57,7 @@ ${PROJECT_ROOT}
 
 ## Usage
 
-Filters must be specified by name and given to the `RecheckOptions` as described [here](configuration.md). That is to make them usable within different products so that no information is lost. That means, if you configure a filter within `RecheckOptions` (see below), you may want to use the same filter within ***review***, so that the reporting of the differences do not differ.
+Filters must be specified by name and given to the `RecheckOptions` as described [here](configuration.md). That is, to make them usable within different products such that no information is lost. So, if you configure a filter within `RecheckOptions` (see below), you may want to use the same filter within ***review*** too, that differences during test and review remain the same.
 
 ### RecheckOptions
 
@@ -81,7 +82,7 @@ If you do not specify an ignore like above, `Recheck` will load the default igno
 
 This is a filter file which supports rules with the syntax below. They are normal text files and can be opened by any text editor.
 
-This file will be updated through the UI (***review*** or ***recheck.cli***) if you ignore any elements or differences. They try their best keep your custom defined rules and custom formatting.
+This file will be updated through the UI (***review*** or ***recheck.cli***) if you ignore any elements or differences. We try our best keep your custom-defined rules and respect the existing formatting.
 
 #### recheck.ignore.js
 
@@ -109,10 +110,10 @@ matches( element : Element, diff ?: AttributeDifference ) : bool;
 
 ## Syntax
 
-You may define filters in a file with the `.filter` extension that is located in one of the three locations above. Since filters are additive, evaluated top to bottom, each line represents a own filter. Thus a file may represent a group of filters that can be combined to one topic.
+You may define filters in a file with the `.filter` extension that is located in one of the two locations above. Since filters are additive, evaluated top to bottom, each line represents a separate filter. Thus, a file may represent a group of filters that can be combined to one topic (e.g. color differences).
 
 !!! warning
-    If a filter (i.e. line) does not represent a valid syntax or comment, an error will be logged and the line ignored.
+    If a filter (i.e. line) does not represent a valid syntax or comment, an error will be logged and the line is ignored.
 
 ### Comments
 
@@ -126,7 +127,7 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 ### Expressions
 
-A filter is built up using one or multiple expressions. They may be chained using a comma with a whitespace <code>,&blank;</code>. Note that the order of the expressions is important, which is lazily executed from left to right and stop once an expression does not match anymore.
+A filter is built up using one or multiple expressions. They may be chained using a comma with a whitespace `, `. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore.
 
 We currently support these expressions (chained expresions are included ):
 
@@ -145,23 +146,23 @@ Elements are identified by one special attribute `$key`, so called *identifying 
 matcher: $key=$value
 ```
 
-| `$key`     | `$value` (Example)       | Notes                                                                                    |
-| ---------- | ------------------------ | ---------------------------------------------------------------------------------------- |
-| `xpath`    | `html[1]/body[1]/div[1]` | Note that this does not fully support XPath queries.<br>*This is the default mechanism.* |
-| `retestid` | `div-b4f23`              | An unique, stable id for an element, that is generated by `Recheck`.                     |
-| `type`     | `button`                 |                                                                                          |
-| `id`       | `myId`                   | Supplied by ***recheck-web***                                                            |
+| `$key`     | `$value` (Example)       | Notes                                                                                  |
+| ---------- | ------------------------ | -------------------------------------------------------------------------------------- |
+| `xpath`    | `html[1]/body[1]/div[1]` | Note that this does only supports absolute XPaths.<br>*This is the default mechanism.* |
+| `retestid` | `div-b4f23`              | A unique, stable ID for an element, that is generated by ***recheck***.                |
+| `type`     | `button`                 |                                                                                        |
+| `id`       | `myId`                   | Supplied by ***recheck-web***                                                          |
 
-### Matching attributes
+### Matching Attributes
 
 You can filter specific attributes that occur in differences by their respective name.
 
 !!! note
-    An extension specifies which *attributes* (as well as *identifying attributes*) it creates for an element and thus difference. Please refer to extensions' documentation for that information.
+    An extension specifies which *attributes* (as well as *identifying attributes*) it creates for an element. Their name is displayed in the corresponding difference. Please refer to extensions' documentation for that information.
 
 #### By Value
 
-If you are searching for a specific name, you may define the `attribute` expression. The value specified must match fully in order for the filter to return `true`.
+If you are searching for a specific name, you may define the `attribute` expression. The value specified must match fully in order to let the filter return `true`.
 
 ```text
 # Match the attribute outline only on the elements of type input
@@ -194,4 +195,4 @@ pixel-diff=5.5
 
 This would ignore every pixel difference (position- or size change) up to 5 pixels. You can either specify an integer or a float.
 
-[^1]: We are aware that this will be removed from a future JDK release and will adapt an alternative until then.
+[^1]: We are aware that this will be removed from a future JDK release and will provide an alternative until then.
