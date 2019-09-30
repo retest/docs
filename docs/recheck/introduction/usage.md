@@ -11,7 +11,7 @@ The essential methods are called `check`. Upon first execution, the object is co
 
 ## Lifecycle
 
-To [locate](../location-of-the-golden-master-files-and-test-reports.md) the Golden Master (if present), `Recheck` uses a [lifecycle](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckLifecycle.java) so that differences can be identified. The lifecycle of `Recheck` can be described with three phases, where the earlier stages surround one or more of the directly following stage:
+To [locate](../usage/configuration.md) the Golden Master (if present), `Recheck` uses a [lifecycle](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckLifecycle.java) so that differences can be identified. The lifecycle of `Recheck` can be described with three phases, where the earlier stages surround one or more of the directly following stage:
 
 1. Report: This is independent of the actual `Recheck` instance. It will simply collect all generated reports into one `tests.report`, while preserving the individual reports per suite. This phase is usually bound to the JVM.
 2. Suite: Defined by the `Recheck` instance (e.g. a test class within JUnit). It is started by creating a new instance and ended by `Recheck#cap()`, which will save the individual report containing all the differences encountered.
@@ -54,7 +54,7 @@ re.capTest();
 An advanced use case would check different platforms, operating systems, languages, etc., and verify that those is the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
 
 !!! tip
-	You may use the [filtering](../how-ignore-works.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
+	You may use the [filtering](../usage/filter.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
 
 ## Integration in Test Frameworks and Plain Java
 
