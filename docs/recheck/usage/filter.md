@@ -84,13 +84,11 @@ This file will be updated through the UI (***review*** or ***recheck.cli***) if 
 
 This is a filter file which supports dynamic rules in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine))[^1]. This allows users to specify ignore rules very flexibly by using the below method:
 
-```ts
-matches( element : Element, diff ?: AttributeDifference ) : bool;
+```js
+matches( element, diff );
 ```
 
 ??? info "Method description"
-    Keep in mind that this method is only expressed in TypeScript syntax for better readability. We do not support TypeScript at the moment.
-
     **Arguments**:
 
     - `element` [(`Element`)](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/descriptors/Element.java): The element on which the difference occurred.  
