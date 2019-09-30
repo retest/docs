@@ -25,6 +25,7 @@ plugins:
         "recheck/properties.md": "recheck/usage/configuration.md"
         "recheck/recheck-options.md": "recheck/usage/configuration.md"
         "recheck/location-of-the-golden-master-files-and-test-reports.md": "recheck/usage/configuration.md"
+        "recheck/how-ignore-works.md": "recheck/usage/filter.md"
 
 repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
@@ -52,7 +53,6 @@ nav:
       - "recheck/introduction/usage.md"
       - "recheck/usage/configuration.md"
       - "recheck/usage/filter.md"
-      - "recheck/how-ignore-works.md"
   - recheck-web:
       - Setup:
           - "recheck-web/setup/maven.md"
