@@ -54,7 +54,7 @@ re.capTest();
 An advanced use case would check different platforms, operating systems, languages, etc., and verify that those is the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
 
 !!! tip
-	You may use the [filtering](../how-ignore-works.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
+	You may use the [filtering](../usage/filter.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
 
 ## Integration in Test Frameworks and Plain Java
 
