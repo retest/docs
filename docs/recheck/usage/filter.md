@@ -39,7 +39,6 @@ Ignores are a special kind of filters which (by default) are loaded automaticall
 
 1. Globally: `${PROJECT_ROOT}/.retest/`. *Will be created on first run*.
 2. For each Golden Master (i.e. suite). *Must be created manually*.
-3. **WIP**: For each step (i.e test). *Must be created manually*.
 
 Using the default setup, that would be:
 
@@ -50,9 +49,6 @@ ${PROJECT_ROOT}
 +-- src/test/resources/retest/recheck/
     +-- ${SUITE_NAME}
         +-- recheck.ignore (level 2)
-        +-- ${TEST_NAME}.${CHECK_NAME}.recheck
-            +-- recheck.ignore (level 3)
-            +-- retest.xml
 ```
 
 ## Usage
