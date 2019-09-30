@@ -20,7 +20,7 @@ plugins:
   - search
   - redirects:
       redirect_maps:
-        "recheck/how-ignore-works-in-recheck.md": "recheck/how-ignore-works.md"
+        "recheck/how-ignore-works-in-recheck.md": "recheck/usage/filter.md"
         "recheck/reuse-golden-master-files.md": "recheck/introduction/usage.md"
         "recheck/properties.md": "recheck/usage/configuration.md"
         "recheck/recheck-options.md": "recheck/usage/configuration.md"
