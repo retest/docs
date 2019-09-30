@@ -8,7 +8,7 @@ The advantages of this approach are as follows:
 - *Hidden* changes (technical changes that are usually invisible to the user) are treated as any other change and are presented as such.
 - You can change the rules of what to ignore and instantly see the impact.
 
-### What are filters?
+### What Are Filters?
 
 Filters can be used to reduce the noise mentioned above within a report. The can accept two different arguments:
 
@@ -136,7 +136,7 @@ $attribute
 $element, $attribute
 ```  
 
-### Matching elements
+### Matching Elements
 
 Elements are identified by one special attribute `$key`, so called *identifying attributes*. If you directly match an element with no additional exprssions (e.g. attributes), all of its child elements are ignored too.
 
@@ -159,7 +159,7 @@ You can filter specific attributes that occur in differences by their respective
 !!! note
     An extension specifies which *attributes* (as well as *identifying attributes*) it creates for an element and thus difference. Please refer to extensions' documentation for that information.
 
-#### By value
+#### By Value
 
 If you are searching for a specific name, you may define the `attribute` expression. The value specified must match fully in order for the filter to return `true`.
 
@@ -171,7 +171,7 @@ matcher: type=input, attribute: outline
 attribute=outline
 ```
 
-#### By regular expression
+#### By Regular Expression
 
 Similarly, you can also use [Java's regex mechanism](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) and ignore attributes by a given pattern.
 
@@ -183,7 +183,7 @@ matcher: type=input, attribute-regex: border-.*-color
 attribute-regex=border-.*-color
 ```
 
-### Ignore pixel differences
+### Ignore Pixel Differences
 
 Minor visual differences (e.g. between different browser types or browser versions) can make traditional, pixel-based approaches fail, which means more manual maintenance effort. In ***recheck***, one can easily ignore pixel differences that are unimportant from a user's point of view:
 
