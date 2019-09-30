@@ -60,13 +60,13 @@ Filters must be specified by name and given to the `RecheckOptions` as described
 
 ### RecheckOptions
 
-```
+```java
 RecheckOptions.builder() 
     .addIgnore( "my-custom-filter.filter" ) 
     .build();
 ```
 
-```
+```text
 # my-custom-filter.filter
 
 # Define your rules here:
