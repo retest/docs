@@ -44,10 +44,7 @@ extra:
       link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
-  - Home:
-      - Welcome: index.md
-      - Misc:
-          - "Google Summer of Code": "misc/gsoc.md"
+  - Home: index.md
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
