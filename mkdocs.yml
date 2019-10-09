@@ -3,6 +3,7 @@ site_name: retest docs
 theme:
   name: material
   favicon: "assets/images/favicon.ico"
+  logo: "assets/images/logo.svg"
   palette:
     primary: "lime"
     accent: "red"
