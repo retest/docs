@@ -44,8 +44,7 @@ extra:
       link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
-  - Home:
-      - Welcome: index.md
+  - Home: index.md
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
