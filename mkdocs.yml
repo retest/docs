@@ -46,8 +46,6 @@ extra:
 nav:
   - Home:
       - Welcome: index.md
-      - Misc:
-          - "Google Summer of Code": "misc/gsoc.md"
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
