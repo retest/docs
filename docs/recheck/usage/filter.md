@@ -133,7 +133,7 @@ $element, $attribute
 
 ### Matching Elements
 
-Elements are identified by one special attribute `$key`, so called *identifying attributes*. If you directly match an element with no additional exprssions (e.g. attributes), all of its child elements are ignored too.
+Elements are identified by one special attribute `$key`, so called *identifying attributes*. If you directly match an element with no additional expressions (e.g. attributes), all of its child elements are ignored too.
 
 ```text
 # Match the element where its attribute $key fully matches the $value
