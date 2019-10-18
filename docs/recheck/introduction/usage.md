@@ -4,7 +4,7 @@ The basic entrance point is [`Recheck`](https://github.com/retest/recheck/blob/m
 
 ## Methods
 
-The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and save it, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
+The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and saved, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
 
 !!! failure
 	If there is no extension present that can handle the passed object, an exception is thrown. As described in [installation](installation.md), you need to have an extension available that is able to do the conversion.
@@ -54,7 +54,7 @@ re.check( object, "initial" );
 re.capTest();
 ```
 
-An advanced use case would check different platforms, operating systems, languages, etc., and verify that those is the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
+An advanced use case would check different platforms, operating systems, languages, etc., and verify that those are the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
 
 !!! tip
 	You may use the [filtering](../usage/filter.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
