@@ -22,6 +22,9 @@ Within the test phase you can execute multiple checks. The created Golden Master
 !!! warning
 	You should make sure to call the methods in their respective order. While `Recheck` will try its best to keep the lifecycle intact, it may still produce unexpected results or even errors.
 
+!!! tip
+	You can use the corresponding extension for the test framework of your choice to keep the lifecycle intact.
+
 ### Modifying the Lifecycle
 
 A phase of the lifecycle is identified by a name that is either identified using the [`NamingStrategy`](https://github.com/retest/recheck/tree/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) or you can overwrite it by passing a `String` into the respective starting methods. If nothing is specified, `Recheck` will try to automatically identify a name based on a valid test annotation for a class. If this fails or produces an incorrect name, a custom name must be specified.
@@ -60,7 +63,9 @@ An advanced use case would check different platforms, operating systems, languag
 
 ### JUnit 4 (Vintage)
 
-The following example uses JUnit 4 as test framework.
+The following examples use JUnit 4 as test framework.
+
+#### Using plain JUnit 4
 
 ```java
 public class JUnit4ExampleRecheckTest {
@@ -95,9 +100,41 @@ public class JUnit4ExampleRecheckTest {
 }
 ```
 
+#### Using recheck's JUnit 4 extension
+
+```java
+public class JUnit4ExampleRecheckUsingExtensionTest {
+
+	@Rule
+	public final RecheckRule recheckRule = new RecheckRule();
+
+	private Recheck re;
+
+	@Before
+	public void setUp() {
+		// Create your instance
+		re = new RecheckImpl();
+		// Will start and cap the test
+		recheckRule.use( re );
+	}
+
+	@Test
+	public void check_simple_string() {
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
+	}
+}
+```
+
+
 ### JUnit 5 (Jupiter)
 
-The following example uses JUnit 5 as test framework.
+The following examples use JUnit 5 as test framework.
+
+#### Using plain JUnit 5
 
 ```java
 class JUnit5ExampleRecheckTest {
@@ -128,6 +165,32 @@ class JUnit5ExampleRecheckTest {
 
 		// Will fail if there are differences to the golden master
 		re.capTest();
+	}
+}
+```
+
+#### Using recheck's JUnit 5 extension
+
+```java
+// Add the extension to start and cap the test
+@ExtendWith( RecheckExtension.class )
+class JUnit5ExampleRecheckUsingExtensionTest {
+
+	Recheck re;
+
+	@BeforeEach
+	void setUp() {
+		// Create your instance
+		re = new RecheckImpl();
+	}
+
+	@Test
+	void check_simple_string() {
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
 	}
 }
 ```
