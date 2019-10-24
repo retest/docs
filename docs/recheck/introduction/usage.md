@@ -23,7 +23,7 @@ Within the test phase you can execute multiple checks. The created Golden Master
 	You should make sure to call the methods in their respective order. While `Recheck` will try its best to keep the lifecycle intact, it may still produce unexpected results or even errors.
 
 !!! tip
-	You can use the corresponding extension for the test framework of your choice to keep the lifecycle intact.
+	You can use the corresponding extension for the test framework of your choice to administer the lifecycle so that the lifecycle methods will be called at the appropriate times.
 
 ### Modifying the Lifecycle
 
