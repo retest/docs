@@ -24,6 +24,8 @@ Within the test phase you can execute multiple checks. The created Golden Master
 
 !!! tip
 	You can use the corresponding extension for the test framework of your choice to administer the lifecycle so that the lifecycle methods will be called at the appropriate times.
+	* [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension)
+	* [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension)
 
 ### Modifying the Lifecycle
 
@@ -102,9 +104,12 @@ public class JUnit4ExampleRecheckTest {
 
 #### Using recheck's JUnit 4 extension
 
+Recheck's JUnit 4 extension can be found at [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension). It automatically ensurs the lifecycle of recheck tests in [JUnit 4](https://junit.org/junit4/).
+
 ```java
 public class JUnit4ExampleRecheckUsingExtensionTest {
 
+	// Will start and cap the test
 	@Rule
 	public final RecheckRule recheckRule = new RecheckRule();
 
@@ -114,7 +119,7 @@ public class JUnit4ExampleRecheckUsingExtensionTest {
 	public void setUp() {
 		// Create your instance
 		re = new RecheckImpl();
-		// Will start and cap the test
+		// Ensure the rule knows your Recheck instance
 		recheckRule.use( re );
 	}
 
@@ -170,6 +175,8 @@ class JUnit5ExampleRecheckTest {
 ```
 
 #### Using recheck's JUnit 5 extension
+
+Recheck's JUnit Jupiter extension can be found at [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 5](https://junit.org/junit5/).
 
 ```java
 // Add the extension to start and cap the test
