@@ -34,7 +34,7 @@ Commands:
 Now we want to automatically ignore all irrelevant changes. To do that, simply type something like (using your name and setup) `recheck ignore --all target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report` (more on reports below). This will automatically add the following line to your `recheck.ignore` file:
 
 ```text
-matcher: xpath=HTML[1]/BODY[1]/DIV[1]/P[3]/IFRAME[1], attribute: src
+matcher: retestId=iframe-1, attribute: src
 ```
 
 This makes recheck ignore just one attribute of one element, a Twitter API-related IFrame. Re-running your test should show a successful build and a passing test. Next, let’s use your regular browser to go to the URL you open in your test (e.g. http://scratchpad.io/recheck-45678) and edit the displayed content. For instance, replace `<h1>Welcome to <span>scratchpad.io</span></h1><br>` on the left-hand side of the website with `<h1>Welcome to <span>recheck</span></h1><br>`. Doing so and re-running the test should result in the following output:
