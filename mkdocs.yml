@@ -21,6 +21,10 @@ plugins:
   - search
   - redirects:
       redirect_maps:
+        # Official redirects
+        "code-of-conduct.md": "contributing/code-of-conduct.md"
+        "contributing.md": "contributing/guidelines.md"
+        # Legacy/Moved sites
         "recheck/how-ignore-works-in-recheck.md": "recheck/usage/filter.md"
         "recheck/reuse-golden-master-files.md": "recheck/introduction/usage.md"
         "recheck/properties.md": "recheck/usage/configuration.md"
