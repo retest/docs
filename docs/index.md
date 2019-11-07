@@ -10,12 +10,4 @@ This is the documentation for various [***retest***](https://retest.de/product-o
 
 ## Contributing
 
-You are invited to change or improve any part of the documentation or even contribute to the respective open source products with features, bug fixes or issues. 
-
-Just click on the pen next to the title, fork the repository if necessary and create a [pull request](https://github.com/retest/docs/pulls).
-
-### Creating a pull request
-
-1. **Development**: Please setup the [development environment](https://github.com/retest/docs/blob/master/README.md) and make the changes in a separate branch. We prefer the `feature/${branch-name}` model. Please try to add descriptive commit messages.
-2. **Build**: Make sure that you can build and serve the documentation. Verify that your changes are displayed correctly. We have integrated Travis to perform the build step; refer to the Travis [documentation](https://docs.travis-ci.com/) on how to get started.
-3. **Pull Request**: Create a pull request for `retest/docs:master`. Your pull request will be built automatically; if there are any errors, please try to fix them or allow edits by maintainers. If we suggest changes, discuss or perform them, and lastly, rebase and push your branch.
+Please be sure to read the [code-of-conduct](code-of-conduct.md) and [contributing](contributing.md) guidelines.
