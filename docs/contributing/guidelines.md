@@ -1,4 +1,4 @@
-# Contributing
+# Contributing Guidelines
 
 Thank you for taking interest in contributing to our repositories. You are invited to change or improve any part of the documentation or other open source products with features, bug fixes or issues. 
 

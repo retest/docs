@@ -45,6 +45,9 @@ extra:
 
 nav:
   - Home: index.md
+  - Contributing:
+      - "Code of Conduct": contributing/code-of-conduct.md
+      - "Guidelines": contributing/guidelines.md
   - recheck:
       - "recheck/introduction/index.md"
       - "recheck/introduction/installation.md"
