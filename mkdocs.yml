@@ -78,3 +78,5 @@ nav:
   - recheck.cli:
       - "recheck.cli/setup.md"
       - "recheck.cli/maintain-golden-master.md"
+  - review:
+      - "review/usage-and-maintaining.md"
