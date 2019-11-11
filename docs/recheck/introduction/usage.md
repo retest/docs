@@ -24,7 +24,7 @@ Within the test phase you can execute multiple checks. The created Golden Master
 
 ### Modifying the Lifecycle
 
-A phase of the lifecycle is identified by a name that is either identified using the [`NamingStrategy`](https://github.com/retest/recheck/tree/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) or you can overwrite it by passing a `String` into the respective starting methods. If nothing is specified, `Recheck` will try to automatically identify a name. If this fails, a custom name must be specified.
+A phase of the lifecycle is identified by a name that is either identified using the [`NamingStrategy`](https://github.com/retest/recheck/tree/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) or you can overwrite it by passing a `String` into the respective starting methods. If nothing is specified, `Recheck` will try to automatically identify a name based on a valid test annotation for a class. If this fails or produces an incorrect name, a custom name must be specified.
 
 ### Reuse Golden Master Files
 
