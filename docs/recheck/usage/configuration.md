@@ -19,13 +19,16 @@ Tools we do not (actively) use, but support:
 
 ## RecheckOptions
 
-The [`RecheckOptions`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckOptions.java) are used to configure the behavior of `Recheck`. They use the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) and cannot be changed, once they are created (i.e. they are immutable).
+The [`RecheckOptions`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckOptions.java) are used to configure the behavior of `Recheck` or similar classes that may use a `Recheck` instance internally. They use the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) and cannot be changed, once they are created (i.e. they are immutable).
 
 ```java
 RecheckOptions options = RecheckOptions.builder()
     // Do your configuration here
     .build()
 ```
+
+!!! warning
+    If the default or automatic systems does not fit your needs or produce the wrong results, you must specify the respective options manually.
 
 ### Usage
 
@@ -45,13 +48,15 @@ Recheck re = new RecheckImpl( opts );
 
 Below is a list of the available options you may configure with corresponding methods on `RecheckOptionsBuilder`. Please refer to the detailed sections below.
 
-| Option                | Default                                                                                                                                                                 | Description                                                                                    |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `namingStrategy`      | [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java) | Defines the name for the phase of the [lifecycle](../introduction/usage.md).                   |
-| `projectLayout`       | [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java)                               | Defines where the Golden Masters and reports are located.                                      |
-| `suiteName`           | `null`                                                                                                                                                                  | Overwrite the name for the suite.<br>If `null`, `NamingStrategy#getSuiteName()` is used.       |
-| `reportUploadEnabled` | `false`                                                                                                                                                                 | Upload reports to [***rehub***](https://retest.de/rehub/).                                     |
-| `ignore`              | `recheck.ignore`                                                                                                                                                        | Set the filter used for reporting the differences after a test phase.<br>*See examples below*. |
+All options annotated with *"Evaluate"* below will be queried with the creation of the `RecheckOptions` instance, either retrieving (by the methods described), instantiating or loading the proper value.
+
+| Option                | Default                                                                                                                                                                 | Description                                                                                    | Evaluate |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------- |
+| `namingStrategy`      | [`ClassAndMethodBasedNamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ClassAndMethodBasedNamingStrategy.java) | Defines the name for the phase of the [lifecycle](../introduction/usage.md).                   |          |
+| `projectLayout`       | [`MavenProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/MavenProjectLayout.java)                               | Defines where the Golden Masters and reports are located.                                      |          |
+| `suiteName`           | `null`                                                                                                                                                                  | Overwrite the name for the suite.<br>If `null`, `NamingStrategy#getSuiteName()` is used.       | true     |
+| `reportUploadEnabled` | `false`                                                                                                                                                                 | Upload reports to [***rehub***](https://retest.de/rehub/).                                     |          |
+| `ignore`              | `recheck.ignore`                                                                                                                                                        | Set the filter used for reporting the differences after a test phase.<br>*See examples below*. | true     |
 
 ### Example
 
@@ -74,15 +79,18 @@ Per default, we assume a Maven project with JUnit. The files are located under t
 
 You may change the location of files using a custom [`ProjectLayout`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/ProjectLayout.java) or define the name using a custom [`NamingStrategy`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/persistence/NamingStrategy.java) as described in the [lifecycle](../introduction/usage.md).
 
+!!! warning
+    The `suiteName` is evaluated to provide a consistent name for the `RecheckOptions`. The automatic system does not work with some usages (e.g. inheritance) and thus require a custom `suiteName` to be defined.
+
 #### Upload Reports to rehub
 
 When executing your tests on a CI, it may not be straightforward to access the created reports. For this we offer a way to [upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md) your reports to ***rehub*** so that you can easily update your Golden Masters.
 
 ### Using Filters
 
-If you want to use your own created filter, you may specify the full name (e.g. `"MyCustomIgnore.filter"`) of the file which can be located as described in the [filter](filter.md) documentation. 
+Per default, we load the `recheck.ignore` files as specified in [filters](filter.md). Thus, the `suiteName` is a required dependency to be evaluated before, so that the filters are loaded from the correct Golden Master.
 
-Per default, we load the [`recheck.ignore`](filter.md) file. Note that there are several methods to add/update filters:
+If you want specify additional filters (e.g. your custom project filters), you may use their full name (e.g. `"MyCustomIgnore.filter"`). There are several methods to add, update or disable filters:
 
 1. `RecheckOptionsBuilder#addIgnore( String )`: Will append a filter.
 2. `RecheckOptionsBuilder#setIgnore( String )`: Will overwrite the filter.
