@@ -4,7 +4,7 @@ The basic entrance point is [`Recheck`](https://github.com/retest/recheck/blob/m
 
 ## Methods
 
-The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and save it, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
+The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and saved, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
 
 !!! failure
 	If there is no extension present that can handle the passed object, an exception is thrown. As described in [installation](installation.md), you need to have an extension available that is able to do the conversion.
@@ -21,6 +21,12 @@ Within the test phase you can execute multiple checks. The created Golden Master
 
 !!! warning
 	You should make sure to call the methods in their respective order. While `Recheck` will try its best to keep the lifecycle intact, it may still produce unexpected results or even errors.
+
+!!! tip
+	You can use the corresponding extension for the test framework of your choice to administer the lifecycle so that the lifecycle methods will be called at the appropriate times.
+	
+	* [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension)
+	* [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension)
 
 ### Modifying the Lifecycle
 
@@ -51,7 +57,7 @@ re.check( object, "initial" );
 re.capTest();
 ```
 
-An advanced use case would check different platforms, operating systems, languages, etc., and verify that those is the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
+An advanced use case would check different platforms, operating systems, languages, etc., and verify that those are the same. Ideally this would not happen within a single test phase (depending on your test framework), but encompass multiple test phases or even suite phases.
 
 !!! tip
 	You may use the [filtering](../usage/filter.md) mechanism to ignore expected differences. As an example for a language change you would ignore the text, because it changes as you would expect. Thus, you manipulate the definition of *same* by ignoring expected differences, while still allowing for other differences to be captured.
@@ -60,7 +66,9 @@ An advanced use case would check different platforms, operating systems, languag
 
 ### JUnit 4 (Vintage)
 
-The following example uses JUnit 4 as test framework.
+The following examples use JUnit 4 as test framework.
+
+#### Using plain JUnit 4
 
 ```java
 public class JUnit4ExampleRecheckTest {
@@ -95,9 +103,44 @@ public class JUnit4ExampleRecheckTest {
 }
 ```
 
+#### Using recheck's JUnit 4 extension
+
+Recheck's JUnit 4 extension can be found at [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension). It automatically ensurs the lifecycle of recheck tests in [JUnit 4](https://junit.org/junit4/).
+
+```java
+public class JUnit4ExampleRecheckUsingExtensionTest {
+
+	// Will start and cap the test
+	@Rule
+	public final RecheckRule recheckRule = new RecheckRule();
+
+	private Recheck re;
+
+	@Before
+	public void setUp() {
+		// Create your instance
+		re = new RecheckImpl();
+		// Ensure the rule knows your Recheck instance
+		recheckRule.use( re );
+	}
+
+	@Test
+	public void check_simple_string() {
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
+	}
+}
+```
+
+
 ### JUnit 5 (Jupiter)
 
-The following example uses JUnit 5 as test framework.
+The following examples use JUnit 5 as test framework.
+
+#### Using plain JUnit 5
 
 ```java
 class JUnit5ExampleRecheckTest {
@@ -128,6 +171,34 @@ class JUnit5ExampleRecheckTest {
 
 		// Will fail if there are differences to the golden master
 		re.capTest();
+	}
+}
+```
+
+#### Using recheck's JUnit 5 extension
+
+Recheck's JUnit Jupiter extension can be found at [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 5](https://junit.org/junit5/).
+
+```java
+// Add the extension to start and cap the test
+@ExtendWith( RecheckExtension.class )
+class JUnit5ExampleRecheckUsingExtensionTest {
+
+	Recheck re;
+
+	@BeforeEach
+	void setUp() {
+		// Create your instance
+		re = new RecheckImpl();
+	}
+
+	@Test
+	void check_simple_string() {
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
 	}
 }
 ```
