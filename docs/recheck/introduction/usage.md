@@ -24,6 +24,7 @@ Within the test phase you can execute multiple checks. The created Golden Master
 
 !!! tip
 	You can use the corresponding extension for the test framework of your choice to administer the lifecycle so that the lifecycle methods will be called at the appropriate times.
+	
 	* [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension)
 	* [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension)
 
