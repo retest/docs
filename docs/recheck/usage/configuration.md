@@ -116,6 +116,8 @@ key=${DEFAULT_VALUE}
 # If set, recheck will use this path as the project root (containing e.g. the .retest folder).
 # Any valid absolute path.
 de.retest.recheck.project.root=null
+# Minimal match threshold between old and new element to safely assume it's actually the same. 
+de.retest.recheck.elementMatchThreshold=0.3
 ```
 
 [^1]: Note that JUnit and TestNG is supported by default through `ClassAndMethodBasedNamingStrategy`.
