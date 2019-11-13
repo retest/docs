@@ -117,6 +117,7 @@ key=${DEFAULT_VALUE}
 # Any valid absolute path.
 de.retest.recheck.project.root=null
 # Minimal match threshold between old and new element to safely assume it's actually the same. 
+# Any double in the interval [0.0, 1.0].
 de.retest.recheck.elementMatchThreshold=0.3
 ```
 
