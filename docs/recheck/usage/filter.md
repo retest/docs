@@ -123,7 +123,7 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 A filter is built up using one or multiple expressions. They may be chained using a comma with a whitespace `, `. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore.
 
-We currently support these expressions (chained expresions are included ):
+We currently support these expressions (chained expressions are included ):
 
 ```text
 $element
