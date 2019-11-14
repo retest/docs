@@ -80,6 +80,4 @@ nav:
       - "recheck.cli/maintain-golden-master.md"
   - review:
       - "review/installation.md"
-      - Usage:
-          - "review/usage/index.md"
-          - "review/usage/ignore.md"
+      - "review/usage/reports.md"
