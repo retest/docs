@@ -105,7 +105,7 @@ public class JUnit4ExampleRecheckTest {
 
 #### Using recheck's JUnit 4 extension
 
-Recheck's JUnit 4 extension can be found at [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension). It automatically ensurs the lifecycle of recheck tests in [JUnit 4](https://junit.org/junit4/).
+Recheck's JUnit 4 extension can be found at [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 4](https://junit.org/junit4/).
 
 ```java
 public class JUnit4ExampleRecheckUsingExtensionTest {
