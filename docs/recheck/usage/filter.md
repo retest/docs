@@ -28,7 +28,10 @@ By default, filters are used as text files, so that they are reusable within dif
 
 1. Project filters in `${PROJECT_ROOT}/.retest/filter`.
 2. User directory in `${USER_HOME}/.retest/filter`. *Must be created manually*.
-3. Provided filters from ***recheck***. We [ship](https://github.com/retest/recheck/tree/master/src/main/resources/filter) some filters.
+3. Provided filters from ***recheck***. We [ship](https://github.com/retest/recheck/tree/master/src/main/resources/filter) some categorized filters. 
+ 
+!!! Note
+    We are currently experimenting with sensible defaults and may change the provided filters without notice. If you feel that they filter too much or too less within their respective category, please let us know, so that we can change these.
 
 !!! tip
     You may overwrite filters by using the same name. They are searched top-down. That is, project filters overwrite user filters, which in turn overwrite the provided filters.
