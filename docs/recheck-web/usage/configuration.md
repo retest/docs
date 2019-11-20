@@ -2,22 +2,9 @@
 
 ## Properties
 
-This is a draft of currently available properties for configuring recheck-web. If you want to
-contribute, please stick to a line width of 100 characters.
+Additionally to [***recheck*** system properties](../../recheck/usage/configuration.md), ***recheck-web*** provides some more properties to configure.
 
 ```properties
-####################################################################################################
-# FORMAT                                                                                           #
-####################################################################################################
-
-# Description.
-# Possible values.
-key=${DEFAULT_VALUE}
-
-####################################################################################################
-# SCREENSHOTS                                                                                      #
-####################################################################################################
-
 # If true, recheck-web will only take a screenshot of the current viewport. Otherwise, recheck-web
 # will scroll to the page end using an internal timeout.
 # true | false
