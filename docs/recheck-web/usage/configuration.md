@@ -1,4 +1,6 @@
-# Properties
+# Configuration
+
+## Properties
 
 This is a draft of currently available properties for configuring recheck-web. If you want to
 contribute, please stick to a line width of 100 characters.
