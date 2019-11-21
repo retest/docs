@@ -31,7 +31,7 @@ The output should contain no error and show a Java version of 8 or above. Now yo
 		<dependency>
 			<groupId>de.retest</groupId>
 			<artifactId>recheck-web</artifactId>
-			<version>1.5.0</version>
+			<version>1.7.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
