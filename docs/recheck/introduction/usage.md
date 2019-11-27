@@ -27,6 +27,7 @@ Within the test phase you can execute multiple checks. The created Golden Master
 	
 	* [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension)
 	* [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension)
+	* [***recheck-testng-extension***](https://github.com/retest/recheck-testng-extension)
 
 ### Modifying the Lifecycle
 
@@ -205,6 +206,10 @@ class JUnit5ExampleRecheckUsingExtensionTest {
 
 ### TestNG
 
+The following examples use JUnit 5 as test framework.
+
+#### Using plain TestNG
+
 ```java
 class TestNGExampleRecheckTest {
 
@@ -234,6 +239,28 @@ class TestNGExampleRecheckTest {
 
 		// Will fail if there are differences to the golden master
 		re.capTest();
+	}
+}
+```
+
+#### Using recheck's TestNG hook
+
+```java
+// Will start and cap the test
+@Listener( RecheckHook.class )
+class TestNGExampleRecheckUsingExtensionTest {
+
+	Recheck re;
+
+	@Test
+	void check_simple_string() {
+		re.startTest();
+
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
 	}
 }
 ```
