@@ -27,6 +27,7 @@ Within the test phase you can execute multiple checks. The created Golden Master
 	
 	* [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension)
 	* [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension)
+	* [***recheck-testng-extension***](https://github.com/retest/recheck-testng-extension)
 
 ### Modifying the Lifecycle
 
@@ -103,7 +104,7 @@ public class JUnit4ExampleRecheckTest {
 }
 ```
 
-#### Using recheck's JUnit 4 extension
+#### Using recheck's JUnit 4 rule
 
 Recheck's JUnit 4 extension can be found at [***recheck-junit-4-extension***](https://github.com/retest/recheck-junit-4-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 4](https://junit.org/junit4/).
 
@@ -180,7 +181,7 @@ class JUnit5ExampleRecheckTest {
 Recheck's JUnit Jupiter extension can be found at [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 5](https://junit.org/junit5/).
 
 ```java
-// Add the extension to start and cap the test
+// Will start and cap the test
 @ExtendWith( RecheckExtension.class )
 class JUnit5ExampleRecheckUsingExtensionTest {
 
@@ -205,18 +206,22 @@ class JUnit5ExampleRecheckUsingExtensionTest {
 
 ### TestNG
 
+The following examples use JUnit 5 as test framework.
+
+#### Using plain TestNG
+
 ```java
 class TestNGExampleRecheckTest {
 
 	Recheck re;
 
-	@BeforeMethod
+	@BeforeTest
 	void setUp() {
 		// Create your instance
 		re = new RecheckImpl();
 	}
 
-	@AfterMethod
+	@AfterTest
 	void tearDown() {
 		// Save the report
 		re.cap();
@@ -234,6 +239,26 @@ class TestNGExampleRecheckTest {
 
 		// Will fail if there are differences to the golden master
 		re.capTest();
+	}
+}
+```
+
+#### Using recheck's TestNG hook
+
+```java
+// Will start and cap the test
+@Listener( RecheckHook.class )
+class TestNGExampleRecheckUsingExtensionTest {
+
+	Recheck re;
+
+	@Test
+	void check_simple_string() {
+		// Create your object to check. An appropriate adapter must be present
+		final var object = ...;
+
+		// Create a golden master or check against, does not throw
+		re.check( object, "check-name" );
 	}
 }
 ```
