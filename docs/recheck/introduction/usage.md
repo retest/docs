@@ -254,8 +254,6 @@ class TestNGExampleRecheckUsingExtensionTest {
 
 	@Test
 	void check_simple_string() {
-		re.startTest();
-
 		// Create your object to check. An appropriate adapter must be present
 		final var object = ...;
 
