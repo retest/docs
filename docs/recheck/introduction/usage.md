@@ -180,7 +180,7 @@ class JUnit5ExampleRecheckTest {
 Recheck's JUnit Jupiter extension can be found at [***recheck-junit-jupiter-extension***](https://github.com/retest/recheck-junit-jupiter-extension). It automatically ensures the lifecycle of recheck tests in [JUnit 5](https://junit.org/junit5/).
 
 ```java
-// Add the extension to start and cap the test
+// Will start and cap the test
 @ExtendWith( RecheckExtension.class )
 class JUnit5ExampleRecheckUsingExtensionTest {
 
