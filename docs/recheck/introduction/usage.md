@@ -210,13 +210,13 @@ class TestNGExampleRecheckTest {
 
 	Recheck re;
 
-	@BeforeMethod
+	@BeforeTest
 	void setUp() {
 		// Create your instance
 		re = new RecheckImpl();
 	}
 
-	@AfterMethod
+	@AfterTest
 	void tearDown() {
 		// Save the report
 		re.cap();
