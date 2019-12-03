@@ -59,6 +59,8 @@ nav:
       - "recheck/introduction/usage.md"
       - "recheck/usage/configuration.md"
       - "recheck/usage/filter.md"
+      - "recheck/files/state.md"
+      - "recheck/files/report.md"
   - recheck-web:
       - Setup:
           - "recheck-web/setup/maven.md"
