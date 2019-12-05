@@ -4,7 +4,7 @@ The basic entrance point is [`Recheck`](https://github.com/retest/recheck/blob/m
 
 ## Methods
 
-The essential methods are called `check`. Upon first execution, the object is converted to a Golden Master and saved, identified by the name passed. Subsequent executions convert the object to the domain model and compares it against the existing Golden Master.
+The essential methods are called `check`. Upon first execution, the object is converted to a [Golden Master](../files/state.md) and saved, identified by the name passed. Subsequent executions convert the object to the domain model to compare it against the existing Golden Master.
 
 !!! failure
 	If there is no extension present that can handle the passed object, an exception is thrown. As described in [installation](installation.md), you need to have an extension available that is able to do the conversion.
@@ -13,8 +13,8 @@ The essential methods are called `check`. Upon first execution, the object is co
 
 To [locate](../usage/configuration.md) the Golden Master (if present), `Recheck` uses a [lifecycle](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckLifecycle.java) so that differences can be identified. The lifecycle of `Recheck` can be described with three phases, where the earlier stages surround one or more of the directly following stage:
 
-1. Report: This is independent of the actual `Recheck` instance. It will simply collect all generated reports into one `tests.report`, while preserving the individual reports per suite. This phase is usually bound to the JVM.
-2. Suite: Defined by the `Recheck` instance (e.g. a test class within JUnit). It is started by creating a new instance and ended by `Recheck#cap()`, which will save the individual report containing all the differences encountered.
+1. Report: This is independent of the actual `Recheck` instance. It will simply collect all generated reports into one `tests.report`, while preserving the individual report per suite. This phase is usually bound to the JVM.
+2. Suite: Defined by the `Recheck` instance (e.g. a test class within JUnit). It is started by creating a new instance and ended by `Recheck#cap()`, which will save the individual [report](../files/report.md) containing all the differences encountered.
 3. Test: Defined by a test execution (e.g. a test method in JUnit). It is started by `Recheck#startTest()` and ended by `Recheck#capTest()`, which will produce an `AssertionError` if there are differences or if the Golden Master could not be found (e.g. initial execution).
 
 Within the test phase you can execute multiple checks. The created Golden Masters are then associated with the running suite and test phase.
