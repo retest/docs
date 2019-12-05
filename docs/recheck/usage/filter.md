@@ -40,18 +40,24 @@ By default, filters are used as text files, so that they are reusable within dif
 
 Ignores are a special kind of filters which (by default) are loaded automatically. They define that `true` ignores (i.e. hides) the specified difference, while `false` continues to use it. Furthermore, they have specific names and may be placed in either of the following locations:
 
-1. Globally: `${PROJECT_ROOT}/.retest/`. *Will be created on first run*.
-2. For each Golden Master (i.e. suite). *Must be created manually*.
+1. Globally: `${USER_HOME}/.retest/`. *Must be created manually*.
+2. For each Project: `${PROJECT_ROOT}/.retest/`. *Will be created on first run*.
+3. For each Golden Master indivitually (i.e. suite). *Must be created manually*.
+
+After using ***recheck.cli*** or ***review*** to update the ignore filter, only the ignore file for the project will be updated to additionally contain the new ignored differences and all ignores from the global and suite ignore file.
 
 Using the default setup, that would be:
 
 ```
-${PROJECT_ROOT}
+${USER_HOME}
 +-- .retest/
-|   +-- recheck.ignore (level 1)
-+-- src/test/resources/retest/recheck/
-    +-- ${SUITE_NAME}
-        +-- recheck.ignore (level 2)
+    +-- recheck.ignore (level 1)
++-- ../${PROJECT_ROOT}
+    +-- .retest/
+    |   +-- recheck.ignore (level 1)
+    +-- src/test/resources/retest/recheck/
+        +-- ${SUITE_NAME}
+            +-- recheck.ignore (level 2)
 ```
 
 ## Usage
