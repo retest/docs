@@ -42,7 +42,7 @@ Ignores are a special kind of filters which (by default) are loaded automaticall
 
 1. Globally: `${USER_HOME}/.retest/`. *Must be created manually*.
 2. For each Project: `${PROJECT_ROOT}/.retest/`. *Will be created on first run*.
-3. For each Golden Master indivitually (i.e. suite). *Must be created manually*.
+3. For each Golden Master individually (i.e. suite). *Must be created manually*.
 
 After using ***recheck.cli*** or ***review*** to update the ignore filter, only the ignore file for the project will be updated to additionally contain the new ignored differences and all ignores from the global and suite ignore file.
 
@@ -51,13 +51,14 @@ Using the default setup, that would be:
 ```
 ${USER_HOME}
 +-- .retest/
-    +-- recheck.ignore (level 1)
-+-- ../${PROJECT_ROOT}
-    +-- .retest/
-    |   +-- recheck.ignore (level 1)
-    +-- src/test/resources/retest/recheck/
-        +-- ${SUITE_NAME}
-            +-- recheck.ignore (level 2)
+    +-- recheck.ignore
+    
+${PROJECT_ROOT}
++-- .retest/
+|   +-- recheck.ignore
++-- src/test/resources/retest/recheck/
+    +-- ${SUITE_NAME}
+        +-- recheck.ignore
 ```
 
 ## Usage
