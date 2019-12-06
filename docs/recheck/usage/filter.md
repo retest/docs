@@ -92,7 +92,7 @@ This file will be updated through the UI (***review*** or ***recheck.cli***) if 
 
 #### recheck.ignore.js
 
-This is a filter file which supports dynamic rules in JavaScript, using the [Oracle Nashorn JavaScript engine](https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine))[^1]. This allows users to specify ignore rules very flexibly by using the below method:
+This is a filter file which supports dynamic rules in JavaScript, using [Mozilla's Rhino engine](https://github.com/mozilla/rhino/). This allows users to specify ignore rules very flexibly by using the below method:
 
 ```js
 matches( element, diff );
@@ -156,7 +156,7 @@ matcher: $key=$value
 | `xpath`    | `html[1]/body[1]/div[1]`             | Note that this does only supports absolute XPaths.                                                          |
 | `id`       | `myId`                               | HTML `id` attribute (supplied by ***recheck-web***)                                                         |
 | `class`    | `my-class` or `my-class other-class` | HTML `class` attribute (supplied by ***recheck-web***)                                                      |
-| `type`     | `button`                             | HTML tag name (supplied by ***recheck-web***)[^2]                                                           |
+| `type`     | `button`                             | HTML tag name (supplied by ***recheck-web***)[^1]                                                           |
 
 ### Matching Attributes
 
@@ -200,5 +200,4 @@ pixel-diff=5.5
 
 This would ignore every pixel difference (position- or size change) up to 5 pixels. You can either specify an integer or a float.
 
-[^1]: We are aware that this will be removed from a future JDK release and will provide an alternative until then.
-[^2]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.
+[^1]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.
