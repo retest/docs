@@ -41,3 +41,16 @@ We capture some metadata that is related to the Golden Master, which is supposed
 | `time.zone`    | Europe/Berlin   |
 
 Further metadata will follow over time.
+
+Additionally, ***recheck-web*** captures the following metadata. Note, that it will overwrite the above metadata if the same keys are specified.
+
+| Key               | Value (Example)   |
+| ----------------- | ----------------- |
+| `check.type`      | driver            |
+| `browser.name`    | chrome            |
+| `browser.version` | 78.0.3904.108     |
+| `driver.type`     | UnbreakableDriver |
+| `window.width`    | 1200              |
+| `window.height`   | 800               |
+| `os.name`         | XP                |
+| `os.version`      | 10.0              |
