@@ -171,7 +171,7 @@ If you are searching for a specific name, you may define the `attribute` express
 
 ```text
 # Match the attribute outline only on the elements of type input
-matcher: type=input, attribute: outline
+matcher: type=input, attribute=outline
 
 # Match the attribute outline on all elements, thus removing this difference completely
 attribute=outline
@@ -183,7 +183,7 @@ Similarly, you can also use [Java's regex mechanism](https://docs.oracle.com/jav
 
 ```text
 # Match the attribute border-.*-color (e.g. border-bottom-color) on the elements of type input
-matcher: type=input, attribute-regex: border-.*-color
+matcher: type=input, attribute-regex=border-.*-color
 
 # Match the attribute border-.*-color (e.g. border-bottom-color) on all elements
 attribute-regex=border-.*-color
