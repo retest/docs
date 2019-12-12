@@ -64,7 +64,7 @@ There is a global system property available to configure these screenshots. Howe
 
 ## Properties
 
-Additionally to [***recheck*** system properties](../../recheck/usage/configuration.md), ***recheck-web*** provides some more properties to configure.
+Additionally to [***recheck*** properties](../../recheck/usage/configuration.md), ***recheck-web*** provides some more properties to configure.
 
 ```properties
 # Configure the strategy of how screenshots are taken.
