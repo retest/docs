@@ -98,7 +98,7 @@ If you want specify additional filters (e.g. your custom project filters), you m
 
 ## Properties
 
-Some properties can be set via [system properties](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#setProperty-java.lang.String-java.lang.String-).
+***recheck*** offers some properties that can be used for configuration. You can either set these via the `.retest/retest.properties` file or using actual [system properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html). (Note that the latter overwrites the former.)
 
 ```properties
 # If true, reports will be uploaded to rehub.
