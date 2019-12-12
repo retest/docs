@@ -98,12 +98,21 @@ If you want specify additional filters (e.g. your custom project filters), you m
 
 ## Properties
 
-Some properties can be set via [system properties](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#setProperty-java.lang.String-java.lang.String-).
+***recheck*** offers some properties that can be used for configuration. You can either set these via the `.retest/retest.properties` file or using actual [system properties](https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html). (Note that the latter overwrites the former.)
 
 ```properties
+# If true, reports will be uploaded to rehub.
+# "true" or "false".
+de.retest.recheck.rehub.reportUploadEnabled=false
+
+# Always ignore these attributes, even if no ignore or filter is active.
+# Any string, separate values with ";".
+de.retest.recheck.ignore.attributes=absolute-outline
+
 # If set, recheck will use this path as the project root (containing e.g. the .retest folder).
 # Any valid absolute path.
 de.retest.recheck.project.root=null
+
 # Minimal match threshold between old and new element to safely assume it's actually the same. 
 # Any double in the interval [0.0, 1.0].
 de.retest.recheck.elementMatchThreshold=0.3
