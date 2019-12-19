@@ -32,6 +32,7 @@ plugins:
         "recheck/location-of-the-golden-master-files-and-test-reports.md": "recheck/usage/configuration.md"
         "recheck/how-ignore-works.md": "recheck/usage/filter.md"
         "recheck-web/properties.md": "recheck-web/usage/configuration.md"
+        "recheck-web/ways-of-using-recheck-web.md": "recheck-web/introduction/usage.md"
 
 repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
@@ -72,7 +73,7 @@ nav:
           - "recheck-web/tutorial/travis-execute-ci.md"
           - "recheck-web/tutorial/upload-test-reports-to-rehub.md"
           - "recheck-web/tutorial/rule-based-ignore.md"
-      - "recheck-web/ways-of-using-recheck-web.md"
+      - "recheck-web/introduction/usage.md"
       - "recheck-web/element-identification-problem.md"
       - "recheck-web/postpone-test-breakage.md"
       - "recheck-web/unbreakable-selenium.md"

@@ -1,4 +1,4 @@
-# Ways of Using recheck-web
+# Usage
 
 There are several ways to use recheck-web.
 
