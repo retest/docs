@@ -10,12 +10,12 @@ To upload reports you will need a [retest account](https://sso.prod.cloud.retest
 
 The first step is to modify the `setUp()` method in our existing test case to enable the upload to ***rehub***. There are two ways to achieve this:
 
-- Set the `REHUB_REPORT_UPLOAD_ENABLED` system property (you have to do this _before_ `RecheckImpl` is created)
+- Set the `REHUB_REPORT_UPLOAD_ENABLED_PROPERTY_KEY` system property (you have to do this _before_ `RecheckImpl` is created)
 
 ```java
 @Before
 void setUp() {
-    System.setProperty( Properties.REHUB_REPORT_UPLOAD_ENABLED, "true" );
+    System.setProperty( RecheckProperties.REHUB_REPORT_UPLOAD_ENABLED_PROPERTY_KEY, "true" );
     re = new RecheckImpl();
     // ...
 }
