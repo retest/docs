@@ -34,6 +34,14 @@ This will update the Golden Master and/or the recheck.ignore file automatically 
 
 In the top left corner of the test report, above the navigation for the differences is a box with check marks for different type of elements. By using them you automatically ignore all elements of that type. Below that box is another check mark to filter every accepted/ignored (green) elements from the navigation tree. If you want to manage your ignores manually you can do so by configuring the [`retest.ignore` file](../../recheck-web/tutorial/setup-recheck.ignore.md) in your favorite text editor.
 
+## Using review with free license
+
+If you did not purchase a standard or higher license yet, some functionalities are not available in the free license:
+
+1. You cannot accept or ignore changes directly in the GUI. The checkboxes are disabled, but if you wish to maintain your Golden Master you can still use the [***recheck.cli***](https://docs.retest.de/recheck.cli/setup/) which is entirely free.
+
+2. You cannot open local files. The `Open local file`-Button will be disabled and if you open a report directly via file association or through your IDE, review will start in home screen with an error message, telling you to buy a license for this feature.
+
 ## Logout
 
 If you want to logout from review to maybe change accounts or so, you can only do so by going to [`Sessions` in `Your account` on ***rehub***](https://sso.prod.cloud.retest.org/auth/realms/customer/account/sessions) and click on `Log out all sessions`.
