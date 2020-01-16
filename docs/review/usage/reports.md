@@ -38,9 +38,9 @@ In the top left corner of the test report, above the navigation for the differen
 
 If you did not purchase a standard or higher license yet, some functionalities are not available in the free license:
 
-1. You cannot accept or ignore changes directly in the GUI. The checkboxes are disabled, but if you wish to maintain your Golden Master you can still use the [***recheck.cli***](https://docs.retest.de/recheck.cli/setup/) which is entirely free.
+1. You cannot accept or ignore changes directly in the GUI. The checkboxes are hidden, but if you wish to maintain your Golden Master you can still use the [***recheck.cli***](https://docs.retest.de/recheck.cli/setup/) which is entirely free.
 
-2. You cannot open local files. The `Open local file`-Button will be disabled and if you open a report directly via file association or through your IDE, review will start in home screen with an error message, telling you to buy a license for this feature.
+2. You cannot open local files. The "Open local file"-Button will be disabled, file association and starting review over the terminal via `review path/to/tests.report` will not load the passed report.
 
 ## Logout
 
