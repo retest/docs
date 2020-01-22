@@ -60,7 +60,7 @@ When using the `AutocheckingDriver`, every action performed will generate a chec
 
 The creation of a check triggers a screenshot capturing of the `WebDriver` or `WebElement` supplied. This screenshot is only used for documentation purposes and not the comparison (e.g. pixel differences). Since screenshot are quite slow and large, they may be changed or disabled by using a provided implementation of `ScreenshotProvider`.
 
-There is a global system property available to configure these screenshots. However, they are overwritten by the local option defined.
+There is a global system property available to configure these screenshots. However, they are overwritten by the local option defined. This allows you to e.g. globally disable screenshots during test execution for performance reasons, but enable them locally during Golden Master creation.
 
 ## Properties
 
