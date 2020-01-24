@@ -74,10 +74,10 @@ nav:
           - "recheck-web/tutorial/upload-test-reports-to-rehub.md"
           - "recheck-web/tutorial/rule-based-ignore.md"
       - "recheck-web/introduction/usage.md"
+      - "recheck-web/usage/configuration.md"
       - "recheck-web/element-identification-problem.md"
       - "recheck-web/postpone-test-breakage.md"
       - "recheck-web/unbreakable-selenium.md"
-      - "recheck-web/usage/configuration.md"
       - "recheck-web/contributor-information.md"
   - recheck.cli:
       - "recheck.cli/setup.md"
