@@ -10,10 +10,10 @@ The advantages of this approach are as follows:
 
 ### What Are Filters?
 
-Filters can be used to reduce the noise mentioned above within a report. They can accept two different arguments:
+Filters can be used for different purposes, most notably to reduce the noise mentioned above within a report. They can accept two different arguments:
 
-1. **Element**: Filter based on the criteria of the element. This can be used to specify an element of interest or ignore an always changing element.
-2. **Difference**: Filter based on the difference, with the element giving additional context information.
+1. **Element**: Filter applies to _all attributes_ of an element and all of its child elements. The element in question can be identified by a wide range of identifying attributes, like XPath, HTML-id, retestId, CSS-class, HTML-name, etc.
+2. **Attribute**: Filter applies to a single attribute, either globally or for a specific element and all of its child elements.
 
 Multiple filters are additive. If one filter returns `true`, the result is taken and not further evaluated. Similarly, all filters must return `false` to ignore a particular difference.
 
@@ -22,7 +22,7 @@ Multiple filters are additive. If one filter returns `true`, the result is taken
 
 ## Location
 
-By default, filters are used as text files, so that they are reusable within different products and stages. The name of the file corresponds with the appropriate name used within ***recheck***. There are several locations where the filter files can be placed, so that they may be referenced within the [`RecheckOptions`](configuration.md).
+By default, filters are simple text files, so that they are reusable within different products and stages. The name of the file corresponds with the appropriate name used within ***recheck***. There are several locations where the filter files can be placed, so that they may be referenced within the [`RecheckOptions`](configuration.md).
 
 ### Plain Filters
 
