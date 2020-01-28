@@ -14,8 +14,8 @@ Filters can be used for different purposes, most notably to reduce the noise men
 
 They can accept different arguments, which all are accessible using the below [syntax](#syntax):
 
-1. **Element**: Filter applies to an element. This may look at specific attributes, children or parent element to determine if the filter applies. The element in question can be identified by a wide range of identifying attributes, which are specified by the [extensions](../introduction/installation).
-2. **Attribute**: Filter applies to a single attribute either with or without an element.
+1. **Element**: Filter applies to _all attributes_ of an element and all of its child elements. This may look at specific attributes, children or parent element to determine if the filter applies. The element in question can be identified by a wide range of identifying attributes, which are specified by the [extensions](../introduction/installation).
+2. **Attribute**: Filter applies to a single attribute, either globally or for a specific element and all of its child elements.
 3. **Difference**: Filter applies to a difference where the attribute and the value can be retrieved.
 
 Multiple filters are additive. If one filter returns `true`, the result is taken and not further evaluated. Similarly, all filters must return `false` to ignore a particular difference.
