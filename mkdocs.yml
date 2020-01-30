@@ -78,6 +78,7 @@ nav:
       - "recheck-web/element-identification-problem.md"
       - "recheck-web/postpone-test-breakage.md"
       - "recheck-web/unbreakable-selenium.md"
+      - "recheck-web/usage/healing.md"
       - "recheck-web/contributor-information.md"
   - recheck.cli:
       - "recheck.cli/setup.md"
@@ -85,3 +86,4 @@ nav:
   - review:
       - "review/installation.md"
       - "review/usage/reports.md"
+      - "review/usage/healing.md"
