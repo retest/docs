@@ -9,6 +9,15 @@ For a basic introduction on how ***recheck*** works, please visit the [Usage](..
 
 However, ***recheck-web*** provides some additional features besides that, which build upon the above checking. 
 
+## Best Practices
+
+1. Use a fresh driver and ***recheck*** instance for each test. This is best done within the `@BeforeEach` method or similar methods available through your test framework.
+2. Use the appropriate [test extension](../../recheck/introduction/usage.md) for your test framework to handle the lifecycle and use unique suite, test and check names within each [lifecycle](../../recheck/introduction/usage.md#lifecycle) step, unless you want to [reuse Golden Masters](../../recheck/introduction/usage.md#reuse-golden-master-files).
+3. Stabilize your page before checking to minimize differences.
+    1. Ensure the driver has a fixed window size using `driver.manage().window().setSize( size )`.
+    2. Wait for animations to be done by checking the respective elements and attributes with `ExpectedConditions`. This may be done best within a page object constructor.
+    3. Click away any banners or popups (e.g. cookie-banners, subscribe-banners) as this will interfere with scrolling and screenshot creation.
+
 ## WebDriver
 
 The most basic way to check the page is to check a `WebDriver` or any element that implements `WrapsDriver`.
