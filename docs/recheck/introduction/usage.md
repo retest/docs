@@ -215,13 +215,13 @@ class TestNGExampleRecheckTest {
 
 	Recheck re;
 
-	@BeforeTest
+	@BeforeMethod( alwaysRun = true )
 	void setUp() {
 		// Create your instance
 		re = new RecheckImpl();
 	}
 
-	@AfterTest
+	@AfterMethod( alwaysRun = true )
 	void tearDown() {
 		// Save the report
 		re.cap();
