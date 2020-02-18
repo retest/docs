@@ -41,6 +41,77 @@ re.check( driver.findElement( By.id( "#section" ) ), "individual-section" );
 // ...
 ```
 
+## Page Objects
+
+With the basic types from above, it is possible to check page objects or any arbitrary objects. Just let those objects implement either `WrapsElement` or `WrapsDriver` to check for object.
+
+!!! note
+	***recheck-web*** will not check any `@FindBy`, only the return value of those interfaces are checked. This can be achieved by implementing `WrapsElement` and returning the respective `@FindBy`.
+
+!!! warning
+	Due to the way `WrapsElement` and `WrapsDriver` works, ***recheck-web*** will evaluate `WrapsElement` before `WrapsDriver`. Thus it is recommended to only implement one of those interfaces.
+   
+```java
+// LoginForm.java
+public class LoginForm implements WrapsElement {
+
+	@FindBy( id = "login-form" )
+	private WebElement form;
+
+	public LoginForm( final WebDriver driver ) {
+		PageFactory.initElements( driver, this );
+	}
+
+	@Override
+	public WebElement getWrappedElement() {
+		return form;
+	}
+}
+```
+
+```java
+// LoginPage.java
+public class LoginPage implements WrapsDriver {
+
+	private final WebDriver driver;
+
+	private final LoginForm form;
+
+	@FindBy( id = "header" )
+	private WebElement header;
+
+	public LoginPage( final WebDriver driver ) {
+		this.driver = driver;
+		this.form = new LoginForm( driver );
+		PageFactory.initElements( driver, this );
+	}
+
+	public LoginForm getForm() {
+		return form;
+	}
+
+	@Override
+	public WebDriver getWrappedDriver() {
+		return driver;
+	}
+}
+```
+
+```java
+// LoginTest.java
+@Test
+void testLoginPage() {
+	// Assuming driver and re is already initialized before
+	LoginPage page = new LoginPage( driver );
+	LoginForm form = page.getForm();
+
+	re.check( page, "login-page" );
+	re.check( form, "login-form" );
+}
+```
+
+This can be used for complex page layouts to test only relevant sections by using elements, or when applicable, return the driver instead to check the whole page.
+
 ## Explicit checking
 
 Migrating from your standard Selenium test, using explicit checking is the most straightforward way. Instead of the standard assertions, you explicitly call `Recheck#check` which then does the assertions for you.
@@ -244,7 +315,6 @@ class LoginTest {
 
 !!! warning
 	Do not mix implicit and explicit checking as this will produce unexpected results. Thus be sure to remove the `Recheck` instance from your test code.
-
 
 To summarize:
 
