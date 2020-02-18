@@ -7,7 +7,7 @@ In its core, ***recheck-web*** extends ***recheck*** and adds the capability to 
 
 For a basic introduction on how ***recheck*** works, please visit the [Usage](../../recheck/introduction/usage.md) page.  
 
-However, ***recheck-web*** provides some additional features besides that, which build upon the above checking. 
+However, ***recheck-web*** also provides some additional features building upon the above capabilities. 
 
 ## Best Practices
 
