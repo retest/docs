@@ -2,30 +2,44 @@
 
 In its core, ***recheck-web*** extends ***recheck*** and adds the capability to check for:
 
-1. WebDriver: *Check the complete page rendered by the browser*.
-
-   ```java
-   WebDriver driver = // ...
-   Recheck re = // ...
-
-   // ...
-   re.check( driver, "complete-page" );
-   // ...
-   ```
-2. WebElement: *Check individual page sections with isolated elements*.
-
-   ```java
-   WebDriver driver = // ...
-   Recheck re = // ...
-
-   // ...
-   re.check( driver.findElement( By.id( "#section" ) ), "individual-section" );
-   // ...
-   ```
+1. [WebDriver](#webdriver): *Check the complete page rendered by the browser*.
+2. [WebElement](#webelement): *Check individual page sections with isolated elements*.
 
 For a basic introduction on how ***recheck*** works, please visit the [Usage](../../recheck/introduction/usage.md) page.  
 
 However, ***recheck-web*** provides some additional features besides that, which build upon the above checking. 
+
+## WebDriver
+
+The most basic way to check the page is to check a `WebDriver` or any element that implements `WrapsDriver`.
+
+!!! note
+	The deepest `WebDriver` must be an instance of a `RemoteWebDriver` (i.e. `JavascripExecutor`) which all common Selenium Drivers are (ChromeDriver, FirefoxDriver, ...).
+
+```java
+WebDriver driver = // ...
+Recheck re = // ...
+
+// ...
+re.check( driver, "complete-page" );
+// ...
+```
+
+## WebElement
+
+To check isolated elements out of the context of the complete page, you can check a `WebElement` or any object that implements `WrapsElement`.
+
+!!! note
+	The deepest `WebElement` must be an instance of a `RemoteWebElement` which all elements of a common Selenium Drivers are (ChromeDriver, FirefoxDriver, ...).
+
+```java
+WebDriver driver = // ...
+Recheck re = // ...
+
+// ...
+re.check( driver.findElement( By.id( "#section" ) ), "individual-section" );
+// ...
+```
 
 ## Explicit checking
 
