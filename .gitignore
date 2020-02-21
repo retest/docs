@@ -1,4 +1,5 @@
 site/
+env
 
 # Ignore VSCode files
 .vscode/
