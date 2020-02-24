@@ -2,30 +2,124 @@
 
 In its core, ***recheck-web*** extends ***recheck*** and adds the capability to check for:
 
-1. WebDriver: *Check the complete page rendered by the browser*.
-
-   ```java
-   WebDriver driver = // ...
-   Recheck re = // ...
-
-   // ...
-   re.check( driver, "complete-page" );
-   // ...
-   ```
-2. WebElement: *Check individual page sections with isolated elements*.
-
-   ```java
-   WebDriver driver = // ...
-   Recheck re = // ...
-
-   // ...
-   re.check( driver.findElement( By.id( "#section" ) ), "individual-section" );
-   // ...
-   ```
+1. [WebDriver](#webdriver): *Check the complete page rendered by the browser*.
+2. [WebElement](#webelement): *Check individual page sections with isolated elements*.
 
 For a basic introduction on how ***recheck*** works, please visit the [Usage](../../recheck/introduction/usage.md) page.  
 
-However, ***recheck-web*** provides some additional features besides that, which build upon the above checking. 
+However, ***recheck-web*** also provides some additional features building upon the above capabilities. 
+
+## Best Practices
+
+1. Use a fresh driver and ***recheck*** instance for each test. This is best done within the `@BeforeEach` method or similar methods available through your test framework.
+2. Use the appropriate [test extension](../../recheck/introduction/usage.md) for your test framework to handle the lifecycle and use unique suite, test and check names within each [lifecycle](../../recheck/introduction/usage.md#lifecycle) step, unless you want to [reuse Golden Masters](../../recheck/introduction/usage.md#reuse-golden-master-files).
+3. Stabilize your page before checking to minimize differences.
+    1. Ensure the driver has a fixed window size using `driver.manage().window().setSize( size )`.
+    2. Wait for animations to be done by checking the respective elements and attributes with `ExpectedConditions`. This may be done best within a page object constructor.
+    3. Click away any banners or popups (e.g. cookie-banners, subscribe-banners) as this will interfere with scrolling and screenshot creation.
+
+## WebDriver
+
+The most basic way to check the page is to check a `WebDriver` or any element that implements `WrapsDriver`.
+
+!!! note
+	The deepest `WebDriver` must be an instance of a `RemoteWebDriver` (i.e. `JavascripExecutor`) which all common Selenium Drivers are (ChromeDriver, FirefoxDriver, ...).
+
+```java
+WebDriver driver = // ...
+Recheck re = // ...
+
+// ...
+re.check( driver, "complete-page" );
+// ...
+```
+
+## WebElement
+
+To check isolated elements out of the context of the complete page, you can check a `WebElement` or any object that implements `WrapsElement`.
+
+!!! note
+	The deepest `WebElement` must be an instance of a `RemoteWebElement` which all elements of a common Selenium Drivers are (ChromeDriver, FirefoxDriver, ...).
+
+```java
+WebDriver driver = // ...
+Recheck re = // ...
+
+// ...
+re.check( driver.findElement( By.id( "#section" ) ), "individual-section" );
+// ...
+```
+
+## Page Objects
+
+With the basic types from above, it is possible to check page objects or any arbitrary objects. Just let those objects implement either `WrapsElement` or `WrapsDriver` to check for object.
+
+!!! note
+	***recheck-web*** will not check any `@FindBy`, only the return value of those interfaces are checked. This can be achieved by implementing `WrapsElement` and returning the respective `@FindBy`.
+
+!!! warning
+	Due to the way `WrapsElement` and `WrapsDriver` works, ***recheck-web*** will evaluate `WrapsElement` before `WrapsDriver`. Thus it is recommended to only implement one of those interfaces.
+   
+```java
+// LoginForm.java
+public class LoginForm implements WrapsElement {
+
+	@FindBy( id = "login-form" )
+	private WebElement form;
+
+	public LoginForm( final WebDriver driver ) {
+		PageFactory.initElements( driver, this );
+	}
+
+	@Override
+	public WebElement getWrappedElement() {
+		return form;
+	}
+}
+```
+
+```java
+// LoginPage.java
+public class LoginPage implements WrapsDriver {
+
+	private final WebDriver driver;
+
+	private final LoginForm form;
+
+	@FindBy( id = "header" )
+	private WebElement header;
+
+	public LoginPage( final WebDriver driver ) {
+		this.driver = driver;
+		this.form = new LoginForm( driver );
+		PageFactory.initElements( driver, this );
+	}
+
+	public LoginForm getForm() {
+		return form;
+	}
+
+	@Override
+	public WebDriver getWrappedDriver() {
+		return driver;
+	}
+}
+```
+
+```java
+// LoginTest.java
+@Test
+void testLoginPage() {
+	// Assuming driver and re is already initialized before
+	LoginPage page = new LoginPage( driver );
+	LoginForm form = page.getForm();
+
+	re.check( page, "login-page" );
+	re.check( form, "login-form" );
+}
+```
+
+This can be used for complex page layouts to test only relevant sections by using elements, or when applicable, return the driver instead to check the whole page.
 
 ## Explicit checking
 
@@ -230,7 +324,6 @@ class LoginTest {
 
 !!! warning
 	Do not mix implicit and explicit checking as this will produce unexpected results. Thus be sure to remove the `Recheck` instance from your test code.
-
 
 To summarize:
 
