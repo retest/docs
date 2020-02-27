@@ -211,11 +211,27 @@ However, these tests are still brittle and break easily. If any of the identifie
 
 To make your test nearly unbreakable, use the `UnbreakableDriver` provided by ***recheck-web***.
 
-```java hl_lines="3 4"
+Note that the unbreakable feature only works, if a Golden Master has been created before (i.e. a full test has been run at least once). Consequently, changes to an element during runtime (e.g. with JavaScript) is not supported. It is therefore recommended to always do a initial check using a `WebDriver` before querying any elements, so that they can be found from the initial Golden Master.
+
+```java hl_lines="3 4 13"
 @BeforeEach
 void setUp() {
 	re = new RecheckWebImpl(); // Take care that you take the specialized 'RecheckWebImpl' 
 	driver = new UnbreakableDriver( new ChromeDriver() ); // Wrap your driver in a UnbreakableDriver to enable nearly unbreakable tests
+}
+
+@Test
+void login_with_invalid_credentials_should_produce_error_message_and_clear_inputs() throws Exception {
+	driver.get( "https://example.com" ); // Go to your login page
+
+	// Wait for page to be loaded by using WebDriverWait or similar to stabilize your page
+
+	re.check( driver, "initial" ); // Make sure a Golden Master is present for unbreakable elements
+
+	// Continue with your test
+
+	final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
+	// ...
 }
 ```
 
