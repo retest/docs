@@ -17,6 +17,7 @@ However, ***recheck-web*** also provides some additional features building upon 
     1. Ensure the driver has a fixed window size using `driver.manage().window().setSize( size )`.
     2. Wait for animations to be done by checking the respective elements and attributes with `ExpectedConditions`. This may be done best within a page object constructor.
     3. Click away any banners or popups (e.g. cookie-banners, subscribe-banners) as this will interfere with scrolling and screenshot creation.
+4. Create an initial Golden Master with a `WebDriver` after the page is loaded and stabilized and before any elements are executed to allow for more [advanced features](#unbreakable-tests) to work. This is not necessary when using [implicit checking](#implicit-checking) as this is done for you.
 
 ## WebDriver
 
@@ -211,11 +212,27 @@ However, these tests are still brittle and break easily. If any of the identifie
 
 To make your test nearly unbreakable, use the `UnbreakableDriver` provided by ***recheck-web***.
 
-```java hl_lines="3 4"
+Note that the unbreakable feature only works, if a Golden Master has been created before (i.e. a full test has been run at least once). Consequently, changes to an element during runtime (e.g. with JavaScript) is not supported. It is therefore recommended to always do a initial check using a `WebDriver` before querying any elements, so that they can be found from the initial Golden Master.
+
+```java hl_lines="3 4 13"
 @BeforeEach
 void setUp() {
 	re = new RecheckWebImpl(); // Take care that you take the specialized 'RecheckWebImpl' 
 	driver = new UnbreakableDriver( new ChromeDriver() ); // Wrap your driver in a UnbreakableDriver to enable nearly unbreakable tests
+}
+
+@Test
+void login_with_invalid_credentials_should_produce_error_message_and_clear_inputs() throws Exception {
+	driver.get( "https://example.com" ); // Go to your login page
+
+	// Wait for page to be loaded by using WebDriverWait or similar to stabilize your page
+
+	re.check( driver, "initial" ); // Make sure a Golden Master is present for unbreakable elements
+
+	// Continue with your test
+
+	final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
+	// ...
 }
 ```
 
