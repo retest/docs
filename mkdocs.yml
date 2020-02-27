@@ -64,6 +64,7 @@ nav:
       - "recheck/files/state.md"
       - "recheck/files/report.md"
   - recheck-web:
+      - Run your first Test: "recheck-web/run-your-first-test.md"
       - Setup:
           - "recheck-web/setup/maven.md"
       - Tutorial:
