@@ -17,6 +17,7 @@ However, ***recheck-web*** also provides some additional features building upon 
     1. Ensure the driver has a fixed window size using `driver.manage().window().setSize( size )`.
     2. Wait for animations to be done by checking the respective elements and attributes with `ExpectedConditions`. This may be done best within a page object constructor.
     3. Click away any banners or popups (e.g. cookie-banners, subscribe-banners) as this will interfere with scrolling and screenshot creation.
+4. Create an initial Golden Master with a `WebDriver` after the page is loaded and stabilized and before any elements are executed to allow for more [advanced features](#unbreakable-tests) to work. This is not necessary when using [implicit checking](#implicit-checking) as this is done for you.
 
 ## WebDriver
 
