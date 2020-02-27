@@ -120,14 +120,20 @@ Using standard Selenium, these changes would be quite critical as we changed som
     Test 'form_should_fill_in_user_and_password_and_redirect_to_dashboard' has 8 difference(s) in 4 state(s):
     00 resulted in:
     	input at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
-    		id: expected="login", actual="btn-login"
+    		id:
+              expected="login",
+                actual="btn-login"
     		...
     	input at 'html[1]/body[1]/div[1]/div[1]/form[1]/div[1]/input[1]':
-    		id: expected="user", actual="username", breaks="FormTest.java:47"
+    		id:
+              expected="user",
+                actual="username", breaks="FormTest.java:47"
     ...
     02 resulted in:
         input at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
-            id: expected="login", actual="btn-login", breaks="FormTest.java:52"
+            id:
+              expected="login",
+                actual="btn-login", breaks="FormTest.java:52"
             ...
     ...
     ```

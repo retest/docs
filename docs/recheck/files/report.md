@@ -36,8 +36,12 @@ An *attribute difference* indicates that an element's attribute has changed. Thi
 
 ```text
 p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
-    text: expected="recheck", actual="Recheck"
-    font-weight: expected="(default or absent)", actual="700"
+    text:
+      expected="recheck",
+        actual="Recheck"
+    font-weight:
+      expected="(default or absent)",
+        actual="700"
 ```
 
 ### Element Differences
@@ -61,7 +65,9 @@ p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
 A *metadata difference* indicates changes in the metadata of a state. This is most likely due to the state being created on a different system or at a different time. These differences have no effect on the report and will be applied automatically. For a list of metadata, please refer to the [state](state.md) page.
 
 ```text
-os.name: expected="Windows 10", actual="Ubuntu"
+os.name:
+  expected="Windows 10",
+    actual="Ubuntu"
 ```
 
 ## Filtering

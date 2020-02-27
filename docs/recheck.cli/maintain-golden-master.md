@@ -45,15 +45,29 @@ The following differences have been found in 'com.mycompany.MyFirstTest'(with 1 
 Test 'scratchpad' has 7 differences in 1 states:
 open resulted in:
         textnode [scratchpad.io] at 'HTML[1]/BODY[1]/DIV[3]/DIV[2]/DIV[1]/DIV[3]/DIV[23]/textnode[2]':
-                text: expected="scratchpad.io", actual="recheck"
+                text:
+                  expected="scratchpad.io",
+                    actual="recheck"
         DIV at 'HTML[1]/BODY[1]/DIV[3]/DIV[2]/DIV[1]/DIV[5]/DIV[1]':
-                left: expected="210.125px", actual="173.75px"
-                right: expected="252.813px", actual="289.188px"
-                style: expected="left: 210.125px; top: 286px; width: 6.0625px; height: 13px;", actual="left: 173.75px; top: 286px; width: 6.0625px; height: 13px;"
+                left:
+                  expected="210.125px",
+                    actual="173.75px"
+                right:
+                  expected="252.813px",
+                    actual="289.188px"
+                style:
+                  expected="left: 210.125px; top: 286px; width: 6.0625px; height: 13px;",
+                    actual="left: 173.75px; top: 286px; width: 6.0625px; height: 13px;"
         TEXTAREA at 'HTML[1]/BODY[1]/DIV[3]/TEXTAREA[1]':
-                left: expected="255.25px", actual="218.875px"
-                right: expected="148.297px", actual="184.672px"
-                style: expected="top: 285px; height: 13px; width: 6.0625px; left: 255.25px;", actual="top: 285px; height: 13px; width: 6.0625px; left: 218.875px;"
+                left:
+                  expected="255.25px",
+                    actual="218.875px"
+                right:
+                  expected="148.297px",
+                    actual="184.672px"
+                style:
+                  expected="top: 285px; height: 13px; width: 6.0625px; left: 255.25px;",
+                    actual="top: 285px; height: 13px; width: 6.0625px; left: 218.875px;"
         at de.retest.recheck.RecheckImpl.capTest(RecheckImpl.java:137)
 ```
 
@@ -90,13 +104,23 @@ Specified JS ignore file has no 'shouldIgnoreElement' function.
 Test 'scratchpad' has 5 differences in 1 states:
 open resulted in:
         textnode [recheck] at 'HTML[1]/BODY[1]/DIV[3]/DIV[2]/DIV[1]/DIV[3]/DIV[23]/textnode[2]':
-                text: expected="recheck", actual="scratchpad.io"
+                text:
+                  expected="recheck",
+                    actual="scratchpad.io"
         DIV at 'HTML[1]/BODY[1]/DIV[3]/DIV[2]/DIV[1]/DIV[5]/DIV[1]':
-                left: expected="173.75px", actual="210.125px"
-                right: expected="289.188px", actual="252.813px"
+                left:
+                  expected="173.75px",
+                    actual="210.125px"
+                right:
+                  expected="289.188px",
+                    actual="252.813px"
         TEXTAREA at 'HTML[1]/BODY[1]/DIV[3]/TEXTAREA[1]':
-                left: expected="218.875px", actual="255.25px"
-                right: expected="184.672px", actual="148.297px"
+                left:
+                  expected="218.875px",
+                    actual="255.25px"
+                right:
+                  expected="184.672px",
+                    actual="148.297px"
 ```
 
 As you can see, this command reproduces the failure message of the failing test. However, if you now update your `recheck.ignore` file, this command shows you whether recheck picked up the desired ignores without the need to actually re-run your test.
