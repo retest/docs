@@ -50,7 +50,7 @@ An *inserted difference* indicates that a new element has been added.
 
 ```text
 p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
-    was inseted
+    was inserted
 ```
 
 A *deleted difference* indicates that an element has been removed.
