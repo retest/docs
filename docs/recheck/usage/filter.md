@@ -1,10 +1,10 @@
 # Filter
 
-In principal, ***recheck*** creates a difference for every change that occurred and writes it into the report. Then it is up to the UI (***review*** or ***recheck.cli***) to hide ignored differences. This is pretty much inline with how Git works&mdash;the diff is there, it just doesn't show up when ignored.
+In principle, ***recheck*** creates a difference for every change that occurred and writes it into the report. Then it is up to the UI (***review*** or ***recheck.cli***) to hide ignored differences. This is pretty much in line with how Git works&mdash;the diff is there, it just doesn't show up when ignored.
 
 The advantages of this approach are as follows:
 
-- It is inspection / revision save – every change is documented.
+- It is inspection / revision safe – every change is documented.
 - *Hidden* changes (technical changes that are usually invisible to the user) are treated as any other change and are presented as such.
 - You can change the rules of what to ignore and instantly see the impact.
 
@@ -63,7 +63,7 @@ ${PROJECT_ROOT}
 
 ## Usage
 
-Filters must be specified by name and given to the `RecheckOptions` as described [here](configuration.md). That is, to make them usable within different products such that no information is lost. So, if you configure a filter within `RecheckOptions` (see below), you may want to use the same filter within ***review*** too, that differences during test and review remain the same.
+Filters must be specified by name and given to the `RecheckOptions` as described [here](configuration.md). That is, to make them usable within different products such that no information is lost. So, if you configure a filter within `RecheckOptions` (see below), you may want to use the same filter within ***review*** too, such that differences during test and review remain the same.
 
 ### RecheckOptions
 
@@ -92,7 +92,7 @@ This file will be updated through the UI (***review*** or ***recheck.cli***) if 
 
 #### recheck.ignore.js
 
-This is a filter file which supports dynamic rules in JavaScript, using [Mozilla's Rhino engine](https://github.com/mozilla/rhino/). This allows users to specify ignore rules very flexibly by using the below method:
+This is a filter file which supports dynamic rules in JavaScript, using [Mozilla's Rhino engine](https://github.com/mozilla/rhino/). This allows users to specify ignore rules very flexibly by using the following method:
 
 ```js
 matches( element, diff );
@@ -122,7 +122,7 @@ You may define filters in a file with the `.filter` extension that is located in
 ### Comments
 
 ```text
-# This is a comment. It is annotated with a '#' and encompass the full line
+# This is a comment. It starts with a '#' and encompasses the full line
 
 foo # Comment lines must start with a '#' and do not have leading whitespaces
 
