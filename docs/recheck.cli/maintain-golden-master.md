@@ -23,13 +23,14 @@ Command-line interface for recheck.
       --help      Display this help message.
       --version   Display version info.
 Commands:
-  version     Display version info.
-  diff        Compare two Golden Masters.
-  show        Display differences of given test report.
+  account     Allows to log into and out of your account and show your API key.
+  help        Displays help information about the specified command
   commit      Accept specified differences of given test report.
-  ignore      Ignore specified differences of given test report.
   completion  Generate and display an auto completion script.
-  help        Displays help information about the specified command.
+  diff        Compare two Golden Masters.
+  ignore      Ignore specified differences of given test report.
+  show        Display differences of given test report.
+  version     Display version info.
 ```
 
 Now we want to automatically ignore all irrelevant changes. To do that, simply type something like (using your name and setup) `recheck ignore --all target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report` (more on reports below). This will automatically add the following line to your `recheck.ignore` file:

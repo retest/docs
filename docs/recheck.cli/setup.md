@@ -11,13 +11,14 @@ Command-line interface for recheck.
       --help      Display this help message.
       --version   Display version info.
 Commands:
-  version     Display version info.
-  diff        Compare two Golden Masters.
-  show        Display differences of given test report.
+  account     Allows to log into and out of your account and show your API key.
+  help        Displays help information about the specified command
   commit      Accept specified differences of given test report.
-  ignore      Ignore specified differences of given test report.
   completion  Generate and display an auto completion script.
-  help        Displays help information about the specified command.
+  diff        Compare two Golden Masters.
+  ignore      Ignore specified differences of given test report.
+  show        Display differences of given test report.
+  version     Display version info.
 ```
 
 ## Linux
