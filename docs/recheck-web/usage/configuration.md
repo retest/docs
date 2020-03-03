@@ -68,6 +68,6 @@ Additionally to [***recheck*** properties](../../recheck/usage/configuration.md)
 
 ```properties
 # Configure the strategy of how screenshots are taken.
-# fullPage | viewPortOnly | none
-de.retest.recheck.web.screenshot.provider=viewPortOnly
+# fullPage | viewportOnly | viewportOnlyMinimal | none
+de.retest.recheck.web.screenshot.provider=viewportOnlyMinimal
 ```
