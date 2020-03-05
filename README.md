@@ -6,7 +6,7 @@ For the rendered documentation, please go to https://retest.github.io/docs/.
 
 ## Installation
 
-We use [MkDocs](https://mkdocs.org/) to build and deploy the documentation. Please refer to the official [installation guide](https://www.mkdocs.org/#installation).
+We use [MkDocs](https://www.mkdocs.org/) to build and deploy the documentation. Please refer to the official [installation guide](https://www.mkdocs.org/#installation).
 
 ## Commands
 
