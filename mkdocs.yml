@@ -6,6 +6,7 @@ theme:
   favicon: "assets/images/favicon.ico"
   icon:
     logo: "retest/logo"
+    repo: "fontawesome/brands/github"
   palette:
     primary: "lime"
     accent: "red"
