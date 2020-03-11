@@ -2,7 +2,7 @@ site_name: retest docs
 
 theme:
   name: material
-  custom_dir: 'theme'
+  custom_dir: "theme"
   favicon: "assets/images/favicon.ico"
   logo: "assets/images/logo.svg"
   palette:
