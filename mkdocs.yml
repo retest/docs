@@ -9,8 +9,8 @@ theme:
   palette:
     primary: "lime"
     accent: "red"
-  feature:
-    tabs: true
+  features:
+    - tabs
 
 markdown_extensions:
   - admonition
@@ -40,15 +40,15 @@ repo_name: "retest/docs"
 repo_url: "https://github.com/retest/docs"
 extra:
   social:
-    - type: "github"
+    - icon: "fontawesome/brands/github"
       link: "https://github.com/retest"
-    - type: "twitter"
+    - icon: "fontawesome/brands/twitter"
       link: "https://twitter.com/retest_en"
-    - type: "linkedin"
+    - icon: "fontawesome/brands/linkedin"
       link: "https://www.linkedin.com/company/retest-gmbh"
-    - type: "facebook"
+    - icon: "fontawesome/brands/facebook"
       link: "https://www.facebook.com/retest.de"
-    - type: "xing"
+    - icon: "fontawesome/brands/xing"
       link: "https://www.xing.com/companies/retestgmbh"
 
 nav:
