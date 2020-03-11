@@ -4,7 +4,8 @@ theme:
   name: material
   custom_dir: "theme"
   favicon: "assets/images/favicon.ico"
-  logo: "assets/images/logo.svg"
+  icon:
+    logo: "retest/logo"
   palette:
     primary: "lime"
     accent: "red"
