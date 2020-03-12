@@ -210,9 +210,7 @@ However, these tests are still brittle and break easily. If any of the identifie
 +   <input type="text" id="input-user">
 ```
 
-To make your test nearly unbreakable, use the `UnbreakableDriver` provided by ***recheck-web***.
-
-Note that the unbreakable feature only works, if a Golden Master has been created before (i.e. a full test has been run at least once). Consequently, changes to an element during runtime (e.g. with JavaScript) is not supported. It is therefore recommended to always do a initial check using a `WebDriver` before querying any elements, so that they can be found from the initial Golden Master.
+To make your test nearly unbreakable, use the `UnbreakableDriver` provided by ***recheck-web***. Be sure to understand the following terms: [*scope*](#unbreakable-scopes) and [*reference*](#unbreakable-references) which is used to find broken elements.
 
 ```java hl_lines="3 4 13"
 @BeforeEach
@@ -241,6 +239,86 @@ void login_with_invalid_credentials_should_produce_error_message_and_clear_input
 
 !!! note
 	In order for this feature to work, a Golden Master must have been created before in order to find the element in question.
+
+### Unbreakable Scopes
+
+> A **Scope** is the content of the Golden Master and as such is the available search space for the `UnbreakableDriver` to find the element in question.
+
+The scope gets defined by the driver or element checked. A driver will encompass the whole web application as search space, while the element will encompass only the element itself with its children.
+
+For example the test above tests an arbitrary login process. The scope for the element `form` will contain all necessary elements to complete the login process: `user`, `password` and `login` elements. However, the scope for the element `user` will only contain the user and not any other element.
+
+The `UnbreakableDriver` will search within the scope available to search for any broken elements. For example, the `login` button is only available within `driver` or the `form` element; it is not available within the `user` element.
+
+!!! tip
+	The scope for the `driver` and `driver.findElement( By.type( "html" ) )` is essentially the same.
+
+### Unbreakable References
+
+> A **Reference** is the location of the Golden Master where the `UnbreakableDriver`. It is associated with a scope.
+
+If Selenium cannot find the element, the `UnbreakableDriver` will jump in and search the **last** reference to the Golden Master and within the associated scope. This reference is overwritten with each check, thus it should be verified that elements are searched within the correct reference (see example below).
+
+You may have noticed the highlighted line with the initial driver check in the above migration example. Initially, no check was performed and therefore no reference has been defined yet. As such, the unbreakable feature cannot work. In order for it to work, an initial check must be performed for the reference to be set, before any broken elements can be found. This initial reference must have a sufficient scope available to find each element; thus it is recommended to perform it with the `driver` instance.
+
+!!! warning
+	The unbreakable feature only works, if a Golden Master has been created before (i.e. a full test has been run at least once).
+
+### Unbreakable example
+
+It should be taken care that the correct reference with a sufficient scope is available when searching for elements. The below examples should highlight the issue, when elements are searched with insufficient scopes.
+
+```java
+@Test
+void login_with_invalid_credentials_should_produce_error_message_and_clear_inputs() throws Exception {
+	driver.get( "https://example.com" );
+
+	final WebElement user = driver.findElement( By.id( "user" ) ); // Find the "user" element in an undefined reference -> will fail
+	user.sendKeys( "admin" );
+	re.check( user, "user" ); // Create reference "user" with scope "element(user)"
+
+	final WebElement password = driver.findElement( By.id( "password" ) ); // Find the "password" element in reference "user" -> will fail
+	password.sendKeys( "secret" );
+	re.check( user, "password" ); // Create reference "password" with scope "element(password)"
+
+	final WebElement login = driver.findElement( By.id( "login" ) ); // Find the "login" element in reference "password" -> will fail
+	login.click(); // Press the button to initiate the login process
+
+	// Wait for login to happen by using WebDriverWait or similar to stabilize your page
+	re.check( driver, "login" ) // Create reference "login" with scope "driver"
+}
+```
+
+The above example does not work because of both an insufficient scope and an invalid reference. Therefore it is recommended to find the elements with the broadest scope available (e.g. after the initial check). This follows the [Page Object Pattern](https://webdriver.io/docs/pageobjects.html), where the elements are accessed once and reused afterwards.
+```java
+@Test
+void login_with_invalid_credentials_should_produce_error_message_and_clear_inputs() throws Exception {
+	driver.get( "https://example.com" );
+
+	// Wait for login to happen by using WebDriverWait or similar to stabilize your page
+	re.check( driver, "initial" ); // Create reference "initial" with scope "driver"
+
+	final WebElement user = driver.findElement( By.id( "user" ) ); // Find the "user" element in reference "initial"
+	final WebElement password = driver.findElement( By.id( "password" ) ); // Find the "password" element in reference "initial"
+	final WebElement login = driver.findElement( By.id( "login" ) ); // Find the "login" element in reference "initial"
+
+	user.sendKeys( "admin" );
+	re.check( user, "user" ); // Create reference "user" with scope "element(user)"
+
+	password.sendKeys( "secret" );
+	re.check( password, "password" ); // Create reference "password" with scope "element(password)"
+
+	login.click();
+	// Wait for login to happen by using WebDriverWait or similar to stabilize your page
+	re.check( driver, "login" )// Create reference "login" with scope "driver"
+}
+```
+
+!!! tip
+	From each `driver.findElement` look at the lines above for a `re.check` to identify the reference used. Then decide if this reference with its associated scope contains the element you are searching for.
+
+!!! tip
+	Use the [Page Object Pattern](https://webdriver.io/docs/pageobjects.html) to ensure correct and properly resolved elements. An example to make Page Objects work with ***recheck-web*** can be found [above](#page-objects).
 
 ## Implicit checking
 
