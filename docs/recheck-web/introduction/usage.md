@@ -150,7 +150,7 @@ class LoginTest {
 		final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
 		user.sendKeys( "admin" ); // Type the user 'admin'
 
-		final WebElement password = driver.findElement( By.id( "user" ) ); // Find the password input element
+		final WebElement password = driver.findElement( By.id( "password" ) ); // Find the password input element
 		user.sendKeys( "invalid" ); // Type an invalid password
 
 		final WebElement login = driver.findElement( By.id( "login" ) ); // Find the login button
@@ -279,7 +279,7 @@ class LoginTest {
 		final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
 		user.sendKeys( "admin" ); // Type the user 'admin', this will perform a check
 
-		final WebElement password = driver.findElement( By.id( "user" ) ); // Find the password input element
+		final WebElement password = driver.findElement( By.id( "password" ) ); // Find the password input element
 		user.sendKeys( "invalid" ); // Type an invalid password, this will perform a check
 
 		final WebElement login = driver.findElement( By.id( "login" ) ); // Find the login button
@@ -327,7 +327,7 @@ class LoginTest {
 		final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
 		user.sendKeys( "admin" ); // Type the user 'admin'
 
-		final WebElement password = driver.findElement( By.id( "user" ) ); // Find the password input element
+		final WebElement password = driver.findElement( By.id( "password" ) ); // Find the password input element
 		user.sendKeys( "invalid" ); // Type an invalid password
 
 		final WebElement login = driver.findElement( By.id( "login" ) ); // Find the login button
