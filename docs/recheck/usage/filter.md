@@ -10,10 +10,11 @@ The advantages of this approach are as follows:
 
 ### What Are Filters?
 
-Filters can be used to reduce the noise mentioned above within a report. They can accept two different arguments:
+Filters can be used for different purposes, most notably to reduce the noise mentioned above within a report. They can accept different arguments:
 
-1. **Element**: Filter based on the criteria of the element. This can be used to specify an element of interest or ignore an always changing element.
-2. **Difference**: Filter based on the difference, with the element giving additional context information.
+1. **Element**: Filter applies to an element. This may look at specific attributes, children or parent element to determine if the filter applies. The element in question can be identified by a wide range of identifying attributes, which are specified by the [extensions](../introduction/installation).
+2. **Attribute**: Filter applies to a single attribute either with or without an element.
+3. **Difference**: Filter applies to a difference where the attribute and the value can be retrieved.
 
 Multiple filters are additive. If one filter returns `true`, the result is taken and not further evaluated. Similarly, all filters must return `false` to ignore a particular difference.
 
@@ -22,7 +23,7 @@ Multiple filters are additive. If one filter returns `true`, the result is taken
 
 ## Location
 
-By default, filters are used as text files, so that they are reusable within different products and stages. The name of the file corresponds with the appropriate name used within ***recheck***. There are several locations where the filter files can be placed, so that they may be referenced within the [`RecheckOptions`](configuration.md).
+By default, filters are simple text files, so that they are reusable within different products and stages. The name of the file corresponds with the appropriate name used within ***recheck***. There are several locations where the filter files can be placed, so that they may be referenced within the [`RecheckOptions`](configuration.md).
 
 ### Plain Filters
 
@@ -73,7 +74,7 @@ RecheckOptions.builder()
     .build();
 ```
 
-```text
+```properties
 # my-custom-filter.filter
 
 # Define your rules here:
@@ -121,7 +122,7 @@ You may define filters in a file with the `.filter` extension that is located in
 
 ### Comments
 
-```text
+```properties
 # This is a comment. It starts with a '#' and encompasses the full line
 
 foo # Comment lines must start with a '#' and do not have leading whitespaces
@@ -131,22 +132,68 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 ### Expressions
 
-A filter is built up using one or multiple expressions. They may be chained using a comma with a whitespace `, `. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore.
+A filter is built up using one or multiple expressions. By chaining multiple expressions together using a comma with a whitespace `, `, you are able to more precisely specify what the filter should match. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore. See the examples below for the possible chainable expressions.
 
-We currently support these expressions (chained expressions are included ):
+We currently support these individual expressions. Please refer to the more in detail descriptions below:
 
-```text
+```properties
+# Match any element
 $element
+# Match any attribute
 $attribute
+# Match any value
+$value
+
+# Match inserted changes (for elements)
+$inserted
+# Match deleted changes (for elements)
+$deleted
+
+# Match some pixel fluctuations (for attributes)
+$pixel-diff
+# Match some pixel fluctuations (for attributes)
+$color-diff
+```
+
+You may chain them in the following way for elements:
+```properties
+# Match an attribute for a specific element
 $element, $attribute
+# Match a specific value of an elements' attribute
+$element, $attribute, $value
+# Match some pixel fluctuations for an elements' attribute
+$element, $attribute, $pixel-diff
+# Match some color fluctuations for an elements' attribute
+$element, $attribute, $color-diff
+# Match a specific value for all attributes of an element
+$element, $value
+# Match some pixel fluctuations for all attributes of an element
+$element, $pixel-diff
+# Match the element only if it is inserted
+$element, $inserted
+# Match the element only if it is removed
+$element, $deleted
+```
+
+You may chain them in the following way for attributes:
+```properties
+# Match a specific value of an attribute for all elements
+$attribute, $value
+# Match some pixel fluctuation of an attribute for all elements
+$attribute, $pixel-diff
+# Match some color fluctuation of an attribute for all elements
+$attribute, $color-diff
 ```  
+
+!!! tip
+    By combining element, attribute and value matching, you are able to match certain differences very specifically.
 
 ### Matching Elements
 
-Elements are identified by one special attribute `$key`, so called *identifying attributes*. If you directly match an element with no additional expressions (e.g. attributes), all of its child elements are ignored too.
+Elements are identified by one special attribute `$key`, so called *identifying attributes*. 
 
-```text
-# Match the element where its attribute $key fully matches the $value
+```properties
+# Match the element and its children where its attribute $key fully matches the $value.
 matcher: $key=$value
 ```
 
@@ -158,6 +205,20 @@ matcher: $key=$value
 | `class`    | `my-class` or `my-class other-class` | HTML `class` attribute (supplied by ***recheck-web***)                                                      |
 | `type`     | `button`                             | HTML tag name (supplied by ***recheck-web***)[^1]                                                           |
 
+#### Matching inserted or deleted elements
+
+If you are not interested in inserted or deleted elements, but still want to get notified if the attributes of the specified elements change, you can ignore those changes. This is useful for lists similar where you do not care if an element is inserted, but do care if the font or color changes.
+
+```properties
+# Globally ignore insertions or deletions
+change=inserted
+change=deleted
+
+# Ignore only insertions deletions within the element
+matcher: $key=$value, change=inserted
+matcher: $key=$value, change=deleted
+```
+
 ### Matching Attributes
 
 You can filter specific attributes that occur in differences by their respective name.
@@ -165,11 +226,11 @@ You can filter specific attributes that occur in differences by their respective
 !!! note
     An extension specifies which *attributes* (as well as *identifying attributes*) it creates for an element. Their name is displayed in the corresponding difference. Please refer to extensions' documentation for that information.
 
-#### By Value
+#### By Attribute
 
-If you are searching for a specific name, you may define the `attribute` expression. The value specified must match fully in order to let the filter return `true`.
+If you are searching for a specific attribute, you may define the `attribute` expression. The value specified must match fully in order to let the filter return `true`.
 
-```text
+```properties
 # Match the attribute outline only on the elements of type input
 matcher: type=input, attribute=outline
 
@@ -181,7 +242,7 @@ attribute=outline
 
 Similarly, you can also use [Java's regex mechanism](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) and ignore attributes by a given pattern.
 
-```text
+```properties
 # Match the attribute border-.*-color (e.g. border-bottom-color) on the elements of type input
 matcher: type=input, attribute-regex=border-.*-color
 
@@ -189,15 +250,34 @@ matcher: type=input, attribute-regex=border-.*-color
 attribute-regex=border-.*-color
 ```
 
-### Ignore Pixel Differences
+### Matching Values
+
+If you want to ignore a specific value while still being notified about any other changes, you can specify a `value-regex`. This is helpful if you want to ensure that the value has a specific patter (e.g. date format) but do not care about the concrete value (because it is changing each day).
+
+```properties
+# Match all attributes that look like a date format (dd.MM.yyyy)
+value-regex=\d\d.\d\d.\d\d\d\d
+```
+
+### Matching Pixel Differences
 
 Minor visual differences (e.g. between different browser types or browser versions) can make traditional, pixel-based approaches fail, which means more manual maintenance effort. In ***recheck***, one can easily ignore pixel differences that are unimportant from a user's point of view:
 
-```text
-pixel-diff=5
-pixel-diff=5.5
+```properties
+pixel-diff=5px
+pixel-diff=5.5px
 ```
 
 This would ignore every pixel difference (position- or size change) up to 5 pixels. You can either specify an integer or a float.
+
+### Matching Color Differences
+
+Similarly to the pixel differences, it is possible to ignore small color differences. This is most useful to ignore small differences for color animations.
+
+```properties
+color-diff=5%
+```
+
+Each color component (red, green, blue) is reviews in isolation. Changing only the red component from `255` to `127` would result in a color difference of 50%.
 
 [^1]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.
