@@ -91,7 +91,7 @@ If there were more than one Golden Master, all of them would be updated. If you 
 To further show the functionality of the recheck.cli, let’s adapt the content of the Scratchpad again. Open your browser and change the welcome message to recheck-web. Again, re-running the test should again show the difference and produce a test report under `target/test-classes/retest/recheck/`. You can use recheck.cli to display the contents of that file by running:
 
 ```text
-recheck diff target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
+recheck show target\test-classes\retest\recheck\com.mycompany.MyFirstTest.report
 ```
 
 Doing so should result in an output similar to the following:
