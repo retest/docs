@@ -1,0 +1,10 @@
+:root {
+  /* Primary color shades */
+  --md-primary-fg-color:               hsla(67, 63%, 50%, 1); /* #BED031 500 */
+  --md-primary-fg-color--light:        hsla(67, 63%, 70%, 1); /* #D8E382 300 */
+  --md-primary-fg-color--dark:         hsla(67, 63%, 30%, 1); /* #727D1C 700 */
+
+  /* Accent color shades */
+  --md-accent-fg-color:                hsla(329, 91%, 42%, 1); /* #CA0A6D 600 */
+  --md-accent-fg-color--transparent:   hsla(329, 91%, 42%, 0.1); /* #CA0A6D 600 */
+}
