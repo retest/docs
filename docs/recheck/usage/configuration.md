@@ -86,6 +86,14 @@ You may change the location of files using a custom [`ProjectLayout`](https://gi
 
 When executing your tests on a CI, it may not be straightforward to access the created reports. For this we offer a way to [upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md) your reports to ***rehub*** so that you can easily update your Golden Masters.
 
+If the upload of the report fails (e.g connectivity issues, timeout, ...), ***recheck*** will restart the upload, favoring reports with differences.
+
+1. If there are no differences: The upload is only attempted once, ignoring any errors so that they do not lead to test failures.
+2. If there are differences: The report upload is restarted if any errors occur during the upload. If the upload fails repeatedly, the causing error is logged and reported to the test framework, causing the test to fail. The maximum upload attempts can be controlled with the property `de.retest.recheck.rehub.upload.attempts`.
+
+!!! warning
+    The upload or re-upload of the report is aborted after 5 minutes after the initial upload request.
+
 ### Using Filters
 
 Per default, we load the `recheck.ignore` files as specified in [filters](filter.md). Thus, the `suiteName` is a required dependency to be evaluated before, so that the filters are loaded from the correct Golden Master.
@@ -104,6 +112,10 @@ If you want specify additional filters (e.g. your custom project filters), you m
 # If true, reports will be uploaded to rehub.
 # "true" or "false".
 de.retest.recheck.rehub.reportUploadEnabled=false
+
+# Retry attempts to upload reports to rehub if initial upload fails
+# Any positive integer
+de.retest.recheck.rehub.upload.attempts=3
 
 # Always ignore these attributes, even if no ignore or filter is active.
 # Any string, separate values with ";".
