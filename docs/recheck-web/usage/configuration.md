@@ -12,9 +12,6 @@ RecheckWebOptions options = RecheckWebOptions.builder()
     .build()
 ```
 
-!!! bug
-    The `RecheckOptionsBuilder` contains currently a bug, where the ***recheck-web*** specific options must be set before the common ***recheck*** options.
-
 ### Usage
 
 Same as the `RecheckOptions` the `RecheckWebOptions` can be passed to the [`RecheckImpl`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/RecheckImpl.java).
