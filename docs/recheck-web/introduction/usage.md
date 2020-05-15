@@ -352,7 +352,7 @@ class LoginTest {
 
 	@Test
 	void login_with_invalid_credentials_should_produce_error_message_and_clear_inputs() throws Exception {
-		driver.get( "https://example.com" ); // Go to your login page
+		driver.get( "https://example.com" ); // Go to your login page, this will perform a check
 
 		final WebElement user = driver.findElement( By.id( "user" ) ); // Find the user input element
 		user.sendKeys( "admin" ); // Type the user 'admin', this will perform a check
@@ -371,6 +371,24 @@ class LoginTest {
 
 !!! warning
 	Do not mix implicit and explicit checking as this will produce unexpected results. Thus be sure to remove the `Recheck` instance from your test code.
+
+### Skipping checks
+
+It is possible to skip an implicit check by using the `skipCheck()` method on either `AutocheckingRecheckDriver` or `AutocheckingWebElement` which will not create a Golden Master for any actions performed on the driver or element.
+
+```java
+AutocheckingRecheckDriver driver = ...
+
+WebDriver skipping = driver.skipCheck(); // This will disable checks for the returned driver
+
+skipping.get( "https://example.com" ); // Go to your login page, this will not perform a check
+
+final WebElement user = driver.findElement( By.id( "user" ) ).skipCheck(); // Find the user input element, disabling checks for the returned element
+user.sendKeys( "admin" ); // Type the user 'admin', this will not perform a check
+
+final WebElement password = skipping.findElement( By.id( "password" ) ); // Find the password input element
+password.sendKeys( "invalid" ); // Type an invalid password, this will not perform a check
+```
 
 ## RecheckDriver
 
