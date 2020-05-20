@@ -19,6 +19,7 @@ markdown_extensions:
   - footnotes
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.keys
 
 plugins:
   - search
@@ -91,4 +92,5 @@ nav:
   - review:
       - "review/installation.md"
       - "review/usage/reports.md"
+      - "review/usage/projects.md"
       - "review/usage/healing.md"
