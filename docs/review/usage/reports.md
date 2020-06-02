@@ -30,6 +30,12 @@ You can click on the screenshots to open them in a new window and view them in a
 After you are done maintaining your Golden Master and accepted/ignored all the elements you wanted to, click on `Accept Changes` on the bottom. This button will only appear if you did at least one change.
 This will update the Golden Master and/or the recheck.ignore file automatically and there should nothing be left you have to do.
 
+## 1-click Test Maintenance
+
+When accepting or ignoring differences, ***review*** will look through all checks for the same difference on the same element, cutting down the time to maintain the Golden Master significantly.
+
+This is especially helpful if you performed multiple tests on the same website (e.g. using multiple resolutions, cross-browser, &hellip;) or different websites that share similar elements (e.g. header, footer, &hellip;). If a difference was detected on a shared element (e.g. a login button was changed), ***review*** will accept this difference across all performed checks.
+
 ## Ignore Elements
 
 In the top left corner of the test report, above the navigation for the differences is a box with check marks for different type of elements. By using them you automatically ignore all elements of that type. Below that box is another check mark to filter every accepted/ignored (green) elements from the navigation tree. If you want to manage your ignores manually you can do so by configuring the [`retest.ignore` file](../../recheck-web/tutorial/setup-recheck.ignore.md) in your favorite text editor.
