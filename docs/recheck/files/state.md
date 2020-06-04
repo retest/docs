@@ -29,16 +29,19 @@ The Golden Master may contain screenshots of the object under test. However, the
 
 We capture some metadata that is related to the Golden Master, which is supposed to make it easier for you to identify how and where the Golden Master was created. Please note that the discovered metadata differences are not part of the final difference count. This metadata will not capture any sensitive data and is not analyzed but for strict difference reporting.
 
-| Key            | Value (Example) |
-| -------------- | --------------- |
-| `machine.name` | WORK_PC         |
-| `os.arch`      | amd64           |
-| `os.name`      | Windows 10      |
-| `os.version`   | 10.0            |
-| `time.date`    | 2019-12-03      |
-| `time.time`    | 16:07:37.551    |
-| `time.offset`  | +01:00          |
-| `time.zone`    | Europe/Berlin   |
+| Key            | Value (Example)                          |
+| -------------- | ---------------------------------------- |
+| `machine.name` | WORK_PC                                  |
+| `os.arch`      | amd64                                    |
+| `os.name`      | Windows 10                               |
+| `os.version`   | 10.0                                     |
+| `time.date`    | 2019-12-03                               |
+| `time.time`    | 16:07:37.551                             |
+| `time.offset`  | +01:00                                   |
+| `time.zone`    | Europe/Berlin                            |
+| `vcs.branch`   | master                                   |
+| `vcs.commit`   | 617bc4f26995bedce222b6ca8181291f68fc91e0 |
+| `vcs.name`     | git                                      |
 
 Further metadata will follow over time.
 
