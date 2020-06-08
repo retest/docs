@@ -10,7 +10,9 @@ The advantages of this approach are as follows:
 
 ### What Are Filters?
 
-Filters can be used for different purposes, most notably to reduce the noise mentioned above within a report. They can accept different arguments:
+Filters can be used for different purposes, most notably to reduce the noise mentioned above within a [report](../files/report.md).
+
+They can accept different arguments, which all are accessible using the below [syntax](#syntax):
 
 1. **Element**: Filter applies to an element. This may look at specific attributes, children or parent element to determine if the filter applies. The element in question can be identified by a wide range of identifying attributes, which are specified by the [extensions](../introduction/installation).
 2. **Attribute**: Filter applies to a single attribute either with or without an element.
@@ -35,14 +37,14 @@ By default, filters are simple text files, so that they are reusable within diff
     We are currently experimenting with sensible defaults and may change the provided filters without notice. If you feel that they filter too much or too less within their respective category, please let us know, so that we can change these.
 
 !!! tip
-    You may overwrite filters by using the same name. They are searched top-down. That is, project filters overwrite user filters, which in turn overwrite the provided filters.
+    You may overwrite filters by using the same name. They are searched top-down. That is, project filters overwrite user filters, which in turn overwrite the provided filters. This allows you to easily overwrite the provided filters so that you can add your customizations.
 
 ### Ignore Filters
 
-Ignores are a special kind of filters which (by default) are loaded automatically. They define that `true` ignores (i.e. hides) the specified difference, while `false` continues to use it. Furthermore, they have specific names and may be placed in either of the following locations:
+An ignore filter `recheck.ignore` is a special kind of filter which (by default) is loaded automatically. It defines that `true` ignores (i.e. hides) the specified difference, while `false` continues to use it. In contrast to plain filters, multiple ignore filters do not overwrite each other, despite having the same name. Rather, they are additive and each location contributes to the final ignore filter used by recheck. The following locations are searched:
 
 1. Globally: `${USER_HOME}/.retest/`. *Must be created manually*.
-2. For each Project: `${PROJECT_ROOT}/.retest/`. *Will be created on first run*.
+2. For each Project: `${PROJECT_ROOT}/.retest/`. *Will be created on first execution*.
 3. For each Golden Master individually (i.e. suite). *Must be created manually*.
 
 After using ***recheck.cli*** or ***review*** to update the ignore filter, only the ignore file for the project will be updated to additionally contain the new ignored differences and all ignores from the global and suite ignore file.
@@ -137,6 +139,9 @@ A filter is built up using one or multiple expressions. By chaining multiple exp
 We currently support these individual expressions. Please refer to the more in detail descriptions below:
 
 ```properties
+# Import filters
+$import
+
 # Match any element
 $element
 # Match any attribute
@@ -187,6 +192,22 @@ $attribute, $color-diff
 
 !!! tip
     By combining element, attribute and value matching, you are able to match certain differences very specifically.
+
+### Importing Filters
+
+To avoid having huge filter or ignore files and to avoid redundancy, you can create smaller, specialized filters which you can import.
+
+The import is specified by the filter name (i.e. the file name), which will look at the global scope of all filters to find the most specific one. For example using the below example, will search all available [locations](#location) for the file name and choose the most specific filter to load. This way, the importing filter will always pick up any changes made to the imported filter. 
+
+```properties
+# Import other filters based on the name
+import: content.filter
+```
+
+!!! warning
+    Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
+    
+    Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
 
 ### Matching Elements
 

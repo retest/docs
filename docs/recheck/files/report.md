@@ -72,10 +72,13 @@ os.name:
 
 ## Filtering
 
-We capture every difference that occurs. This is to retain the changes history. However, too many changes can be overwhelming, so you can apply [filters](../usage/filter.md) to ignore them. 
+We capture every difference that occurs. This is to retain the changes history. However, too many changes can be overwhelming, so you can apply [filters](../usage/filter.md) to ignore them. A filter is used for all captured differences, both element and metadata differences.
+
+!!! tip
+    Easily import some [provided filters](https://github.com/retest/recheck/tree/master/src/main/resources/filter) for your `recheck.ignore`, for example: `import: metadata.filter` to ignore some volatile metadata.
 
 !!! note
-    Filtering does not get rid of the differences, we still capture them. However, filtered difference don't cause tests to fail and will be ignored by the user interfaces. This approach allows us to changed the filters even after test execution.
+    Filtering does not get rid of the differences, we still capture them. However, filtered difference do not cause tests to fail and will be ignored by the user interfaces.
 
 ## Maintaining Differences
 
