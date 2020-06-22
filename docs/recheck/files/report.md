@@ -35,7 +35,7 @@ There are several types of differences that can be encountered. Note that the ex
 An *attribute difference* indicates that an element's attribute has changed. This is the most common difference and may include every attribute that is extracted through a extension. For example, this could include `text` changes or changes from/to the default value of the respective attribute.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     text:
       expected="recheck",
         actual="Recheck"
@@ -49,14 +49,14 @@ p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
 An *inserted difference* indicates that a new element has been added.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     was inserted
 ```
 
 A *deleted difference* indicates that an element has been removed.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     was deleted
 ```
 
