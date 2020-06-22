@@ -7,6 +7,13 @@ A report can be viewed with either user interface [***review***](../../review/in
 !!! warning
     The report is bound to the ***recheck*** version used during comparison. We currently offer no compatibility support between versions. If you need a report in a newer version, simply execute the test again with the new ***recheck*** version.
 
+## Location
+
+Per default, reports are located under `target/test-classes/retest/recheck/`, which can be changed with some [configuration](../usage/configuration.md).
+
+!!! tip
+    If you execute your tests on a remote system such as a CI server, you can enable the [***recheck***'s report upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md). This will upload your report to [***rehub***](https://rehub.retest.de), so that it can be accessed and downloaded to view it.
+
 ## Structure
 
 A report is structured to comply with the [lifecycle](../introduction/usage.md) of `Recheck`.
@@ -18,13 +25,6 @@ Report
         +-- Check (1..n)
             +-- Difference (0..n)
 ```
-
-## Location
-
-Per default, reports are located under `target/test-classes/retest/recheck/`, which can be changed with some [configuration](../usage/configuration.md).
-
-!!! tip
-    If you execute your tests on a remote system such as a CI server, you can enable the [***recheck***'s report upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md). This will upload your report to [***rehub***](https://rehub.retest.de), so that it can be accessed and downloaded to view it.
 
 ## Differences
 
