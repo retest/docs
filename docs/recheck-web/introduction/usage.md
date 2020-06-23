@@ -5,7 +5,7 @@ In its core, ***recheck-web*** extends ***recheck*** and adds the capability to 
 1. [WebDriver](#webdriver): *Check the complete page rendered by the browser*.
 2. [WebElement](#webelement): *Check individual page sections with isolated elements*.
 
-For a basic introduction on how ***recheck*** works, please visit the [Usage](../../recheck/introduction/usage.md) page.  
+For a basic introduction on how ***recheck*** works, please visit the [Usage](../../recheck/introduction/usage.md) page. Please be sure to understand the files generated: [Golden Master](../../recheck/files/state.md), [Report](../../recheck/files/report.md).
 
 However, ***recheck-web*** also provides some additional features building upon the above capabilities. 
 
