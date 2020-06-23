@@ -16,7 +16,7 @@ Per default, reports are located under `target/test-classes/retest/recheck/`, wh
 
 ## Structure
 
-A report is structured to comply with the [lifecycle](../introduction/usage.md) of `Recheck`.
+A report is structured to represent the [lifecycle](../introduction/usage.md) of `Recheck`.
 
 ```text
 Report
@@ -25,6 +25,19 @@ Report
         +-- Check (1..n)
             +-- Difference (0..n)
 ```
+
+This structure is also displayed in the generated output after a test execution to make it easy to identify the failing check and therefore the steps taken which lead to the reported differences.
+
+Furthermore, all attribute differences are tied to an [element](../files/state.md#elements-attributes), which is displayed with some important attributes:
+
+```text
+type (retestId) at 'xpath'
+    ... (some attribute differences)
+```
+
+1. The `type` of the element checked. For ***recheck-web***, this is equal to the HTML `tag` attribute.
+2. The generated `retestId` for that element to be used as a [stable, virtual identifier](./state.md#virtual-identifier).
+3. The `xpath` of the element. This is the ***recheck***-compatible path of the element. For ***recheck-web***, this is equal to the fully specified XPath and can be used within a browser to lookup the element in question.
 
 ## Differences
 
