@@ -117,25 +117,25 @@ Using standard Selenium, these changes would be quite critical as we changed som
 
     ```plaintext
     4 check(s) in 'de.retest.web.FormTest' found the following difference(s):
-    Test 'form_should_fill_in_user_and_password_and_redirect_to_dashboard' has 8 difference(s) in 4 state(s):
+    Test 'form_should_fill_in_user_and_password_and_redirect_to_dashboard' has 10 difference(s) in 4 state(s):
     00 resulted in:
-    	input at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
-    		id:
-              expected="login",
-                actual="btn-login"
-    		...
-    	input at 'html[1]/body[1]/div[1]/div[1]/form[1]/div[1]/input[1]':
-    		id:
+        input (user) at 'html[1]/body[1]/div[1]/div[1]/form[1]/div[1]/input[1]':
+            id:
               expected="user",
                 actual="username", breaks="FormTest.java:47"
-    ...
+        input (login) at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
+            id:
+              expected="login",
+                actual="btn-login"
     02 resulted in:
-        input at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
+        input (user) at 'html[1]/body[1]/div[1]/div[1]/form[1]/div[1]/input[1]':
+            id:
+            expected="user",
+                actual="username"
+        input (login) at 'html[1]/body[1]/div[1]/div[1]/form[1]/input[1]':
             id:
               expected="login",
                 actual="btn-login", breaks="FormTest.java:52"
-            ...
-    ...
     ```
    
 Still, we are not truly unbreakable. Applying these changes will update the Golden Master and thus still break the test, since ***recheck*** is not able to find the old `id` anymore. Thus we only postponed the test breakage. 

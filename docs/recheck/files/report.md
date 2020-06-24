@@ -7,9 +7,16 @@ A report can be viewed with either user interface [***review***](../../review/in
 !!! warning
     The report is bound to the ***recheck*** version used during comparison. We currently offer no compatibility support between versions. If you need a report in a newer version, simply execute the test again with the new ***recheck*** version.
 
+## Location
+
+Per default, reports are located under `target/test-classes/retest/recheck/`, which can be changed with some [configuration](../usage/configuration.md).
+
+!!! tip
+    If you execute your tests on a remote system such as a CI server, you can enable the [***recheck***'s report upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md). This will upload your report to [***rehub***](https://rehub.retest.de), so that it can be accessed and downloaded to view it.
+
 ## Structure
 
-A report is structured to comply with the [lifecycle](../introduction/usage.md) of `Recheck`.
+A report is structured to represent the [lifecycle](../introduction/usage.md) of `Recheck`.
 
 ```text
 Report
@@ -19,12 +26,18 @@ Report
             +-- Difference (0..n)
 ```
 
-## Location
+This structure is also displayed in the generated output after a test execution to make it easy to identify the failing check and therefore the steps taken which lead to the reported differences.
 
-Per default, reports are located under `target/test-classes/retest/recheck/`, which can be changed with some [configuration](../usage/configuration.md).
+Furthermore, all attribute differences are tied to an [element](../files/state.md#elements-attributes), which is displayed with some important attributes:
 
-!!! tip
-    If you execute your tests on a remote system such as a CI server, you can enable the [***recheck***'s report upload](../../recheck-web/tutorial/upload-test-reports-to-rehub.md). This will upload your report to [***rehub***](https://rehub.retest.de), so that it can be accessed and downloaded to view it.
+```text
+type (retestId) at 'xpath'
+    ... (some attribute differences)
+```
+
+1. The `type` of the element checked. For ***recheck-web***, this is equal to the HTML `tag` attribute.
+2. The generated `retestId` for that element to be used as a [stable, virtual identifier](./state.md#virtual-identifier).
+3. The `xpath` of the element. This is the ***recheck***-compatible path of the element. For ***recheck-web***, this is equal to the fully specified XPath and can be used within a browser to lookup the element in question.
 
 ## Differences
 
@@ -35,7 +48,7 @@ There are several types of differences that can be encountered. Note that the ex
 An *attribute difference* indicates that an element's attribute has changed. This is the most common difference and may include every attribute that is extracted through a extension. For example, this could include `text` changes or changes from/to the default value of the respective attribute.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     text:
       expected="recheck",
         actual="Recheck"
@@ -49,14 +62,14 @@ p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
 An *inserted difference* indicates that a new element has been added.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     was inserted
 ```
 
 A *deleted difference* indicates that an element has been removed.
 
 ```text
-p [recheck] at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
+p (recheck) at 'html[1]/body[1]/header[1]/nav[1]/div[1]':
     was deleted
 ```
 

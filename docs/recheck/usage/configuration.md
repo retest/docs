@@ -57,8 +57,11 @@ All options annotated with *"Evaluate"* below will be queried with the creation 
 | `suiteName`           | `null`                                                                                                                                                                  | Overwrite the name for the suite.<br>If `null`, `NamingStrategy#getSuiteName()` is used.       | true     |
 | `reportUploadEnabled` | `false`                                                                                                                                                                 | Upload reports to [***rehub***](https://retest.de/rehub/).                                     |          |
 | `ignore`              | `recheck.ignore`                                                                                                                                                        | Set the filter used for reporting the differences after a test phase.<br>*See examples below*. | true     |
+| `retestIdProvider`    | [`DefaultRetestIdProvider`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/descriptors/idproviders/DefaultRetestIdProvider.java)      | Defines the generator of the [virtual identifier](../files/state.md#virtual-identifier).       |          |
 
 ### Example
+
+This is an example using all available options. Note that the classes used may not be present and therefore need to be created manually.
 
 ```java
 RecheckOptions.builder()
@@ -67,6 +70,7 @@ RecheckOptions.builder()
         .suiteName( "my-custom-suite-name" )
         .enableReportUpload()
         .addIgnore( "MyCustomIgnore.filter" )
+        .retestIdProvider( new UUIDRetestIdProvider() )
         .build();
 ```
 

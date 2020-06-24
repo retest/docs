@@ -16,7 +16,51 @@ Per default, Golden Masters are located in `src/test/resources/retest/recheck/` 
 
 ## Data
 
-In addition to the elements, we capture some more data to make it easier for the human to identify and verify changes to the Golden Master. Because of this, the data is entirely optional and may or may not be present. Moreover, if present, the data will always be updated upon applying to reflect the new Golden Master.
+Additionally to all captured elements and their attributes, ***recheck*** captures some more data (i.e. [screenshots](#screenshots), [metadata](#metadata)) to make it easier for the user to identify and verify changes to the Golden Master.
+
+### Elements & Attributes
+
+An element is one of the key objects within a report. It is contains multiple attributes which represent its state and can be used for identification. Each attribute saved will contribute to the difference checking and it is up to the report processor to [filter](../usage/filter.md) unwanted attributes.
+
+!!! tip
+    The more attributes an element contains, the easier it is to solve the [element identification problem](../../recheck-web/element-identification-problem.md).
+
+#### Optimizations
+
+An extension can consider to do the following optimizations to save on disk space:
+
+1. Prevent default values: Do not save attributes which are considered *default* as specified by the [`DefaultValueFinder`](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/DefaultValueFinder.java). It is up to the extension to decide which attributes are considered *default* based on the object or element being tested. Usually, there is a list of global defaults and then each object (e.g. Browser) or element (e.g. Button) defines their own default attributes on top of that.
+1. Use value inheritance (if supported by the underlaying technology): Consider not to save attributes which are inherited from the parent. For example, the font of a text is specified in the `<body>` element and therefore is not added to each text element (as long as it is equal to the parent). 
+
+The extension must carefully choose the balance of default values and inheritance, as those systems cancel each other out. Taking the above example, a `<body>` element specifies a non-default font. However, a child element then reverts the font back to the default (thus overwriting the attribute of the parent). As a consequence, the extension then considers this value *default* and removes it, leaving inheritance to falsely inherit the `<body>` font.
+
+Secondly, default values cannot be reverse engineered as there might be multiple default values for a specific attribute. Thus [filtering](../usage/filter.md) may be limited, if the filter needs to know the saved value (e.g. to calculate deltas).
+
+#### Virtual Identifier
+
+Elements can be identified with any attribute. However, since most attributes cannot be used as a unique identifier or because these attributes change regularly (e.g. random generated `id`), it proves to be difficult to identify an element without it breaking. 
+
+To solve this, ***recheck*** generates a constant, virtual identifier, called `retestId`. This is a special attribute and is therefore not affected by the standard attribute algorithms (optimization, differences, maintenance), and can be considered *hidden*. As such, while a generator, initially, can take the elements' attributes into account, subsequent changes to these attributes will not change the persisted identifier within a Golden Master. Simply speaking, the identifier is only generated once and never modified to ensure that it stays the same for the same element.
+
+!!! note
+    The virtual identifier generation can be [configured](./../usage/configuration.md#options) via the `RecheckOptions`.
+
+##### Generation
+
+A virtual identifier is generated for each element within a state and must be unique within that state. This rule does not apply for different states or Golden Masters.
+
+Generators are indeterministic and thus are allowed to return a different identifier for the same element. Specifically, this does neither guarantee that elements with the same identifier are equal, nor that the same element should expect the same identifier. This is especially the case if the virtual identifier is not tied to any attributes of the element (i.e. may be randomly generated).
+
+#### Type
+
+An element must have a type to identify the possible attributes it has. This usually corresponds to the same type of object (e.g. `<button>`) or respective sub-element (e.g. `text`).
+
+#### XPath
+
+The XPath describes the tree path within a Golden Master. However, depending on the extension and the object used to create the Golden Master, the XPath can also refer to the originally tested object (e.g. an element within a website).
+
+!!! warning
+    The XPath generated for the elements only partially supports the [XPath specification](https://www.w3.org/TR/xpath/all/) at the moment.
 
 ### Screenshots
 
