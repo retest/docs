@@ -217,6 +217,7 @@ Elements are identified by one special attribute `$key`, so called *identifying 
 # Match the element and its children where its attribute $key fully matches the $value.
 matcher: $key=$value
 ```
+This attribute can be any HTML attribute of the element. Fairly typical examples are given below, but it can really be any attribute. This is especially helpful if you define your own non-standard attributes, by which you want to identify the elements to ignore. 
 
 | `$key`     | `$value` (Example)                   | Description                                                                                                 |
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
