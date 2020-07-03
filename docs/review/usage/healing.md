@@ -4,7 +4,7 @@
     Code healing is an early feature and might not work for every use case. We would love to hear feedback and suggestions from you as we further improve this feature.
 
 !!! warning
-    This feature is only available with the standard license. If you do not own such a license, please [buy one here](https://retest.de/pricing/).
+    This feature is only available with the standard license. If you do not own such a license, please write an email to sales@retest.de.
 
 Using ***recheck-web*** allows tests to be almost [unbreakable](../../recheck-web/usage/healing.md). With ***review*** you can make them truly unbreakable since it will try to automatically healing any accepted breaking change.
 
@@ -18,7 +18,7 @@ When you accept breaking changes, they are saved until you press "Apply changes"
 
 The following conditions will not trigger code healing:
 
-1. Your license does not suffice. In this case you need to [upgrade](https://retest.de/pricing/) your license.
+1. Your license does not suffice. In this case you need to write an email to sales@retest.de.
 3. The breaking change has not been accepted.
 4. The breaking change has been ignored. As the value in the Golden Master has not been updated, it is not necessary to heal the identifier.
 5. The test to be healed has been removed.
