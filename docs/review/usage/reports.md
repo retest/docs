@@ -50,4 +50,4 @@ If you did not purchase a standard or higher license yet, some functionalities a
 
 ## Logout
 
-If you want to logout from review to maybe change accounts or so, you can only do so by going to [`Sessions` in `Your account` on ***rehub***](https://sso.prod.cloud.retest.org/auth/realms/customer/account/sessions) and click on `Log out all sessions`.
+If you want to logout from review to maybe change accounts or so, you can only do so by going to [`Sessions` in `Your account` on ***rehub***](https://login.retest.de/auth/realms/customer/account/sessions) and click on `Log out all sessions`.
