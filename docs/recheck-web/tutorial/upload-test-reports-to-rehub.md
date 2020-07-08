@@ -6,7 +6,7 @@ Test reports can be easily uploaded to [***rehub***](https://retest.de/rehub/). 
 
 Remember to set the property for the ChromeDriver executable when you want to execute the test locally (and remove it when you push). If you don't want to change this every time you execute your test locally, you can simply add the `chromedriver.exe` to your [path](https://java.com/en/download/help/path.xml).
 
-To upload reports you will need a [retest account](https://sso.prod.cloud.retest.org/auth/realms/customer/account) to gain access to ***rehub***. After the initial registration, you will receive a 14-day trial.
+To upload reports you will need a [retest account](https://login.retest.de/auth/realms/customer/account) to gain access to ***rehub***. After the initial registration, you will receive a 14-day trial.
 
 The first step is to modify the `setUp()` method in our existing test case to enable the upload to ***rehub***. There are two ways to achieve this:
 
@@ -32,7 +32,7 @@ void setUp() {
 }
 ```
 
-If we execute the test locally and the configuration was successful, your browser will pop up and you will be prompted to login. Afterwards, you can find your test reports on [***rehub*** dashboard](https://garkbit.prod.cloud.retest.org/dashboard).
+If we execute the test locally and the configuration was successful, your browser will pop up and you will be prompted to login. Afterwards, you can find your test reports on [***rehub*** dashboard](https://rehub.retest.de/dashboard).
 
 ### Enable rehub Globally
 
@@ -62,6 +62,6 @@ When we have completed all settings and executed the test in our CI/CD environme
 
 ## Access Your Reports
 
-All your reports can be accessed online. Open [***rehub***](https://garkbit.prod.cloud.retest.org/dashboard), enter your account details, and view/download your reports.
+All your reports can be accessed online. Open [***rehub***](https://rehub.retest.de/dashboard), enter your account details, and view/download your reports.
 
 Reports can be opened either with [***review***](https://retest.de/review/) or [***recheck.cli***](https://github.com/retest/recheck.cli/). With review, it is also possible to load reports directly from ***rehub***.
