@@ -226,22 +226,6 @@ $attribute, $color-diff
 !!! tip
     By combining element, attribute and value matching, you are able to match certain differences very specifically.
 
-### Importing Filters
-
-To avoid having huge filter or ignore files and to avoid redundancy, you can create smaller, specialized filters which you can import.
-
-The import is specified by the filter name (i.e. the file name), which will look at the global scope of all filters to find the most specific one. For example using the below example, will search all available [locations](#location) for the file name and choose the most specific filter to load. This way, the importing filter will always pick up any changes made to the imported filter. 
-
-```properties
-# Import other filters based on the name
-import: content.filter
-```
-
-!!! warning
-    Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
-    
-    Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
-
 ### Matching Elements
 
 Elements are identified by one special attribute `$key`, so called *identifying attributes*. 
@@ -334,5 +318,20 @@ color-diff=5%
 ```
 
 Each color component (red, green, blue) is reviews in isolation. Changing only the red component from `255` to `127` would result in a color difference of 50%.
+
+### Importing Filters
+
+To avoid having huge filter or ignore files and to avoid redundancy, you can create smaller, specialized filters which you can import.
+
+The import is specified by the filter name (i.e. the file name), which will look at the global scope of all filters to find the most specific one. For example using the below example, will search all available [locations](#location) for the file name and choose the most specific filter to load. This way, the importing filter will always pick up any changes made to the imported filter. 
+
+```properties
+# Import other filters based on the name
+import: content.filter
+```
+!!! warning
+    Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
+    
+    Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
 
 [^1]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.
