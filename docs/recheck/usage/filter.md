@@ -134,7 +134,40 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 ### Expressions
 
-A filter is built up using one or multiple expressions. By chaining multiple expressions together using a comma with a whitespace `, `, you are able to more precisely specify what the filter should match. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore. See the examples below for the possible chainable expressions.
+Each line represents a filter, which itself can be made up by one or more expressions. Those expressions are separated with a comma and a whitespace `, `.
+
+#### Scope
+
+Each expression applies to a specific scope. By default, a global scope is assumed (i.e. the [`report`](../files/report.md) or [`state`](../files/state.md)) to which the resulting filter is applied. By chaining multiple expression within a single line, the following expression acts only upon the scope of the previous expression, while the last expression ultimately decides which final scope the filter applies.
+
+A filter executes its expressions lazily (left to right) and aborts as soon as the scope is empty. Consequently, it will only match, if the last scope analyzed is not empty. Thus, an expression is only evaluated, if the applying scope is not empty
+
+##### State
+
+Consider the element structure as represented by the [state](../files/state.md#data): A collection of elements, where each element contains attributes which are assigned to values. For that the following scopes can be defined:
+
+1. State (i.e. collection of elements): *This is the global scope*.
+2. Element: Select an element, e.g. type `button`.
+3. Attribute: Select an attribute, e.g. `background-color`.
+4. Value: Select the value, e.g. `rgb(125, 125, 125)`.
+
+In words: The above example selects all `button` elements with the attribute `background-color=rgb(125, 125, 125)`.
+
+##### Report
+
+Although the structure of a [report](../files/report.md#structure) is quite different, ultimately, the scope is fairly similar to the scope of a state.
+
+1. Report (i.e. collection of element differences): *This is the global scope*.
+2. Element: Select an element, e.g. type `button`. *The element difference is not exposed directly*.
+3. Attribute Difference: Select an attribute, e.g. `background-color`, 
+4. Value: Depending on the filter, this will select either the *expected* or *actual* value, e.g. `rgb(125, 125, 125)`.
+
+In words: The above example selects all `button` elements with the attribute difference `background-color: actual=rgb(125, 125, 125)`.
+
+!!! tip
+    When chaining multiple expressions, scopes may be omitted. For example, omitting the element scope for the above example would result in a selection of *all* elements with the respective background color.
+
+#### Examples
 
 We currently support these individual expressions. Please refer to the more in detail descriptions below:
 
