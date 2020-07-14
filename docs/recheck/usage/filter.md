@@ -234,6 +234,8 @@ $element, $pixel-diff
 $element, $inserted
 # Match the element only if it is removed
 $element, $deleted
+# Exclude child elements or specific attributes
+$element, $exclude
 ```
 
 You may chain them in the following way for attributes:
@@ -356,5 +358,116 @@ import: content.filter
     Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
     
     Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
+
+### Excluding Filters
+
+Excluding filters can be used to negate an expression, so that an expression returns the inverse, i.e. `true` instead of `false` and vice versa. If used inside a `recheck.ignore`, exclusions allows to revert an ignore (e.g. for sub elements).
+
+These expressions must be attached to a scope and can be used to revert this scope using an expression. The exact application is limited by which scope the exclusion is bound to. For example, attaching an exclusion to an element allows to exclude both sub-elements and individual attributes.
+
+!!! tip
+    Excluding filters can only be applied to elements. We would love to hear possible use cases for other rules by creating an [issue](https://github.com/retest/recheck/issues/new/choose).
+
+#### Exclusion Syntax
+
+Excluding a filter takes a child expression. The child expression can accept the same expression as the scope to where the exclusion is attached. For example, attaching an exclusion to a `matcher` allows to also specify a `matcher` as a child expression.
+
+```properties
+exclude($child)
+```
+
+Here are some examples:
+
+```properties
+# Match all div elements (including all attributes), except of the element .card
+matcher: type=div, exclude(matcher: class=card)
+# Match all p elements (including all attributes), except of the attribute p
+matcher: type=p, exclude(attribute=text)
+```
+
+#### Chaining exclusions
+
+It is important to understand that filters are [additive](#expression), where each line must represent a complete filter. The same applies for excluding filters. If a exclusion binds to the same [scope](#scope) (e.g. a `form` element), they **must** be chained together.
+
+```properties
+# Match all elements witin a form, except buttons
+matcher: type=form, exclude(type=button)
+# Match all elements within a form, except input elements
+# Will not be evaluated, because the above filter already matches 
+matcher: type=form, exclude(type=input)
+```
+
+You can chain multiple exclusions together the same way you can [chain standard expressions](#expressions). Contrary to expression chaining, exclusions will always only bind to the first non-exclusion [scope](#scope).
+
+```properties
+# All exclusions will bind to the matcher scope (i.e. all div elements)
+matcher: type=div, exclude(attribute=text), exclude(attribute=color)
+# Match all elements within a form, except buttons and inputs
+matcher: type=form, exclude(type=button), exclude(type=input)
+```
+
+!!! warning
+    Once an exclusion has been defined, only further exclusions may be defined. Currently, an exclusion cannot be mixed with other expressions.
+
+#### Importing exclusions
+
+Because exclusion expressions can become quite complex, you can also use the import statement to reference another filter. This filter is the same to each line wrapped into an exclusion.
+
+```properties
+# exclude.filter
+matcher: type=input, attribute=text
+matcher: type=button
+
+# recheck.ignore
+matcher: type=form, exclude(import: exclude.filter)
+
+# Will be resolved to the following:
+matcher: type=form, exclude(matcher: type=input, attribute=text), exclude(matcher: type=button)
+```
+
+!!! warning
+    Care must be taken to ensure that the imported filter only specifies expressions that are valid as a child expression (i.e. within the same [scope](#scope)). Otherwise the expression is considered invalid and will never match.
+
+#### Complex exclusion example
+
+Excluding filters can both be chained and nested, if the [scope](#examples) allows for it. Take a look at the example below.
+
+You can exclusion expression chaining:
+
+```properties
+matcher: id=body, exclude(attribute=text), exclude(matcher: id=btn-subscribe), exclude(matcher: id=div, exclude(matcher: id=form))
+```
+
+Or use imports from your filter of choice:
+
+```properties
+# exclude.filter
+attribute=text
+matcher: id=btn-subscribe
+matcher: id=div, exclude(matcher: id=form)
+
+# global.filter
+matcher: id=body, exclude(import: exclude.filter)
+```
+
+Elements to be matched (green) or ignored (red). Note that when using this example inside a `recheck.ignore` the respective element is inverted.
+
+```diff
++<body>
+-    <div id="div">
++        <form id="form">
++            <label for="email">
+-                Email
++            </label>
++            <input id="email" type="email">
++        </form>       
+-    </div>
++    <div>
+-        <button id="btn-subscribe">
+-            Subscribe
+-        </button>
++    </div>
++</body>
+```
 
 [^1]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.
