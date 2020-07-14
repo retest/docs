@@ -136,6 +136,29 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 Each line represents a filter, which itself can be made up by one or more expressions. Those expressions are separated with a comma and a whitespace `, `.
 
+When writing expressions, it is important to understand that filters are additive. Take the example below where each filter refers to a different element. Please refer to the individual expressions below to lookup their usage in detail.
+
+```properties
+# Matches all elements and their attributes within a form element
+matcher: type=form
+# Matches the text attribute for all elements within body
+matcher: type=body, attribute=text
+```
+
+If a filter refers to the same element, care must be taken, so that each filter is evaluated.
+
+```properties
+# Matches all elements and their attributes within a body element
+matcher: type=body
+# Matches the text attribute for all elements witin body
+# Will not be evaluated, because the above filter already matches
+matcher: type=body, attribute=text
+```
+
+Since filters are evaluated top to bottom, we could switch both lines around. But since the body will be matched completely, regardless of the order, the more specific attribute is unnecessary.
+
+Thus it should be taken care, that each filter line references a unique [scope](#scope), so that each line is evaluated and contributes to the filter as a whole.
+
 #### Scope
 
 Each expression applies to a specific scope. By default, a global scope is assumed (i.e. the [`report`](../files/report.md) or [`state`](../files/state.md)) to which the resulting filter is applied. By chaining multiple expression within a single line, the following expression acts only upon the scope of the previous expression, while the last expression ultimately decides which final scope the filter applies.
