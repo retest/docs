@@ -150,7 +150,7 @@ If a filter refers to the same element, care must be taken, so that each filter 
 ```properties
 # Matches all elements and their attributes within a body element
 matcher: type=body
-# Matches the text attribute for all elements witin body
+# Matches the text attribute for all elements within body
 # Will not be evaluated, because the above filter already matches
 matcher: type=body, attribute=text
 ```
@@ -163,7 +163,7 @@ Thus it should be taken care, that each filter line references a unique [scope](
 
 Each expression applies to a specific scope. By default, a global scope is assumed (i.e. the [`report`](../files/report.md) or [`state`](../files/state.md)) to which the resulting filter is applied. By chaining multiple expression within a single line, the following expression acts only upon the scope of the previous expression, while the last expression ultimately decides which final scope the filter applies.
 
-A filter executes its expressions lazily (left to right) and aborts as soon as the scope is empty. Consequently, it will only match, if the last scope analyzed is not empty. Thus, an expression is only evaluated, if the applying scope is not empty
+A filter executes its expressions lazily (left to right) and aborts as soon as the scope is empty. Consequently, it will only match, if the last scope analyzed is not empty. Thus, an expression is only evaluated, if the applying scope is not empty.
 
 ##### State
 
@@ -390,7 +390,7 @@ matcher: type=p, exclude(attribute=text)
 It is important to understand that filters are [additive](#expression), where each line must represent a complete filter. The same applies for excluding filters. If a exclusion binds to the same [scope](#scope) (e.g. a `form` element), they **must** be chained together.
 
 ```properties
-# Match all elements witin a form, except buttons
+# Match all elements within a form, except buttons
 matcher: type=form, exclude(type=button)
 # Match all elements within a form, except input elements
 # Will not be evaluated, because the above filter already matches 
@@ -432,7 +432,7 @@ matcher: type=form, exclude(matcher: type=input, attribute=text), exclude(matche
 
 Excluding filters can both be chained and nested, if the [scope](#examples) allows for it. Take a look at the example below.
 
-You can exclusion expression chaining:
+You can use exclusion expression chaining:
 
 ```properties
 matcher: id=body, exclude(attribute=text), exclude(matcher: id=btn-subscribe), exclude(matcher: id=div, exclude(matcher: id=form))
