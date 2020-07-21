@@ -134,7 +134,63 @@ foo # Comment lines must start with a '#' and do not have leading whitespaces
 
 ### Expressions
 
-A filter is built up using one or multiple expressions. By chaining multiple expressions together using a comma with a whitespace `, `, you are able to more precisely specify what the filter should match. Note that the order of the expressions is important, which is lazily executed from left to right and stops once an expression does not match anymore. See the examples below for the possible chainable expressions.
+Each line represents a filter, which itself can be made up by one or more expressions. Those expressions are separated with a comma and a whitespace `, `.
+
+When writing expressions, it is important to understand that filters are additive. Take the example below where each filter refers to a different element. Please refer to the individual expressions below to lookup their usage in detail.
+
+```properties
+# Matches all elements and their attributes within a form element
+matcher: type=form
+# Matches the text attribute for all elements within body
+matcher: type=body, attribute=text
+```
+
+If a filter refers to the same element, care must be taken, so that each filter is evaluated.
+
+```properties
+# Matches all elements and their attributes within a body element
+matcher: type=body
+# Matches the text attribute for all elements within body
+# Will not be evaluated, because the above filter already matches
+matcher: type=body, attribute=text
+```
+
+Since filters are evaluated top to bottom, we could switch both lines around. But since the body will be matched completely, regardless of the order, the more specific attribute is unnecessary.
+
+Thus it should be taken care, that each filter line references a unique [scope](#scope), so that each line is evaluated and contributes to the filter as a whole.
+
+#### Scope
+
+Each expression applies to a specific scope. By default, a global scope is assumed (i.e. the [`report`](../files/report.md) or [`state`](../files/state.md)) to which the resulting filter is applied. By chaining multiple expression within a single line, the following expression acts only upon the scope of the previous expression, while the last expression ultimately decides which final scope the filter applies.
+
+A filter executes its expressions lazily (left to right) and aborts as soon as the scope is empty. Consequently, it will only match, if the last scope analyzed is not empty. Thus, an expression is only evaluated, if the applying scope is not empty.
+
+##### State
+
+Consider the element structure as represented by the [state](../files/state.md#data): A collection of elements, where each element contains attributes which are assigned to values. For that the following scopes can be defined:
+
+1. State (i.e. collection of elements): *This is the global scope*.
+2. Element: Select an element, e.g. type `button`.
+3. Attribute: Select an attribute, e.g. `background-color`.
+4. Value: Select the value, e.g. `rgb(125, 125, 125)`.
+
+In words: The above example selects all `button` elements with the attribute `background-color=rgb(125, 125, 125)`.
+
+##### Report
+
+Although the structure of a [report](../files/report.md#structure) is quite different, ultimately, the scope is fairly similar to the scope of a state.
+
+1. Report (i.e. collection of element differences): *This is the global scope*.
+2. Element: Select an element, e.g. type `button`. *The element difference is not exposed directly*.
+3. Attribute Difference: Select an attribute, e.g. `background-color`, 
+4. Value: Depending on the filter, this will select either the *expected* or *actual* value, e.g. `rgb(125, 125, 125)`.
+
+In words: The above example selects all `button` elements with the attribute difference `background-color: actual=rgb(125, 125, 125)`.
+
+!!! tip
+    When chaining multiple expressions, scopes may be omitted. For example, omitting the element scope for the above example would result in a selection of *all* elements with the respective background color.
+
+#### Examples
 
 We currently support these individual expressions. Please refer to the more in detail descriptions below:
 
@@ -178,6 +234,8 @@ $element, $pixel-diff
 $element, $inserted
 # Match the element only if it is removed
 $element, $deleted
+# Exclude child elements or specific attributes
+$element, $exclude
 ```
 
 You may chain them in the following way for attributes:
@@ -192,22 +250,6 @@ $attribute, $color-diff
 
 !!! tip
     By combining element, attribute and value matching, you are able to match certain differences very specifically.
-
-### Importing Filters
-
-To avoid having huge filter or ignore files and to avoid redundancy, you can create smaller, specialized filters which you can import.
-
-The import is specified by the filter name (i.e. the file name), which will look at the global scope of all filters to find the most specific one. For example using the below example, will search all available [locations](#location) for the file name and choose the most specific filter to load. This way, the importing filter will always pick up any changes made to the imported filter. 
-
-```properties
-# Import other filters based on the name
-import: content.filter
-```
-
-!!! warning
-    Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
-    
-    Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
 
 ### Matching Elements
 
@@ -301,5 +343,131 @@ color-diff=5%
 ```
 
 Each color component (red, green, blue) is reviews in isolation. Changing only the red component from `255` to `127` would result in a color difference of 50%.
+
+### Importing Filters
+
+To avoid having huge filter or ignore files and to avoid redundancy, you can create smaller, specialized filters which you can import.
+
+The import is specified by the filter name (i.e. the file name), which will look at the global scope of all filters to find the most specific one. For example using the below example, will search all available [locations](#location) for the file name and choose the most specific filter to load. This way, the importing filter will always pick up any changes made to the imported filter. 
+
+```properties
+# Import other filters based on the name
+import: content.filter
+```
+!!! warning
+    Be careful not to use cyclic imports where `a.filter` imports `b.filter` and vice versa (same goes for longer cyclic chains).
+    
+    Secondly, only import filters from the same or a broader scope (e.g. filters within the user home should only import filters present in the user home or provided locations). If need be, you can always overwrite these filters within the project directory and the importing filter will use the project filter if available.
+
+### Excluding Filters
+
+Excluding filters can be used to negate an expression, so that an expression returns the inverse, i.e. `true` instead of `false` and vice versa. If used inside a `recheck.ignore`, exclusions allows to revert an ignore (e.g. for sub elements).
+
+These expressions must be attached to a scope and can be used to revert this scope using an expression. The exact application is limited by which scope the exclusion is bound to. For example, attaching an exclusion to an element allows to exclude both sub-elements and individual attributes.
+
+!!! tip
+    Excluding filters can only be applied to elements. We would love to hear possible use cases for other rules by creating an [issue](https://github.com/retest/recheck/issues/new/choose).
+
+#### Exclusion Syntax
+
+Excluding a filter takes a child expression. The child expression can accept the same expression as the scope to where the exclusion is attached. For example, attaching an exclusion to a `matcher` allows to also specify a `matcher` as a child expression.
+
+```properties
+exclude($child)
+```
+
+Here are some examples:
+
+```properties
+# Match all div elements (including all attributes), except of the element .card
+matcher: type=div, exclude(matcher: class=card)
+# Match all p elements (including all attributes), except of the attribute p
+matcher: type=p, exclude(attribute=text)
+```
+
+#### Chaining exclusions
+
+It is important to understand that filters are [additive](#expression), where each line must represent a complete filter. The same applies for excluding filters. If a exclusion binds to the same [scope](#scope) (e.g. a `form` element), they **must** be chained together.
+
+```properties
+# Match all elements within a form, except buttons
+matcher: type=form, exclude(type=button)
+# Match all elements within a form, except input elements
+# Will not be evaluated, because the above filter already matches 
+matcher: type=form, exclude(type=input)
+```
+
+You can chain multiple exclusions together the same way you can [chain standard expressions](#expressions). Contrary to expression chaining, exclusions will always only bind to the first non-exclusion [scope](#scope).
+
+```properties
+# All exclusions will bind to the matcher scope (i.e. all div elements)
+matcher: type=div, exclude(attribute=text), exclude(attribute=color)
+# Match all elements within a form, except buttons and inputs
+matcher: type=form, exclude(type=button), exclude(type=input)
+```
+
+!!! warning
+    Once an exclusion has been defined, only further exclusions may be defined. Currently, an exclusion cannot be mixed with other expressions.
+
+#### Importing exclusions
+
+Because exclusion expressions can become quite complex, you can also use the import statement to reference another filter. This filter is the same to each line wrapped into an exclusion.
+
+```properties
+# exclude.filter
+matcher: type=input, attribute=text
+matcher: type=button
+
+# recheck.ignore
+matcher: type=form, exclude(import: exclude.filter)
+
+# Will be resolved to the following:
+matcher: type=form, exclude(matcher: type=input, attribute=text), exclude(matcher: type=button)
+```
+
+!!! warning
+    Care must be taken to ensure that the imported filter only specifies expressions that are valid as a child expression (i.e. within the same [scope](#scope)). Otherwise the expression is considered invalid and will never match.
+
+#### Complex exclusion example
+
+Excluding filters can both be chained and nested, if the [scope](#examples) allows for it. Take a look at the example below.
+
+You can use exclusion expression chaining:
+
+```properties
+matcher: id=body, exclude(attribute=text), exclude(matcher: id=btn-subscribe), exclude(matcher: id=div, exclude(matcher: id=form))
+```
+
+Or use imports from your filter of choice:
+
+```properties
+# exclude.filter
+attribute=text
+matcher: id=btn-subscribe
+matcher: id=div, exclude(matcher: id=form)
+
+# global.filter
+matcher: id=body, exclude(import: exclude.filter)
+```
+
+Elements to be matched (green) or ignored (red). Note that when using this example inside a `recheck.ignore` the respective element is inverted.
+
+```diff
++<body>
+-    <div id="div">
++        <form id="form">
++            <label for="email">
+-                Email
++            </label>
++            <input id="email" type="email">
++        </form>       
+-    </div>
++    <div>
+-        <button id="btn-subscribe">
+-            Subscribe
+-        </button>
++    </div>
++</body>
+```
 
 [^1]: While the HTML tag name is mapped to `type` and part of the identifying attributes, the actual HTML `type` is put into the ordinary attributes that define an element's state.

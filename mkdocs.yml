@@ -20,6 +20,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.keys
+  - toc:
+      toc_depth: 4
 
 plugins:
   - search
