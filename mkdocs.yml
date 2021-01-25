@@ -1,4 +1,5 @@
 site_name: retest docs
+strict: true
 
 theme:
   name: material
