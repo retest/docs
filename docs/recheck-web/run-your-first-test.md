@@ -31,15 +31,17 @@
         Right click on the Project (or anywhere in the code) > Run As > JUnit Test
     * In Command line, run the following Maven command:
     * `mvn test`
-3. After you run one set of tests, you now have verified that the Golden Master is correct. Run the same test but change `loginFormUrl` in `src/test/java/my/test/util/DemoApp.java` to: https://demo.retest.org/changed.html. This version of the demo app has some visual bugs so you can see how it all works.
+3. After you run one set of tests, you now have verified that the Golden Master is correct. Run the same test but change `loginFormUrl` in `src/test/java/my/test/util/DemoApp.java` to: [https://assets.retest.org/demos/app/demo-app.html](https://assets.retest.org/demos/app/demo-app.html).
 
-```java
-static public String loginFormUrl() throws MalformedURLException {
-        return "https://demo.retest.org/changed.html";
-}
-```
+    ```java
+    static public String loginFormUrl() throws MalformedURLException {
+            return "https://assets.retest.org/demos/app/demo-app.html";
+    }
+    ```
+    This version of the demo app has some visual bugs so you can see how it all works.
 
 4. Start review and start exploring your report
-    <!-- * If you are not logged in locally, your browser will open and ask for your retest account
-    * Because reports are automatically managed you should be able to see it immediately-->
     * You find it in your project folder under this path `./target/test-classes/retest/recheck/tests.report`.
+
+    <!-- * If you are not logged in locally, your browser will open and ask for your retest account
+    * Because reports are automatically managed you should be able to see it immediately -->
