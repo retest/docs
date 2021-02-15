@@ -6,7 +6,7 @@ Thank you for taking interest in contributing to our repositories. You are invit
 
 ### Contributor License Agreement
 
-We require all contributors who submit pull requests to have read and accepted the [CLA](https://github.com/retest/clabot-config/blob/master/Contributor-License-Agreement.md). To do so, please refer to our [clabot-config](https://github.com/retest/clabot-config). If you create a pull request and you have not yet agreed to the CLA, you will be asked to do so.
+We require all contributors who submit pull requests to have read and accepted the [CLA](https://github.com/retest/clabot-config/blob/main/Contributor-License-Agreement.md). To do so, please refer to our [clabot-config](https://github.com/retest/clabot-config). If you create a pull request and you have not yet agreed to the CLA, you will be asked to do so.
 
 ## Submission Guidelines
 
