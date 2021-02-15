@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -13,5 +13,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs mkdocs-material mkdocs-redirects
-      - run: mkdocs gh-deploy --force
+      - run: |
+          pip install mkdocs mkdocs-material mkdocs-redirects
+          mkdocs gh-deploy --force
