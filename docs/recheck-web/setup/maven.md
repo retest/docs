@@ -50,3 +50,43 @@ The output should contain no error and show a Java version of 8 or above. Now yo
 With this, you can now turn to your favorite IDE (e.g. `mvn eclipse:eclipse`) and create your first test class. Before a Selenium test can be executed correctly, you first need to download a driver/browser executable according to your liking and operating system, e.g. [Chrome](http://chromedriver.storage.googleapis.com/index.html).
 
 Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome version installed on your system. Now we should be all set up to create [your first test](../tutorial/explicit-checks.md).
+
+## Using ReTest in connection with Spring
+If you plan to use Spring alongside with ReTest in the same project, you should know the following:
+
+Since Java version 11 `javax.xml.bind` is replaced by `jakarta.xml.bind`. ReTest already uses the newer version, meaningly `jakarta.xml.bind`, while
+Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to add the following dependencies to your `pom.xml` file.
+
+```xml
+<!-- START workaround old jaxb package name -->
+<dependency>
+	<!-- provide xml api with jakarta package name -->
+	<groupId>jakarta.xml.bind</groupId>
+	<artifactId>jakarta.xml.bind-api</artifactId>
+	<version>[3,3.99)</version><!--$NO-MVN-MAN-VER$ -->
+	<!-- depends on com.sun.activation:jakarta.activation > 2.0 (package jakarta.activation) -->
+</dependency>
+<dependency>
+	<!-- version with old package name exist, so we need to enforce a lower version bound -->
+	<groupId>com.sun.activation</groupId>
+	<artifactId>jakarta.activation</artifactId>
+	<version>[2,2.99)</version><!--$NO-MVN-MAN-VER$ -->
+</dependency>
+<dependency>
+	<!-- provide xml api with javax package name -->
+	<groupId>javax.xml.bind</groupId>
+	<artifactId>jaxb-api</artifactId>
+	<version>[2.3,2.99)</version><!--$NO-MVN-MAN-VER$ -->
+	<!-- depends on javax.activation:javax.activation-api (package javax.activation) -->
+</dependency>
+<!-- END workaround old jaxb package name -->
+
+<dependency>
+	<!-- workaround for legacy mail dependency in spring-boot-starter-oauth2-client -->
+	<!-- only needed if spring-boot-starter-oauth2-client < v2.4.12 or < v2.5.5 is used -->
+	<groupId>com.sun.mail</groupId>
+	<artifactId>jakarta.mail</artifactId>
+	<version>2.0.1</version><!--$NO-MVN-MAN-VER$ -->
+	<scope>test</scope>
+</dependency>
+```
