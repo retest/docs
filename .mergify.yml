@@ -7,7 +7,6 @@ pull_request_rules:
       - "-draft"
     actions:
       rebase:
-        bot_account: rebazer
 
   - name: "merge non-release PRs with strict rebase"
     conditions:
