@@ -105,7 +105,7 @@ matches( element, diff );
     **Arguments**:
 
     - `element` [(`Element`)](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/descriptors/Element.java): The element on which the difference occurred.  
-    - `diff` [(`AttributeDifference`)](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/diff/IdentifyingAttributesDifference.java): The difference, may be null.
+    - `diff` [(`AttributeDifference`)](https://github.com/retest/recheck/blob/master/src/main/java/de/retest/recheck/ui/diff/AttributeDifference.java): The difference, may be null.
 
     **Returns**:
 
