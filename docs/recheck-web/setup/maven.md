@@ -90,3 +90,86 @@ Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to 
 	<scope>test</scope>
 </dependency>
 ```
+
+Furthermore, Spring defines selenium version 3 in its POM file while ReCheck (version >= 1.13) is using selenium version 4.
+The respective dependencies must therefore be overwritten in your `pom.xml` file by adding the following block.
+
+```xml
+<dependencyManagement>
+	<dependencies>
+		<!-- START workaround selenium 4 -->
+		<!-- recheck >= 1.13 uses selenium 4, spring defines selenium 3 in parent-pom, so we need to overwrite it. -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v85</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v97</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v98</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v99</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-edge-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-opera-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<!-- END workaround selenium 4 -->
+	</dependencies>
+</dependencyManagement>
+```
