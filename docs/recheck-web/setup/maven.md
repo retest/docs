@@ -52,9 +52,9 @@ With this, you can now turn to your favorite IDE (e.g. `mvn eclipse:eclipse`) an
 Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome version installed on your system. Now we should be all set up to create [your first test](../tutorial/explicit-checks.md).
 
 ## Using ReTest in connection with Spring
-If you plan to use Spring alongside with retest in the same project, you should know the following:
+If you plan to use Spring alongside with **retest** in the same project, you should know the following:
 
-Since Java version 11 `javax.xml.bind` is replaced by `jakarta.xml.bind`. Retest already uses the newer version, meaningly `jakarta.xml.bind`, while
+Since Java version 11 `javax.xml.bind` is replaced by `jakarta.xml.bind`. **Retest** already uses the newer version, meaningly `jakarta.xml.bind`, while
 Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to add the following dependencies to your `pom.xml` file.
 
 ```xml
@@ -91,7 +91,7 @@ Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to 
 </dependency>
 ```
 
-Furthermore, Spring defines Selenium version 3 in its POM file while recheck (version >= 1.13) is using selenium version 4.
+Furthermore, Spring defines Selenium version 3 in its POM file whereas ***recheck*** (version >= 1.13) is using Selenium version 4.
 The respective dependencies must therefore be overwritten in your `pom.xml` file by adding the following block.
 
 ```xml
