@@ -51,10 +51,10 @@ With this, you can now turn to your favorite IDE (e.g. `mvn eclipse:eclipse`) an
 
 Extract the archive to your hard drive. Note that for the ChromeDriver to work, you need the major version to match your Chrome version installed on your system. Now we should be all set up to create [your first test](../tutorial/explicit-checks.md).
 
-## Using ReTest in connection with Spring
-If you plan to use Spring alongside with ReTest in the same project, you should know the following:
+## Using ***recheck*** in connection with Spring
+If you plan to use Spring alongside with ***recheck*** in the same project, you should know the following:
 
-Since Java version 11 `javax.xml.bind` is replaced by `jakarta.xml.bind`. ReTest already uses the newer version, meaningly `jakarta.xml.bind`, while
+Since Java version 11 `javax.xml.bind` is replaced by `jakarta.xml.bind`. ***recheck*** already uses the newer version, meaningly `jakarta.xml.bind`, while
 Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to add the following dependencies to your `pom.xml` file.
 
 ```xml
@@ -89,4 +89,87 @@ Spring is still using `javax.xml.bind`. To avoid any errors, it is necessary to 
 	<version>2.0.1</version><!--$NO-MVN-MAN-VER$ -->
 	<scope>test</scope>
 </dependency>
+```
+
+Furthermore, Spring defines Selenium version 3 in its POM file whereas ***recheck*** (version >= 1.13) is using Selenium version 4.
+The respective dependencies must therefore be overwritten in your `pom.xml` file by adding the following block.
+
+```xml
+<dependencyManagement>
+	<dependencies>
+		<!-- START workaround selenium 4 -->
+		<!-- recheck >= 1.13 uses selenium 4, spring defines selenium 3 in parent-pom, so we need to overwrite it. -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v85</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v97</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v98</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v99</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-edge-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-opera-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>[4,4.99)</version>
+		</dependency>
+		<!-- END workaround selenium 4 -->
+	</dependencies>
+</dependencyManagement>
 ```
